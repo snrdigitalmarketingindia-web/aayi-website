@@ -28,7 +28,7 @@
   <meta name="googlebot" content="index, follow">
 
   <!-- Author & Publisher -->
-  <meta name="author" content="Aayi.ai — RDN Biofuture">
+  <meta name="author" content="CSR | SNR Digital Marketing">
   <meta name="publisher" content="Aayi.ai">
   <meta name="copyright" content="Aayi.ai 2026">
 
@@ -445,26 +445,30 @@
     }
     /* Logo: icon + HTML text side by side */
     .logo {
-      display: flex; align-items: center; gap: 14px;
+      display: flex; align-items: center; gap: 18px;
       text-decoration: none; flex-shrink: 0;
     }
-    .logo-icon { display: block; width: 72px; height: 72px; flex-shrink: 0; }
-    .logo-text { display: flex; flex-direction: column; gap: 3px; }
+    .logo-icon { display: block; width: 108px; height: 108px; flex-shrink: 0; }
+    .logo-text { display: flex; flex-direction: column; gap: 4px; }
     .logo-wordmark {
-      font-size: 52px; font-weight: 900; line-height: 1;
-      color: var(--maroon); letter-spacing: -2px;
+      font-size: 78px; font-weight: 900; line-height: 1;
+      color: var(--maroon); letter-spacing: -3px;
     }
     .logo-sub {
-      font-size: 13px; color: var(--ink-60);
+      font-size: 15px; color: var(--ink-60);
       font-weight: 500; letter-spacing: 0; white-space: nowrap;
     }
-    /* Pills row */
+    /* Pills + CTA row */
+    .nav-bottom {
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 12px;
+    }
     .nav-links { display: flex; gap: 8px; list-style: none; flex-wrap: nowrap; }
     .nav-links a {
       display: inline-block; white-space: nowrap;
-      font-size: 13px; font-weight: 700;
+      font-size: 15px; font-weight: 700;
       text-decoration: none;
-      padding: 8px 16px; border-radius: 999px;
+      padding: 10px 20px; border-radius: 999px;
       transition: background .18s, color .18s, transform .18s, box-shadow .18s;
     }
     .nav-links a:hover { color: #fff; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(42,16,8,0.18); }
@@ -482,20 +486,25 @@
     .nav-links li:nth-child(5) a:hover { background: #35948A; }
     .nav-links li:nth-child(6) a:hover { background: #7C5DB8; }
     .nav-links li:nth-child(7) a:hover { background: #C77435; }
-    /* CTA buttons */
-    .nav-cta { display: flex; flex-direction: column; gap: 6px; align-items: stretch; flex-shrink: 0; }
-    .nav-cta .btn { font-size: 13px; padding: 7px 18px; text-align: center; }
+    /* CTA buttons — horizontal on pills row */
+    .nav-cta { display: flex; flex-direction: row; gap: 8px; align-items: center; flex-shrink: 0; }
+    .nav-cta .btn { font-size: 13px; padding: 9px 18px; text-align: center; }
     .nav-burger { display: none; background: none; border: 0; font-size: 26px; line-height: 1; color: var(--maroon); cursor: pointer; padding: 6px 2px 6px 10px; }
     /* Responsive */
+    @media (max-width: 900px) {
+      .logo-icon { width: 80px; height: 80px; }
+      .logo-wordmark { font-size: 58px; }
+      .nav-links a { font-size: 13px; padding: 8px 14px; }
+    }
     @media (max-width: 768px) {
       .nav-inner { padding: 8px 0 6px; gap: 6px; }
-      .logo-icon { width: 48px; height: 48px; }
-      .logo-wordmark { font-size: 34px; }
+      .logo-icon { width: 52px; height: 52px; }
+      .logo-wordmark { font-size: 38px; letter-spacing: -1px; }
       .logo-sub { display: none; }
     }
     @media (max-width: 480px) {
       .logo-icon { width: 40px; height: 40px; }
-      .logo-wordmark { font-size: 28px; }
+      .logo-wordmark { font-size: 30px; }
     }
 
     /* ── BUTTONS ── */
@@ -1019,14 +1028,25 @@
       <div class="container nav-inner">
         <div class="nav-top">
           <a href="/" class="logo" aria-label="Aayi.ai Home">
-            <img class="logo-icon" src="/images/logo-icon-80.png"
-              srcset="/images/logo-icon-80.png 1x, /images/logo-icon-160.png 2x"
-              alt="" width="72" height="72" loading="eager">
+            <img class="logo-icon" src="/images/logo-icon-160.png"
+              srcset="/images/logo-icon-160.png 1x, /images/logo-icon-216.png 2x"
+              alt="" width="108" height="108" loading="eager">
             <div class="logo-text">
               <span class="logo-wordmark">aayi</span>
               <span class="logo-sub">Your AI companion for pregnancy &amp; motherhood</span>
             </div>
           </a>
+        </div>
+        <div class="nav-bottom">
+          <ul class="nav-links">
+            <li><a href="/for-moms/">Moms</a></li>
+            <li><a href="/for-parents/">Parents</a></li>
+            <li><a href="/for-doctors/">Doctors</a></li>
+            <li><a href="/for-pediatricians/">Pediatricians</a></li>
+            <li><a href="/for-hospitals/">Hospitals</a></li>
+            <li><a href="/markets/">Markets</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+          </ul>
           <div class="nav-cta">
             <a href="#demo" class="btn btn-outline btn-sm"
                data-ga-event="nav_login" data-ga-category="Navigation">Sign In</a>
@@ -1034,15 +1054,6 @@
                data-ga-event="nav_book_demo" data-ga-category="Navigation">Book Demo</a>
           </div>
         </div>
-        <ul class="nav-links">
-          <li><a href="/for-moms/">Moms</a></li>
-          <li><a href="/for-parents/">Parents</a></li>
-          <li><a href="/for-doctors/">Doctors</a></li>
-          <li><a href="/for-pediatricians/">Pediatricians</a></li>
-          <li><a href="/for-hospitals/">Hospitals</a></li>
-          <li><a href="/markets/">Markets</a></li>
-          <li><a href="/faq/">FAQ</a></li>
-        </ul>
       </div>
     </nav>
   </header>
@@ -1508,7 +1519,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2026 Aayi.ai — RDN Biofuture. All rights reserved.</p>
+        <p>© 2026 CSR | SNR Digital Marketing. All rights reserved.</p>
         <div class="footer-legal">
           <a href="/privacy">Privacy Policy</a>
           <a href="/terms">Terms of Service</a>
