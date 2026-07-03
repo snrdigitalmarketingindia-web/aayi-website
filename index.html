@@ -438,7 +438,8 @@
     .nav-inner {
       display: flex; align-items: center;
       justify-content: space-between;
-      height: 68px;
+      flex-wrap: wrap; height: auto;
+      padding: 14px 0 16px; gap: 10px 16px;
     }
     .logo {
       font-size: 26px; font-weight: 900;
@@ -446,17 +447,36 @@
       letter-spacing: -0.5px;
     }
     .logo span { color: var(--coral); }
-    .nav-links a { white-space: nowrap; }
-    @media (max-width: 480px) { .logo img { height: 52px !important; } }
-    .nav-links {
-      display: flex; gap: 36px; list-style: none;
-    }
+    .logo-img { display: block; height: 128px; width: auto; max-width: none; }
+    .nav-links { display: flex; gap: 8px; list-style: none; order: 3; width: 100%; justify-content: center; flex-wrap: wrap; }
     .nav-links a {
-      font-size: 14px; font-weight: 500;
-      color: var(--ink-80); text-decoration: none;
-      transition: color .15s;
+      display: inline-block; white-space: nowrap;
+      font-size: 14px; font-weight: 700;
+      text-decoration: none;
+      padding: 9px 15px; border-radius: 999px;
+      transition: background .18s, color .18s, transform .18s, box-shadow .18s;
     }
-    .nav-links a:hover { color: var(--coral); }
+    .nav-links a:hover { color: #fff; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(42,16,8,0.18); }
+    .nav-links li:nth-child(1) a { background: #FFF0EE; color: #C94A35; }
+    .nav-links li:nth-child(2) a { background: #FFF3DC; color: #A96D0E; }
+    .nav-links li:nth-child(3) a { background: #EEF2E3; color: #6B7A3A; }
+    .nav-links li:nth-child(4) a { background: #FBE9EF; color: #B03A5C; }
+    .nav-links li:nth-child(5) a { background: #E4F2F0; color: #2E7D74; }
+    .nav-links li:nth-child(6) a { background: #EFEAF8; color: #6B4FA1; }
+    .nav-links li:nth-child(7) a { background: #FDEBDD; color: #B4622A; }
+    .nav-links li:nth-child(1) a:hover { background: #E86B52; }
+    .nav-links li:nth-child(2) a:hover { background: #D98E1B; }
+    .nav-links li:nth-child(3) a:hover { background: #7C8C46; }
+    .nav-links li:nth-child(4) a:hover { background: #C9506F; }
+    .nav-links li:nth-child(5) a:hover { background: #35948A; }
+    .nav-links li:nth-child(6) a:hover { background: #7C5DB8; }
+    .nav-links li:nth-child(7) a:hover { background: #C77435; }
+    @media (max-width: 1100px) { .logo-img { height: 96px; } }
+    @media (max-width: 768px) {
+      .nav-inner { flex-wrap: nowrap; padding: 10px 0; }
+      .logo-img { height: 64px; }
+    }
+    @media (max-width: 480px) { .logo-img { height: 52px; } }
     .nav-cta { display: flex; gap: 12px; align-items: center; }
     .nav-burger { display: none; background: none; border: 0; font-size: 26px; line-height: 1; color: var(--maroon); cursor: pointer; padding: 6px 2px 6px 10px; }
 
@@ -979,10 +999,10 @@
   <header>
     <nav class="nav" role="navigation" aria-label="Main navigation">
       <div class="container nav-inner">
-        <a href="/" class="logo" aria-label="Aayi.ai Home"><img src="/images/logo-tagline-nav-192.png"
-      srcset="/images/logo-tagline-nav-192.png 1x, /images/logo-tagline-nav-384.png 2x, /images/logo-tagline-nav.png 3x"
-      alt="Aayi.ai — Your AI companion for pregnancy & motherhood" width="192" height="64"
-      style="height:64px;width:auto;max-width:none;display:block" loading="eager"></a>
+        <a href="/" class="logo" aria-label="Aayi.ai Home"><img class="logo-img" src="/images/logo-tagline-nav-384.png"
+      srcset="/images/logo-tagline-nav-384.png 1x, /images/logo-tagline-nav-768.png 2x"
+      alt="Aayi.ai — Your AI companion for pregnancy & motherhood" width="384" height="128"
+      loading="eager"></a>
         <ul class="nav-links">
           <li><a href="/for-moms/">For Moms</a></li>
           <li><a href="/for-parents/">For Parents</a></li>
