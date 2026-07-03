@@ -245,11 +245,25 @@ details[open] .faq-chevron { transform: rotate(180deg); }
 .js-anim .animate-on-scroll { opacity:0; }
 .js-anim .animate-on-scroll.visible { animation: fadeInUp 0.55s cubic-bezier(0.16,1,0.3,1) forwards; }
 
+/* ── MOBILE NAV ── */
+.nav-burger { display: none; background: none; border: 0; font-size: 26px; line-height: 1; color: var(--maroon); cursor: pointer; padding: 6px 2px 6px 10px; }
+
 /* ── MOBILE ── */
 @media (max-width: 768px) {
   .grid-3, .grid-2 { grid-template-columns: 1fr; }
   .nav-links { display: none; }
+  .nav-burger { display: block; }
+  .nav.nav-open .nav-links {
+    display: flex; flex-direction: column; gap: 18px;
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: #fff; padding: 20px 24px 24px;
+    border-bottom: 1px solid var(--ink-10);
+    box-shadow: 0 12px 24px rgba(42,16,8,0.12);
+  }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
   .section { padding: 64px 0; }
   .page-hero { padding: 60px 0 52px; }
+}
+@media (max-width: 480px) {
+  .nav-cta .btn-outline { display: none; }
 }

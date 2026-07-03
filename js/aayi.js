@@ -1,5 +1,33 @@
-/* Aayi.ai — shared site JS: scroll-reveal animations */
+/* Aayi.ai — shared site JS: mobile nav + scroll-reveal animations */
 (function () {
+  /* Mobile hamburger nav */
+  var nav = document.querySelector('.nav');
+  var inner = nav && nav.querySelector('.nav-inner');
+  var links = nav && nav.querySelector('.nav-links');
+  if (nav && inner && links) {
+    var burger = document.createElement('button');
+    burger.className = 'nav-burger';
+    burger.setAttribute('aria-label', 'Open menu');
+    burger.setAttribute('aria-expanded', 'false');
+    burger.textContent = '☰';
+    burger.addEventListener('click', function () {
+      var open = nav.classList.toggle('nav-open');
+      burger.textContent = open ? '✕' : '☰';
+      burger.setAttribute('aria-expanded', String(open));
+      burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    links.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        nav.classList.remove('nav-open');
+        burger.textContent = '☰';
+        burger.setAttribute('aria-expanded', 'false');
+        burger.setAttribute('aria-label', 'Open menu');
+      }
+    });
+    inner.appendChild(burger);
+  }
+
+  /* Scroll-reveal */
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduced || !('IntersectionObserver' in window)) return;
 
