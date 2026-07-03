@@ -104,7 +104,7 @@ a    { color: var(--coral); }
 .logo-wordmark { font-size: 78px; font-weight: 900; line-height: 1; color: var(--maroon); letter-spacing: -3px; }
 .logo-sub { font-size: 15px; color: var(--ink-60); font-weight: 500; white-space: nowrap; }
 /* Pills + CTA row */
-.nav-bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.nav-bottom { display: flex; align-items: center; gap: 12px; }
 .nav-links { display: flex; gap: 8px; list-style: none; flex-wrap: nowrap; }
 .nav-links a {
   display: inline-block; white-space: nowrap;
