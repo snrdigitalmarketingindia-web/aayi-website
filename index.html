@@ -446,8 +446,8 @@
       letter-spacing: -0.5px;
     }
     .logo span { color: var(--coral); }
-    .logo .logo-tagline { display: block; font-size: 9px; font-weight: 600; color: var(--coral-dark); letter-spacing: 0; margin-top: 3px; white-space: nowrap; }
     .nav-links a { white-space: nowrap; }
+    @media (max-width: 480px) { .logo img { height: 52px !important; } }
     .nav-links {
       display: flex; gap: 36px; list-style: none;
     }
@@ -935,7 +935,6 @@
       .pain-solution-arrow { display: none; }
       .nav-links { display: none; }
       .nav-burger { display: block; }
-      .logo .logo-tagline { display: none; }
       .nav.nav-open .nav-links {
         display: flex; flex-direction: column; gap: 18px;
         position: absolute; top: 100%; left: 0; right: 0;
@@ -980,10 +979,10 @@
   <header>
     <nav class="nav" role="navigation" aria-label="Main navigation">
       <div class="container nav-inner">
-        <a href="/" class="logo" aria-label="Aayi.ai Home">
-      <img src="/images/logo-nav.png" alt="Aayi.ai" width="448" height="160" style="height:40px;width:auto;max-width:none;display:block" loading="eager">
-      <span class="logo-tagline">Your AI companion for pregnancy &amp; motherhood</span>
-    </a>
+        <a href="/" class="logo" aria-label="Aayi.ai Home"><img src="/images/logo-tagline-nav-192.png"
+      srcset="/images/logo-tagline-nav-192.png 1x, /images/logo-tagline-nav-384.png 2x, /images/logo-tagline-nav.png 3x"
+      alt="Aayi.ai — Your AI companion for pregnancy & motherhood" width="192" height="64"
+      style="height:64px;width:auto;max-width:none;display:block" loading="eager"></a>
         <ul class="nav-links">
           <li><a href="/for-moms/">For Moms</a></li>
           <li><a href="/for-parents/">For Parents</a></li>
