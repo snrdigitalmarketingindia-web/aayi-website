@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Warm cream background matching app aesthetic -->
+  <rect width="32" height="32" rx="8" fill="#FFF5F0"/>
+  <!-- Coral accent bar at top -->
+  <rect x="0" y="0" width="32" height="5" rx="3" fill="#E86B52"/>
+  <rect x="0" y="2" width="32" height="3" fill="#E86B52"/>
+  <!-- "A" wordmark in maroon, matching Aayi app font style -->
+  <text x="16" y="26" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-weight="700" fill="#2A1008" letter-spacing="-0.5">A</text>
+</svg>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Parents — Aayi.ai | Track Your Child's Health, Vaccines & Milestones</title>
+  <meta name="description" content="Aayi.ai helps parents track their baby's vaccinations, developmental milestones, feeding, growth, and get instant AI-powered answers to parenting health questions — all connected to your pediatrician.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://aayi.ai/for-parents/">
+  <meta property="og:title" content="For Parents — Aayi.ai | Your Child's Health, Always on Track">
+  <meta property="og:description" content="Vaccine tracking, milestone monitoring, AI health answers, and a direct link to your pediatrician — all in one place.">
+  <meta property="og:url" content="https://aayi.ai/for-parents/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1491013516836-7db643ee125a?auto=format&fit=crop&w=1200&h=630&q=80">
+  <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/aayi.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "For Parents — Aayi.ai",
+    "description": "Aayi.ai helps parents track baby vaccines, developmental milestones, feeding, and get 24/7 AI health support — all connected to their pediatrician.",
+    "url": "https://aayi.ai/for-parents/",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://aayi.ai/"},
+        {"@type":"ListItem","position":2,"name":"For Parents","item":"https://aayi.ai/for-parents/"}
+      ]
+    }
+  }
+  </script>
+  <style>
+    .benefit-row { display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:center; margin-bottom:64px; }
+    .benefit-row.flip { direction:rtl; }
+    .benefit-row.flip > * { direction:ltr; }
+    .benefit-photo { border-radius:20px; overflow:hidden; }
+    .benefit-photo img { width:100%; height:320px; object-fit:cover; display:block; }
+    .benefit-text h3 { font-size:1.5rem; font-weight:800; color:var(--maroon); margin-bottom:12px; line-height:1.3; }
+    .benefit-text p { font-size:15px; color:var(--ink-60); line-height:1.8; margin-bottom:16px; }
+    .check-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; }
+    .check-list li { display:flex; align-items:flex-start; gap:10px; font-size:14px; color:var(--ink-80); line-height:1.6; }
+    .check-list li::before { content:"✓"; color:var(--coral); font-weight:800; flex-shrink:0; margin-top:1px; }
+    .vaccine-row { display:grid; grid-template-columns:80px 1fr auto; gap:16px; align-items:center; padding:16px 20px; background:#fff; border-radius:14px; border:1px solid var(--ink-10); margin-bottom:10px; box-shadow:0 1px 4px rgba(0,0,0,0.04); }
+    .v-age { font-size:11px; font-weight:700; color:var(--coral); letter-spacing:1px; text-transform:uppercase; }
+    .v-name { font-size:14px; font-weight:700; color:var(--maroon); }
+    .v-desc { font-size:12px; color:var(--ink-60); margin-top:2px; }
+    .v-status { font-size:12px; font-weight:700; padding:4px 10px; border-radius:20px; white-space:nowrap; }
+    .v-done { background:#dcfce7; color:#16a34a; }
+    .v-due { background:var(--coral-pale); color:var(--coral-dark); }
+    .v-upcoming { background:rgba(240,160,48,0.12); color:#92580d; }
+    .milestone-strip { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+    .ms-card { background:var(--bg-warm); border-radius:16px; padding:20px; text-align:center; border:1px solid var(--ink-10); }
+    .ms-icon { font-size:28px; margin-bottom:8px; }
+    .ms-age { font-size:10px; font-weight:700; color:var(--coral); letter-spacing:1px; text-transform:uppercase; margin-bottom:4px; }
+    .ms-title { font-size:13px; font-weight:700; color:var(--maroon); }
+    .saheli-bubble { border-radius:16px; padding:18px 22px; margin-bottom:10px; }
+    .saheli-bubble.user { background:var(--coral-pale); margin-left:48px; }
+    .saheli-bubble.ai { background:#fff; margin-right:48px; border:1px solid var(--ink-10); }
+    .bubble-label { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--ink-40); margin-bottom:6px; }
+    .bubble-text { font-size:14px; color:var(--ink-80); line-height:1.7; }
+    @media(max-width:768px){ .benefit-row,.benefit-row.flip{grid-template-columns:1fr;direction:ltr;} .milestone-strip{grid-template-columns:repeat(2,1fr);} .vaccine-row{grid-template-columns:1fr;} }
+    .all-features-card { background:#fff; border:1px solid var(--ink-10); border-radius:var(--radius-xl); padding:20px; transition:box-shadow .2s; }
+    .all-features-card:hover { box-shadow:var(--shadow-md); }
+    .af-icon { font-size:26px; margin-bottom:8px; }
+    .af-title { font-size:14px; font-weight:700; color:var(--maroon); margin-bottom:4px; }
+    .af-desc  { font-size:12px; color:var(--ink-60); line-height:1.65; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="logo" aria-label="Aayi.ai Home"><img src="/images/logo-nav.png" alt="Aayi.ai" style="height:40px;width:auto;max-width:none;display:block" loading="eager"></a>
+    <ul class="nav-links">
+      <li><a href="/for-moms/">For Moms</a></li>
+      <li><a href="/for-parents/" class="active">For Parents</a></li>
+      <li><a href="/for-doctors/">For Doctors</a></li>
+      <li><a href="/for-pediatricians/">For Pediatricians</a></li>
+      <li><a href="/for-hospitals/">For Hospitals</a></li>
+      <li><a href="/ai-saheli/">AI Saheli</a></li>
+      <li><a href="/blog/">Blog</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="/#demo" class="btn btn-primary btn-sm">Book Demo</a>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <nav aria-label="Breadcrumb"><ol class="breadcrumb"><li><a href="/">Home</a></li><li class="sep">›</li><li>For Parents</li></ol></nav>
+    <span class="tag" style="margin-bottom:16px;display:inline-block">For Parents</span>
+    <h1 class="page-hero-title">Your baby's health — <span class="accent">never a missed vaccine,</span> never a missed milestone.</h1>
+    <p class="page-hero-sub">Aayi.ai keeps every vaccination on schedule, tracks your child's development from birth to age 12, and gives you instant answers to the parenting questions that come at the worst times.</p>
+    <div style="margin-top:32px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center">
+      <a href="/#demo" class="btn btn-primary btn-lg">Ask Your Pediatrician About Aayi →</a>
+      <a href="/for-pediatricians/" class="btn btn-ghost-white btn-lg">For Pediatricians</a>
+    </div>
+    <div style="margin-top:36px;border-radius:20px;overflow:hidden">
+      <img src="https://images.unsplash.com/photo-1491013516836-7db643ee125a?auto=format&fit=crop&w=1200&h=400&q=80"
+           alt="Mother holding baby and smiling"
+           style="width:100%;height:340px;object-fit:cover;display:block" loading="eager">
+    </div>
+  </div>
+</section>
+
+<!-- VACCINE TRACKER -->
+<section class="section" style="background:var(--bg-warm);">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">Vaccine Scheduler</div>
+      <h2 class="section-title">Never miss a vaccination again</h2>
+      <p class="section-sub mx-auto">Aayi.ai tracks your child's complete immunisation schedule — from birth to age 12 — and sends you automated reminders before every due date.</p>
+    </div>
+    <div style="max-width:680px;margin:40px auto 0" class="animate-on-scroll">
+      <div class="vaccine-row">
+        <div><div class="v-age">Birth</div></div>
+        <div><div class="v-name">BCG + Hepatitis B (Dose 1)</div><div class="v-desc">Given at the hospital within 24 hours of birth</div></div>
+        <span class="v-status v-done">✓ Done</span>
+      </div>
+      <div class="vaccine-row">
+        <div><div class="v-age">6 Weeks</div></div>
+        <div><div class="v-name">DPT + Hib + Polio + Hep B (Dose 2)</div><div class="v-desc">Pentavalent + OPV combination</div></div>
+        <span class="v-status v-done">✓ Done</span>
+      </div>
+      <div class="vaccine-row" style="border-color:var(--coral);background:var(--coral-pale)">
+        <div><div class="v-age">14 Weeks</div></div>
+        <div><div class="v-name">DPT + Hib + Polio + Rotavirus</div><div class="v-desc">Third dose — reminder sent 3 days before</div></div>
+        <span class="v-status v-due">⏰ Due July 14</span>
+      </div>
+      <div class="vaccine-row">
+        <div><div class="v-age">9 Months</div></div>
+        <div><div class="v-name">MMR (Dose 1) + Vitamin A</div><div class="v-desc">Measles, Mumps, Rubella</div></div>
+        <span class="v-status v-upcoming">Upcoming</span>
+      </div>
+      <div class="vaccine-row">
+        <div><div class="v-age">12 Months</div></div>
+        <div><div class="v-name">Typhoid + Hepatitis A</div><div class="v-desc">Annual boosters begin</div></div>
+        <span class="v-status v-upcoming">Upcoming</span>
+      </div>
+      <div style="text-align:center;margin-top:20px;font-size:13px;color:var(--ink-40)">
+        Full schedule from birth to 12 years • Aligned to IAP & NMC guidelines • Automatic reminders via app
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFIT 1: MILESTONE TRACKING -->
+<section class="section">
+  <div class="container">
+    <div class="benefit-row animate-on-scroll">
+      <div class="benefit-photo">
+        <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=700&h=420&q=80"
+             alt="Mother tenderly with baby" loading="lazy">
+      </div>
+      <div class="benefit-text">
+        <div class="eyebrow">Milestone Tracker</div>
+        <h3>Is my baby developing on track? You'll always know.</h3>
+        <p>Aayi.ai tracks developmental milestones from birth to age 12 — motor skills, language, social development, and cognition. You log what you observe; your pediatrician reviews any deviations before the next visit.</p>
+        <ul class="check-list">
+          <li>Age-appropriate milestone checklists</li>
+          <li>Log observations directly from your phone</li>
+          <li>AI flags developmental concerns for your doctor's review</li>
+          <li>Growth charts (height, weight, head circumference)</li>
+          <li>Supports early intervention if delays are detected</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="milestone-strip animate-on-scroll" style="margin-top:20px">
+      <div class="ms-card">
+        <div class="ms-icon">👋</div>
+        <div class="ms-age">2 Months</div>
+        <div class="ms-title">Responds to sounds, follows objects</div>
+      </div>
+      <div class="ms-card">
+        <div class="ms-icon">😊</div>
+        <div class="ms-age">4 Months</div>
+        <div class="ms-title">Social smiling, holds head steady</div>
+      </div>
+      <div class="ms-card">
+        <div class="ms-icon">🧸</div>
+        <div class="ms-age">9 Months</div>
+        <div class="ms-title">Sits, crawls, says "mama/dada"</div>
+      </div>
+      <div class="ms-card">
+        <div class="ms-icon">🚶</div>
+        <div class="ms-age">12 Months</div>
+        <div class="ms-title">First steps, 1–2 words, waves bye</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI SAHELI FOR PARENTS -->
+<section class="section" style="background:var(--bg-warm);">
+  <div class="container">
+    <div class="benefit-row flip animate-on-scroll">
+      <div class="benefit-photo">
+        <img src="https://images.pexels.com/photos/3845457/pexels-photo-3845457.jpeg?auto=compress&cs=tinysrgb&w=700&h=420&fit=crop"
+             alt="Mother holding newborn warmly" loading="lazy">
+      </div>
+      <div class="benefit-text">
+        <div class="eyebrow">AI Saheli for Parents</div>
+        <h3>Baby fever at 11pm. You need an answer right now.</h3>
+        <p>AI Saheli answers the questions new parents face every day and every night — fever management, feeding concerns, sleep schedules, rashes, colic, teething — instantly, reliably, without waking the pediatrician.</p>
+        <ul class="check-list">
+          <li>When to worry about fever and when to wait</li>
+          <li>Breastfeeding and formula feeding guidance</li>
+          <li>Sleep safety and schedules by age</li>
+          <li>Colic, reflux, rashes — what's normal, what isn't</li>
+          <li>Solid foods introduction timeline</li>
+          <li>Notifies your pediatrician if anything needs clinical attention</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bubbles -->
+    <div style="max-width:640px;margin:0 auto" class="animate-on-scroll">
+      <div class="saheli-bubble user">
+        <div class="bubble-label">Parent asked</div>
+        <div class="bubble-text">My 3-month-old has had a temperature of 38.2°C since this morning. She's drinking normally. Should I go to the hospital?</div>
+      </div>
+      <div class="saheli-bubble ai">
+        <div class="bubble-label">AI Saheli</div>
+        <div class="bubble-text">A fever of 38.2°C in a 3-month-old needs attention but is not immediately a 999 situation if she's feeding and alert. For babies under 3 months any fever above 38°C warrants a call to your pediatrician right away. Since your baby is 3 months, monitor closely — contact Dr. Ravi if the temperature rises above 38.5°C, she stops feeding, becomes unusually sleepy, or develops a rash. I've flagged this for your doctor's review. 🌡️</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO GET ACCESS -->
+<section class="section">
+  <div class="container" style="max-width:760px;text-align:center">
+    <div class="eyebrow">Getting Started</div>
+    <h2 class="section-title">Your pediatrician sets you up — it takes 5 minutes</h2>
+    <p class="section-sub mx-auto">Aayi.ai for Parents is prescribed by your child's pediatrician. They configure the vaccine schedule and milestone tracker for your child's age. You get a personal invite, log in, and start.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:40px 0" class="animate-on-scroll">
+      <div style="text-align:center;padding:24px;background:var(--bg-warm);border-radius:16px">
+        <div style="font-size:36px;margin-bottom:12px">👶</div>
+        <div style="font-weight:700;color:var(--maroon);margin-bottom:8px">Step 1</div>
+        <div style="font-size:13px;color:var(--ink-60);line-height:1.7">Ask your pediatrician if they use Aayi.ai — or share this page</div>
+      </div>
+      <div style="text-align:center;padding:24px;background:var(--bg-warm);border-radius:16px">
+        <div style="font-size:36px;margin-bottom:12px">📲</div>
+        <div style="font-weight:700;color:var(--maroon);margin-bottom:8px">Step 2</div>
+        <div style="font-size:13px;color:var(--ink-60);line-height:1.7">Receive your personal invite — your child's profile is already set up</div>
+      </div>
+      <div style="text-align:center;padding:24px;background:var(--bg-warm);border-radius:16px">
+        <div style="font-size:36px;margin-bottom:12px">✅</div>
+        <div style="font-weight:700;color:var(--maroon);margin-bottom:8px">Step 3</div>
+        <div style="font-size:13px;color:var(--ink-60);line-height:1.7">Track vaccines, log milestones, ask AI Saheli — all connected to your doctor</div>
+      </div>
+    </div>
+    <a href="/#demo" class="btn btn-primary btn-lg">My Pediatrician Should Know About This →</a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background:var(--bg-warm);">
+  <div class="container" style="max-width:720px">
+    <div class="text-center">
+      <div class="eyebrow">Questions</div>
+      <h2 class="section-title">What parents ask most</h2>
+    </div>
+    <div class="faq-list" style="margin-top:32px">
+      <details class="faq-item">
+        <summary class="faq-question">Is the vaccine schedule on Aayi.ai accurate for India? <span class="faq-chevron">⌄</span></summary>
+        <div class="faq-answer"><p>Yes. The vaccine schedule is aligned to Indian Academy of Pediatrics (IAP) guidelines and the National Immunization Schedule (NIS). Your pediatrician can also customise the schedule based on local recommendations or any catch-up vaccines needed.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">Does AI Saheli replace a call to my pediatrician? <span class="faq-chevron">⌄</span></summary>
+        <div class="faq-answer"><p>No — and it's not designed to. AI Saheli handles the high-frequency, routine questions that come at all hours. If it detects anything that needs clinical attention, it alerts your pediatrician immediately. Think of it as a filter — the genuinely urgent calls still get through.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">Can both parents use the same Aayi.ai account? <span class="faq-chevron">⌄</span></summary>
+        <div class="faq-answer"><p>Yes. Both parents can access the same child profile on Aayi.ai. Vaccine reminders and milestone updates are shared between both accounts so neither parent misses an alert.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">Up to what age does Aayi.ai track child health? <span class="faq-chevron">⌄</span></summary>
+        <div class="faq-answer"><p>Aayi.ai covers child health from birth to age 12, covering the full primary vaccination schedule, developmental milestones, school health checks, and common childhood illnesses.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--bg-warm)">
+  <div class="container">
+    <div class="eyebrow">Full Feature Set</div>
+    <h2 class="section-title">Everything parents get with Aayi.ai</h2>
+    <div class="grid-3" style="margin-top:32px">
+      <div class="all-features-card"><div class="af-icon">💉</div><div class="af-title">Vaccination Tracker</div><div class="af-desc">Complete immunisation schedule from birth to age 12 with automated reminders before every due date.</div></div>
+      <div class="all-features-card"><div class="af-icon">📈</div><div class="af-title">Growth Charts</div><div class="af-desc">Plot your baby's weight, height, and head circumference against WHO growth standards — shared with your pediatrician.</div></div>
+      <div class="all-features-card"><div class="af-icon">🦶</div><div class="af-title">Kick Counter</div><div class="af-desc">Log daily fetal kick sessions. Your doctor monitors movement data — early detection of reduced activity.</div></div>
+      <div class="all-features-card"><div class="af-icon">🩺</div><div class="af-title">Health Score</div><div class="af-desc">Weekly score across checklist completion, vaccination adherence, and growth tracking — your child's health at a glance.</div></div>
+      <div class="all-features-card"><div class="af-icon">✅</div><div class="af-title">Daily Checklist</div><div class="af-desc">Feeding, supplement, and care reminders — log compliance daily so your doctor always has the full picture.</div></div>
+      <div class="all-features-card"><div class="af-icon">📓</div><div class="af-title">Baby Journal</div><div class="af-desc">Capture photos, milestones, and memories from bump to baby — download a beautiful printable Memory Book PDF.</div></div>
+      <div class="all-features-card"><div class="af-icon">📖</div><div class="af-title">Memory Book</div><div class="af-desc">Printable PDF keepsake of your pregnancy and parenting journey — shareable with family and friends.</div></div>
+      <div class="all-features-card"><div class="af-icon">🔴</div><div class="af-title">Emergency SOS</div><div class="af-desc">One-tap emergency alert to your pre-configured contacts — instant help when you need it most.</div></div>
+      <div class="all-features-card"><div class="af-icon">📚</div><div class="af-title">Medical Library</div><div class="af-desc">Doctor-verified parenting and baby health articles — WHO and NMC aligned. No misinformation.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA band -->
+<section aria-label="Book a demo" style="background:#B04A2F url('/images/bg-terracotta.png') center/cover no-repeat;padding:72px 24px;text-align:center">
+  <h2 style="font-size:clamp(24px,3.5vw,36px);font-weight:900;color:#fff;letter-spacing:-0.5px;line-height:1.25;max-width:620px;margin:0 auto 14px">Every mother deserves care that never sleeps.</h2>
+  <p style="font-size:16px;color:rgba(255,255,255,0.85);line-height:1.7;max-width:500px;margin:0 auto 30px">See how Aayi.ai works for you — a 20-minute demo, no commitment.</p>
+  <a href="/#demo" class="btn" style="background:#fff;color:#B04A2F;padding:13px 30px;font-weight:700">Book a Free Demo →</a>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:none;padding-top:0">
+      <p>© 2026 Aayi.ai — RDN Biofuture. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="/privacy/">Privacy Policy</a>
+        <a href="/terms/">Terms of Service</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/">Home</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/919999999999?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20Aayi.ai%20for%20parents"
+   class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <span class="wa-tooltip">Chat with us</span>💬
+</a>
+
+</body>
+</html>

@@ -1,0 +1,362 @@
+{
+  "brand": "aayi",
+  "tagline": "Your AI companion for pregnancy & motherhood",
+  "key_change": "Files are now purpose-named and separated into subfolders. Transparent logo files are included.",
+  "transparent_note": "Transparent files are only for logo/symbol/lockup use. Social, poster, app-store, print, and background assets generally need solid backgrounds.",
+  "source_artwork_rule": "Approved artwork was used directly; only proportional resizing and layout placement were applied.",
+  "folder_inside_zip": "documents/aayi/aayi-website/branding-images",
+  "total_files": 52,
+  "missing_from_previous_pack": [],
+  "files": [
+    {
+      "category": "00-source",
+      "filename": "aayi-approved-source-artwork-do-not-redesign.png",
+      "relative_path": "00-source/aayi-approved-source-artwork-do-not-redesign.png",
+      "transparent": false,
+      "purpose": "approved source artwork do not redesign"
+    },
+    {
+      "category": "01-logo-transparent",
+      "filename": "aayi-logo-symbol-transparent-approved-artwork-1024x1024.png",
+      "relative_path": "01-logo-transparent/aayi-logo-symbol-transparent-approved-artwork-1024x1024.png",
+      "transparent": true,
+      "purpose": "logo symbol transparent approved artwork 1024x1024"
+    },
+    {
+      "category": "01-logo-transparent",
+      "filename": "aayi-logo-horizontal-transparent-with-tagline-2400x800.png",
+      "relative_path": "01-logo-transparent/aayi-logo-horizontal-transparent-with-tagline-2400x800.png",
+      "transparent": true,
+      "purpose": "logo horizontal transparent with tagline 2400x800"
+    },
+    {
+      "category": "01-logo-transparent",
+      "filename": "aayi-logo-horizontal-transparent-no-tagline-1800x640.png",
+      "relative_path": "01-logo-transparent/aayi-logo-horizontal-transparent-no-tagline-1800x640.png",
+      "transparent": true,
+      "purpose": "logo horizontal transparent no tagline 1800x640"
+    },
+    {
+      "category": "01-logo-transparent",
+      "filename": "aayi-app-symbol-transparent-approved-artwork-512x512.png",
+      "relative_path": "01-logo-transparent/aayi-app-symbol-transparent-approved-artwork-512x512.png",
+      "transparent": true,
+      "purpose": "app symbol transparent approved artwork 512x512"
+    },
+    {
+      "category": "01-logo-transparent",
+      "filename": "aayi-app-symbol-transparent-approved-artwork-1024x1024.png",
+      "relative_path": "01-logo-transparent/aayi-app-symbol-transparent-approved-artwork-1024x1024.png",
+      "transparent": true,
+      "purpose": "app symbol transparent approved artwork 1024x1024"
+    },
+    {
+      "category": "02-logo-background-versions",
+      "filename": "aayi-logo-horizontal-on-soft-cream-with-tagline-2400x800.png",
+      "relative_path": "02-logo-background-versions/aayi-logo-horizontal-on-soft-cream-with-tagline-2400x800.png",
+      "transparent": false,
+      "purpose": "logo horizontal on soft cream with tagline 2400x800"
+    },
+    {
+      "category": "02-logo-background-versions",
+      "filename": "aayi-logo-horizontal-on-white-with-tagline-2400x800.png",
+      "relative_path": "02-logo-background-versions/aayi-logo-horizontal-on-white-with-tagline-2400x800.png",
+      "transparent": false,
+      "purpose": "logo horizontal on white with tagline 2400x800"
+    },
+    {
+      "category": "02-logo-background-versions",
+      "filename": "aayi-logo-horizontal-on-dark-with-tagline-2400x800.png",
+      "relative_path": "02-logo-background-versions/aayi-logo-horizontal-on-dark-with-tagline-2400x800.png",
+      "transparent": false,
+      "purpose": "logo horizontal on dark with tagline 2400x800"
+    },
+    {
+      "category": "02-logo-background-versions",
+      "filename": "aayi-app-icon-soft-cream-background-1024x1024.png",
+      "relative_path": "02-logo-background-versions/aayi-app-icon-soft-cream-background-1024x1024.png",
+      "transparent": false,
+      "purpose": "app icon soft cream background 1024x1024"
+    },
+    {
+      "category": "02-logo-background-versions",
+      "filename": "aayi-app-icon-white-background-1024x1024.png",
+      "relative_path": "02-logo-background-versions/aayi-app-icon-white-background-1024x1024.png",
+      "transparent": false,
+      "purpose": "app icon white background 1024x1024"
+    },
+    {
+      "category": "02-logo-background-versions",
+      "filename": "aayi-favicon-soft-cream-background-512x512.png",
+      "relative_path": "02-logo-background-versions/aayi-favicon-soft-cream-background-512x512.png",
+      "transparent": false,
+      "purpose": "favicon soft cream background 512x512"
+    },
+    {
+      "category": "02-logo-background-versions",
+      "filename": "aayi-favicon-browser-icon-16-256.ico",
+      "relative_path": "02-logo-background-versions/aayi-favicon-browser-icon-16-256.ico",
+      "transparent": false,
+      "purpose": "favicon browser icon 16 256"
+    },
+    {
+      "category": "03-website",
+      "filename": "aayi-website-home-hero-desktop-with-brand-art-1920x1080.png",
+      "relative_path": "03-website/aayi-website-home-hero-desktop-with-brand-art-1920x1080.png",
+      "transparent": false,
+      "purpose": "website home hero desktop with brand art 1920x1080"
+    },
+    {
+      "category": "03-website",
+      "filename": "aayi-website-home-hero-mobile-with-brand-art-1080x1920.png",
+      "relative_path": "03-website/aayi-website-home-hero-mobile-with-brand-art-1080x1920.png",
+      "transparent": false,
+      "purpose": "website home hero mobile with brand art 1080x1920"
+    },
+    {
+      "category": "03-website",
+      "filename": "aayi-website-section-banner-motherhood-support-1600x900.png",
+      "relative_path": "03-website/aayi-website-section-banner-motherhood-support-1600x900.png",
+      "transparent": false,
+      "purpose": "website section banner motherhood support 1600x900"
+    },
+    {
+      "category": "03-website",
+      "filename": "aayi-website-about-section-brand-story-1600x900.png",
+      "relative_path": "03-website/aayi-website-about-section-brand-story-1600x900.png",
+      "transparent": false,
+      "purpose": "website about section brand story 1600x900"
+    },
+    {
+      "category": "03-website",
+      "filename": "aayi-website-footer-background-with-brand-art-1920x600.png",
+      "relative_path": "03-website/aayi-website-footer-background-with-brand-art-1920x600.png",
+      "transparent": false,
+      "purpose": "website footer background with brand art 1920x600"
+    },
+    {
+      "category": "04-social-media",
+      "filename": "aayi-instagram-post-template-motherhood-support-1080x1080.png",
+      "relative_path": "04-social-media/aayi-instagram-post-template-motherhood-support-1080x1080.png",
+      "transparent": false,
+      "purpose": "instagram post template motherhood support 1080x1080"
+    },
+    {
+      "category": "04-social-media",
+      "filename": "aayi-instagram-carousel-cover-meet-aayi-1080x1080.png",
+      "relative_path": "04-social-media/aayi-instagram-carousel-cover-meet-aayi-1080x1080.png",
+      "transparent": false,
+      "purpose": "instagram carousel cover meet 1080x1080"
+    },
+    {
+      "category": "04-social-media",
+      "filename": "aayi-instagram-story-launch-template-1080x1920.png",
+      "relative_path": "04-social-media/aayi-instagram-story-launch-template-1080x1920.png",
+      "transparent": false,
+      "purpose": "instagram story launch template 1080x1920"
+    },
+    {
+      "category": "04-social-media",
+      "filename": "aayi-facebook-page-cover-brand-banner-1640x924.png",
+      "relative_path": "04-social-media/aayi-facebook-page-cover-brand-banner-1640x924.png",
+      "transparent": false,
+      "purpose": "facebook page cover brand banner 1640x924"
+    },
+    {
+      "category": "04-social-media",
+      "filename": "aayi-linkedin-company-cover-brand-banner-1584x396.png",
+      "relative_path": "04-social-media/aayi-linkedin-company-cover-brand-banner-1584x396.png",
+      "transparent": false,
+      "purpose": "linkedin company cover brand banner 1584x396"
+    },
+    {
+      "category": "04-social-media",
+      "filename": "aayi-youtube-channel-banner-brand-safe-area-2560x1440.png",
+      "relative_path": "04-social-media/aayi-youtube-channel-banner-brand-safe-area-2560x1440.png",
+      "transparent": false,
+      "purpose": "youtube channel banner brand safe area 2560x1440"
+    },
+    {
+      "category": "04-social-media",
+      "filename": "aayi-google-business-profile-cover-brand-banner-1024x576.png",
+      "relative_path": "04-social-media/aayi-google-business-profile-cover-brand-banner-1024x576.png",
+      "transparent": false,
+      "purpose": "google business profile cover brand banner 1024x576"
+    },
+    {
+      "category": "05-posters",
+      "filename": "aayi-poster-pregnancy-care-instagram-portrait-1080x1350.png",
+      "relative_path": "05-posters/aayi-poster-pregnancy-care-instagram-portrait-1080x1350.png",
+      "transparent": false,
+      "purpose": "poster pregnancy care instagram portrait 1080x1350"
+    },
+    {
+      "category": "05-posters",
+      "filename": "aayi-poster-motherhood-support-instagram-portrait-1080x1350.png",
+      "relative_path": "05-posters/aayi-poster-motherhood-support-instagram-portrait-1080x1350.png",
+      "transparent": false,
+      "purpose": "poster motherhood support instagram portrait 1080x1350"
+    },
+    {
+      "category": "05-posters",
+      "filename": "aayi-poster-newborn-care-instagram-portrait-1080x1350.png",
+      "relative_path": "05-posters/aayi-poster-newborn-care-instagram-portrait-1080x1350.png",
+      "transparent": false,
+      "purpose": "poster newborn care instagram portrait 1080x1350"
+    },
+    {
+      "category": "05-posters",
+      "filename": "aayi-poster-doctor-companion-instagram-portrait-1080x1350.png",
+      "relative_path": "05-posters/aayi-poster-doctor-companion-instagram-portrait-1080x1350.png",
+      "transparent": false,
+      "purpose": "poster doctor companion instagram portrait 1080x1350"
+    },
+    {
+      "category": "05-posters",
+      "filename": "aayi-poster-ai-companion-instagram-portrait-1080x1350.png",
+      "relative_path": "05-posters/aayi-poster-ai-companion-instagram-portrait-1080x1350.png",
+      "transparent": false,
+      "purpose": "poster ai companion instagram portrait 1080x1350"
+    },
+    {
+      "category": "05-posters",
+      "filename": "aayi-poster-app-launch-instagram-portrait-1080x1350.png",
+      "relative_path": "05-posters/aayi-poster-app-launch-instagram-portrait-1080x1350.png",
+      "transparent": false,
+      "purpose": "poster app launch instagram portrait 1080x1350"
+    },
+    {
+      "category": "06-stationery",
+      "filename": "aayi-letterhead-a4-print-ready-2480x3508.png",
+      "relative_path": "06-stationery/aayi-letterhead-a4-print-ready-2480x3508.png",
+      "transparent": false,
+      "purpose": "letterhead a4 print ready 2480x3508"
+    },
+    {
+      "category": "06-stationery",
+      "filename": "aayi-business-card-front-print-ready-1050x600.png",
+      "relative_path": "06-stationery/aayi-business-card-front-print-ready-1050x600.png",
+      "transparent": false,
+      "purpose": "business card front print ready 1050x600"
+    },
+    {
+      "category": "06-stationery",
+      "filename": "aayi-business-card-back-print-ready-1050x600.png",
+      "relative_path": "06-stationery/aayi-business-card-back-print-ready-1050x600.png",
+      "transparent": false,
+      "purpose": "business card back print ready 1050x600"
+    },
+    {
+      "category": "06-stationery",
+      "filename": "aayi-envelope-design-print-ready-2200x1000.png",
+      "relative_path": "06-stationery/aayi-envelope-design-print-ready-2200x1000.png",
+      "transparent": false,
+      "purpose": "envelope design print ready 2200x1000"
+    },
+    {
+      "category": "06-stationery",
+      "filename": "aayi-invoice-header-brand-strip-1600x450.png",
+      "relative_path": "06-stationery/aayi-invoice-header-brand-strip-1600x450.png",
+      "transparent": false,
+      "purpose": "invoice header brand strip 1600x450"
+    },
+    {
+      "category": "06-stationery",
+      "filename": "aayi-email-signature-banner-1200x400.png",
+      "relative_path": "06-stationery/aayi-email-signature-banner-1200x400.png",
+      "transparent": false,
+      "purpose": "email signature banner 1200x400"
+    },
+    {
+      "category": "07-app-store",
+      "filename": "aayi-google-play-feature-graphic-brand-banner-1024x500.png",
+      "relative_path": "07-app-store/aayi-google-play-feature-graphic-brand-banner-1024x500.png",
+      "transparent": false,
+      "purpose": "google play feature graphic brand banner 1024x500"
+    },
+    {
+      "category": "07-app-store",
+      "filename": "aayi-app-store-promo-banner-brand-1920x1080.png",
+      "relative_path": "07-app-store/aayi-app-store-promo-banner-brand-1920x1080.png",
+      "transparent": false,
+      "purpose": "app store promo banner brand 1920x1080"
+    },
+    {
+      "category": "07-app-store",
+      "filename": "aayi-app-screenshot-frame-placeholder-1290x2796.png",
+      "relative_path": "07-app-store/aayi-app-screenshot-frame-placeholder-1290x2796.png",
+      "transparent": false,
+      "purpose": "app screenshot frame placeholder 1290x2796"
+    },
+    {
+      "category": "07-app-store",
+      "filename": "aayi-onboarding-screen-01-pregnancy-support-1080x1920.png",
+      "relative_path": "07-app-store/aayi-onboarding-screen-01-pregnancy-support-1080x1920.png",
+      "transparent": false,
+      "purpose": "onboarding screen 01 pregnancy support 1080x1920"
+    },
+    {
+      "category": "07-app-store",
+      "filename": "aayi-onboarding-screen-02-motherhood-companion-1080x1920.png",
+      "relative_path": "07-app-store/aayi-onboarding-screen-02-motherhood-companion-1080x1920.png",
+      "transparent": false,
+      "purpose": "onboarding screen 02 motherhood companion 1080x1920"
+    },
+    {
+      "category": "07-app-store",
+      "filename": "aayi-onboarding-screen-03-ai-companion-1080x1920.png",
+      "relative_path": "07-app-store/aayi-onboarding-screen-03-ai-companion-1080x1920.png",
+      "transparent": false,
+      "purpose": "onboarding screen 03 ai companion 1080x1920"
+    },
+    {
+      "category": "07-app-store",
+      "filename": "aayi-onboarding-screen-04-doctor-support-1080x1920.png",
+      "relative_path": "07-app-store/aayi-onboarding-screen-04-doctor-support-1080x1920.png",
+      "transparent": false,
+      "purpose": "onboarding screen 04 doctor support 1080x1920"
+    },
+    {
+      "category": "08-backgrounds",
+      "filename": "aayi-background-soft-cream-brand-blank-3840x2160.png",
+      "relative_path": "08-backgrounds/aayi-background-soft-cream-brand-blank-3840x2160.png",
+      "transparent": false,
+      "purpose": "background soft cream brand blank 3840x2160"
+    },
+    {
+      "category": "08-backgrounds",
+      "filename": "aayi-background-terracotta-gradient-blank-3840x2160.png",
+      "relative_path": "08-backgrounds/aayi-background-terracotta-gradient-blank-3840x2160.png",
+      "transparent": false,
+      "purpose": "background terracotta gradient blank 3840x2160"
+    },
+    {
+      "category": "08-backgrounds",
+      "filename": "aayi-background-motherhood-pattern-subtle-3840x2160.png",
+      "relative_path": "08-backgrounds/aayi-background-motherhood-pattern-subtle-3840x2160.png",
+      "transparent": false,
+      "purpose": "background motherhood pattern subtle 3840x2160"
+    },
+    {
+      "category": "08-backgrounds",
+      "filename": "aayi-background-organic-blob-pattern-3840x2160.png",
+      "relative_path": "08-backgrounds/aayi-background-organic-blob-pattern-3840x2160.png",
+      "transparent": false,
+      "purpose": "background organic blob pattern 3840x2160"
+    },
+    {
+      "category": "08-backgrounds",
+      "filename": "aayi-background-presentation-title-slide-3840x2160.png",
+      "relative_path": "08-backgrounds/aayi-background-presentation-title-slide-3840x2160.png",
+      "transparent": false,
+      "purpose": "background presentation title slide 3840x2160"
+    },
+    {
+      "category": "08-backgrounds",
+      "filename": "aayi-background-webinar-cover-1920x1080.png",
+      "relative_path": "08-backgrounds/aayi-background-webinar-cover-1920x1080.png",
+      "transparent": false,
+      "purpose": "background webinar cover 1920x1080"
+    }
+  ]
+}

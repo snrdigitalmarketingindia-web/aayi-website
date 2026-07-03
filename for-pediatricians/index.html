@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aayi.ai for Pediatricians — Automated Vaccine Tracking & Child Milestone Monitoring</title>
+  <meta name="description" content="Aayi.ai helps pediatricians automate vaccine schedule tracking, monitor child development milestones, and keep parents engaged between clinic visits — all from a single dashboard.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://aayi.ai/for-pediatricians/">
+  <meta property="og:title" content="Aayi.ai for Pediatricians — Smart Tools for Child Health Monitoring">
+  <meta property="og:description" content="Automate vaccine schedules, track developmental milestones, and keep parents informed. AI tools built specifically for pediatric practice.">
+  <meta property="og:url" content="https://aayi.ai/for-pediatricians/">
+  <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/aayi.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Aayi.ai for Pediatricians",
+    "url": "https://aayi.ai/for-pediatricians/",
+    "description": "AI tools for pediatricians — automated vaccine tracking, developmental milestone monitoring, parent communication, and growth analytics."
+  }
+  </script>
+  <style>
+    .vaccine-timeline { display:flex; flex-direction:column; gap:0; }
+    .vt-item { display:flex; gap:20px; position:relative; padding-bottom:28px; }
+    .vt-item:last-child { padding-bottom:0; }
+    .vt-left { display:flex; flex-direction:column; align-items:center; }
+    .vt-dot { width:40px; height:40px; border-radius:50%; background:var(--coral); display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; color:#fff; flex-shrink:0; }
+    .vt-line { width:2px; flex:1; background:linear-gradient(to bottom,var(--coral),rgba(232,107,82,0.1)); margin-top:4px; }
+    .vt-item:last-child .vt-line { display:none; }
+    .vt-content { background:#fff; border:1px solid var(--ink-10); border-radius:var(--radius-xl); padding:20px 24px; flex:1; box-shadow:var(--shadow-sm); }
+    .vt-age   { font-size:11px; font-weight:700; color:var(--coral); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:4px; }
+    .vt-title { font-size:15px; font-weight:700; color:var(--maroon); margin-bottom:6px; }
+    .vt-desc  { font-size:13px; color:var(--ink-60); line-height:1.6; }
+    .milestone-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+    .m-card { background:var(--bg-warm); border-radius:var(--radius-xl); padding:20px; text-align:center; border:1px solid var(--ink-10); }
+    .m-icon { font-size:28px; margin-bottom:8px; }
+    .m-title { font-size:13px; font-weight:700; color:var(--maroon); margin-bottom:4px; }
+    .m-desc  { font-size:11px; color:var(--ink-60); line-height:1.5; }
+    @media(max-width:768px){ .milestone-grid{grid-template-columns:repeat(2,1fr);} }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="logo" aria-label="Aayi.ai Home"><img src="/images/logo-nav.png" alt="Aayi.ai" style="height:40px;width:auto;max-width:none;display:block" loading="eager"></a>
+    <ul class="nav-links">
+          <li><a href="/for-moms/">For Moms</a></li>
+          <li><a href="/for-parents/">For Parents</a></li>
+      <li><a href="/for-doctors/">For Doctors</a></li>
+      <li><a href="/for-pediatricians/" class="active">For Pediatricians</a></li>
+      <li><a href="/for-hospitals/">For Hospitals</a></li>
+      <li><a href="/ai-saheli/">AI Saheli</a></li>
+      <li><a href="/blog/">Blog</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="/#demo" class="btn btn-primary btn-sm">Book Demo</a>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <nav aria-label="Breadcrumb"><ol class="breadcrumb"><li><a href="/">Home</a></li><li class="sep">›</li><li>For Pediatricians</li></ol></nav>
+    <div class="eyebrow eyebrow-dark">Pediatric Solutions</div>
+    <h1 class="page-hero-title">Never miss a vaccine. <span class="accent">Never miss a milestone.</span></h1>
+    <p class="page-hero-sub">Automated vaccine schedule tracking, developmental milestone monitoring, and parent-facing health tools. Purpose-built for pediatric practice.</p>
+    <div style="margin-top:32px;border-radius:16px;overflow:hidden">
+      <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=1200&h=360&q=80" alt="Pediatrician examining baby at clinic" style="width:100%;height:300px;object-fit:cover;display:block" loading="lazy">
+    </div>
+    <div style="display:flex;gap:14px;flex-wrap:wrap">
+      <a href="/#demo" class="btn btn-primary btn-lg">Book a Free Demo →</a>
+      <a href="#features" class="btn btn-ghost-white">See Features</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--bg-warm)">
+  <div class="container">
+    <div class="grid-2">
+      <div>
+        <div class="eyebrow">The Pediatric Challenge</div>
+        <h2 class="section-title">The vaccine gap is a public health problem</h2>
+        <p style="font-size:16px;color:var(--ink-60);line-height:1.8;margin-bottom:16px">Missed vaccinations don't announce themselves. Parents forget. Life happens. By the time a child comes back for their next visit, the window for a critical dose may have passed — with no documentation of why.</p>
+        <p style="font-size:16px;color:var(--ink-60);line-height:1.8;margin-bottom:16px">Developmental milestones are harder to track. Each child is unique, but early identification of delays requires longitudinal data that most clinics simply don't have between appointments.</p>
+        <p style="font-size:16px;color:var(--ink-60);line-height:1.8">Aayi.ai closes both gaps — automatically.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="glass-card" style="display:flex;gap:16px;align-items:flex-start">
+          <div style="font-size:28px">💉</div>
+          <div><div style="font-size:15px;font-weight:700;color:var(--maroon);margin-bottom:4px">Automated Vaccine Reminders</div><div style="font-size:13px;color:var(--ink-60);line-height:1.6">Parents receive WhatsApp reminders 7 days and 24 hours before every scheduled vaccine — with clinic location, cost, and what to expect.</div></div>
+        </div>
+        <div class="glass-card" style="display:flex;gap:16px;align-items:flex-start">
+          <div style="font-size:28px">📏</div>
+          <div><div style="font-size:15px;font-weight:700;color:var(--maroon);margin-bottom:4px">Growth Percentile Tracking</div><div style="font-size:13px;color:var(--ink-60);line-height:1.6">Height, weight, and head circumference logged against WHO growth standards. You see growth curves — not just single data points.</div></div>
+        </div>
+        <div class="glass-card" style="display:flex;gap:16px;align-items:flex-start">
+          <div style="font-size:28px">🧠</div>
+          <div><div style="font-size:15px;font-weight:700;color:var(--maroon);margin-bottom:4px">Developmental Milestone Alerts</div><div style="font-size:13px;color:var(--ink-60);line-height:1.6">Parents log milestone observations (first words, steps, social responses). Delays are flagged automatically for clinical review.</div></div>
+        </div>
+        <div class="glass-card" style="display:flex;gap:16px;align-items:flex-start">
+          <div style="font-size:28px">🤱</div>
+          <div><div style="font-size:15px;font-weight:700;color:var(--maroon);margin-bottom:4px">Breastfeeding & Nutrition Tracker</div><div style="font-size:13px;color:var(--ink-60);line-height:1.6">Feed frequency, formula volumes, and weaning milestones tracked by parents and reviewed on your dashboard.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="features">
+  <div class="container">
+    <div class="eyebrow">Vaccine Schedule Engine</div>
+    <h2 class="section-title" style="margin-bottom:40px">Automated from birth to 5 years</h2>
+    <div class="grid-2" style="gap:40px">
+      <div class="vaccine-timeline">
+        <div class="vt-item"><div class="vt-left"><div class="vt-dot">B</div><div class="vt-line"></div></div><div class="vt-content"><div class="vt-age">At Birth</div><div class="vt-title">BCG, Hep B, OPV 0</div><div class="vt-desc">Automated reminder + post-vaccination fever management tips sent to parents</div></div></div>
+        <div class="vt-item"><div class="vt-left"><div class="vt-dot">6w</div><div class="vt-line"></div></div><div class="vt-content"><div class="vt-age">6 Weeks</div><div class="vt-title">DTwP/DTaP, IPV, Hib, Hep B, PCV, Rota</div><div class="vt-desc">Parent notified 7 days ahead. Appointment booking link included.</div></div></div>
+        <div class="vt-item"><div class="vt-left"><div class="vt-dot">10w</div><div class="vt-line"></div></div><div class="vt-content"><div class="vt-age">10 Weeks</div><div class="vt-title">DTwP/DTaP, IPV, Hib, PCV, Rota</div><div class="vt-desc">Missed dose flagged on dashboard with reason capture prompt.</div></div></div>
+        <div class="vt-item"><div class="vt-left"><div class="vt-dot">14w</div><div class="vt-line"></div></div><div class="vt-content"><div class="vt-age">14 Weeks</div><div class="vt-title">DTwP/DTaP, IPV, Hib, Hep B, PCV, Rota</div><div class="vt-desc">Compliance rate tracked — visible to doctor in real time.</div></div></div>
+        <div class="vt-item"><div class="vt-left"><div class="vt-dot">+</div></div><div class="vt-content"><div class="vt-age">6m → 5 Years</div><div class="vt-title">Full IAP Schedule Supported</div><div class="vt-desc">All Indian Academy of Pediatrics recommended vaccines tracked automatically through the full childhood immunisation programme.</div></div></div>
+      </div>
+      <div>
+        <div class="eyebrow">Developmental Tracking</div>
+        <h2 class="section-title" style="font-size:1.4rem;margin-bottom:20px">Milestone domains monitored</h2>
+        <div class="milestone-grid">
+          <div class="m-card"><div class="m-icon">💬</div><div class="m-title">Language</div><div class="m-desc">First words, two-word phrases, vocabulary growth</div></div>
+          <div class="m-card"><div class="m-icon">🚶</div><div class="m-title">Motor</div><div class="m-desc">Gross motor (walking, running) and fine motor (pincer grip)</div></div>
+          <div class="m-card"><div class="m-icon">👀</div><div class="m-title">Social</div><div class="m-desc">Eye contact, social smile, stranger awareness</div></div>
+          <div class="m-card"><div class="m-icon">🧩</div><div class="m-title">Cognitive</div><div class="m-desc">Object permanence, problem solving, play patterns</div></div>
+        </div>
+        <div style="margin-top:24px;background:var(--bg-blush);border-radius:var(--radius-xl);padding:20px 24px">
+          <div style="font-size:13px;font-weight:700;color:var(--coral);margin-bottom:6px">AI Milestone Analysis</div>
+          <p style="font-size:13px;color:var(--ink-60);line-height:1.7;margin:0">When parent logs suggest a potential delay, the system flags it on your dashboard with WHO milestone reference data — so you walk in prepared, not surprised.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;padding:0 24px 40px">
+  <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=400&h=260&q=80" alt="Mother with newborn baby" style="width:100%;height:200px;object-fit:cover;border-radius:14px" loading="lazy">
+  <img src="https://images.unsplash.com/photo-1491013516836-7db643ee125a?auto=format&fit=crop&w=400&h=260&q=80" alt="Happy mother holding baby" style="width:100%;height:200px;object-fit:cover;border-radius:14px" loading="lazy">
+  <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&fit=crop&w=400&h=260&q=80" alt="Newborn baby in hospital" style="width:100%;height:200px;object-fit:cover;border-radius:14px" loading="lazy">
+</div>
+
+<section class="section" style="background:var(--bg-warm)">
+  <div class="container">
+    <div class="eyebrow">FAQ for Pediatricians</div>
+    <h2 class="section-title" style="margin-bottom:32px">Common questions from pediatric practices</h2>
+    <div style="max-width:720px">
+      <details class="faq-item"><summary class="faq-question">Does the vaccine schedule follow IAP or WHO guidelines?<span class="faq-chevron">⌄</span></summary><div class="faq-answer">The default schedule follows IAP (Indian Academy of Pediatrics) recommended schedule for India, with WHO EPI schedule available for international practices. You can also customise the schedule for your specific clinical guidelines during onboarding.</div></details>
+      <details class="faq-item"><summary class="faq-question">Can parents see their child's vaccine record in the app?<span class="faq-chevron">⌄</span></summary><div class="faq-answer">Yes. Parents have a dedicated view in the Aayi app showing their child's full vaccination history, upcoming doses, and a printable digital vaccine card. This reduces lost paper records significantly.</div></details>
+      <details class="faq-item"><summary class="faq-question">How does the milestone tracking work in practice?<span class="faq-chevron">⌄</span></summary><div class="faq-answer">Parents receive age-appropriate milestone observation prompts in the app (e.g., "Can your baby sit without support?" at 6 months). Their responses are logged and compared against WHO milestone benchmarks. Any outliers appear on your dashboard with a flag for clinical review at the next visit.</div></details>
+      <details class="faq-item"><summary class="faq-question">Can I use Aayi.ai for both OB-GYN and Pediatric patients?<span class="faq-chevron">⌄</span></summary><div class="faq-answer">Yes. Many Mother & Child Care hospitals and clinics use Aayi.ai for both specialties in a single account. The dashboard separates maternal and pediatric patient views, with specialty-specific features for each.</div></details>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--grad-hero);padding:80px 0;text-align:center;position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 0%, rgba(232,107,82,0.14) 0%, transparent 70%)"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <h2 style="font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:900;color:#fff;margin-bottom:14px">See vaccine tracking in action.</h2>
+    <p style="font-size:17px;color:rgba(255,255,255,0.6);margin-bottom:36px;max-width:460px;margin-left:auto;margin-right:auto">20-minute demo. We'll configure the IAP schedule for your clinic on the call.</p>
+    <a href="/#demo" class="btn btn-primary btn-lg">Book My Free Demo →</a>
+  </div>
+</section>
+
+<!-- CTA band -->
+<section aria-label="Book a demo" style="background:#B04A2F url('/images/bg-terracotta.png') center/cover no-repeat;padding:72px 24px;text-align:center">
+  <h2 style="font-size:clamp(24px,3.5vw,36px);font-weight:900;color:#fff;letter-spacing:-0.5px;line-height:1.25;max-width:620px;margin:0 auto 14px">Every mother deserves care that never sleeps.</h2>
+  <p style="font-size:16px;color:rgba(255,255,255,0.85);line-height:1.7;max-width:500px;margin:0 auto 30px">See how Aayi.ai works for you — a 20-minute demo, no commitment.</p>
+  <a href="/#demo" class="btn" style="background:#fff;color:#B04A2F;padding:13px 30px;font-weight:700">Book a Free Demo →</a>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:none;padding-top:0">
+      <p>© 2026 Aayi.ai — RDN Biofuture. All rights reserved.</p>
+      <div class="footer-legal"><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms</a><a href="/">Home</a></div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/919999999999?text=Hi%2C%20I%27m%20a%20Pediatrician%20and%20want%20to%20know%20more%20about%20Aayi.ai"
+   class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <span class="wa-tooltip">Chat with us</span>💬
+</a>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://aayi.ai/sitemap.xml
+
+# AI crawlers — allow for AI search indexing (GEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Block admin / private paths (none yet, placeholder)
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_internal/
+
+# Crawl delay for aggressive bots
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: AhrefsBot
+Crawl-delay: 10

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Expecting Moms — Aayi.ai | Your AI Pregnancy Companion</title>
+  <meta name="description" content="Aayi.ai is your personal pregnancy companion — daily tips, trimester guidance, symptom answers, vitamin reminders, and 24/7 AI Saheli support. Recommended by your doctor.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://aayi.ai/for-moms/">
+  <meta property="og:title" content="For Expecting Moms — Aayi.ai">
+  <meta property="og:description" content="Your trusted pregnancy companion. Daily guidance, AI Saheli, compliance reminders — all connected to your doctor.">
+  <meta property="og:url" content="https://aayi.ai/for-moms/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=1200&h=630&q=80">
+  <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/aayi.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "For Expecting Moms — Aayi.ai",
+    "description": "Aayi.ai is a doctor-recommended pregnancy companion with 24/7 AI Saheli support, trimester guidance, compliance reminders, and daily health logging.",
+    "url": "https://aayi.ai/for-moms/",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://aayi.ai/"},
+        {"@type":"ListItem","position":2,"name":"For Expecting Moms","item":"https://aayi.ai/for-moms/"}
+      ]
+    },
+    "mainEntity": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"Is Aayi.ai safe to use during pregnancy?","acceptedAnswer":{"@type":"Answer","text":"Yes. Aayi.ai is recommended by your treating OB-GYN doctor. All content is curated by qualified medical professionals and aligned to WHO and NMC antenatal guidelines. AI Saheli provides evidence-based answers only within its curated knowledge base — it never diagnoses or replaces your doctor."}},
+        {"@type":"Question","name":"How does AI Saheli help pregnant women?","acceptedAnswer":{"@type":"Answer","text":"AI Saheli answers your pregnancy questions instantly — symptoms, nutrition, what's normal, when to worry — at any hour of the day or night. It's like having a medically reliable friend available 24/7, so you don't need to wait until your next appointment or turn to unreliable internet searches."}},
+        {"@type":"Question","name":"Does Aayi.ai replace my doctor?","acceptedAnswer":{"@type":"Answer","text":"No. Aayi.ai is a doctor-recommended companion, not a replacement. Everything you do in the app is visible to your treating doctor on their dashboard. Aayi.ai enhances the relationship between you and your doctor — it doesn't substitute it."}}
+      ]
+    }
+  }
+  </script>
+  <style>
+    .trimester-tabs { display:flex; gap:8px; margin-bottom:32px; flex-wrap:wrap; }
+    .t-tab { padding:10px 22px; border-radius:30px; font-size:13px; font-weight:700; border:2px solid var(--ink-10); color:var(--ink-60); cursor:pointer; transition:all 0.2s; }
+    .t-tab.active, .t-tab:hover { border-color:var(--coral); color:var(--coral); background:var(--coral-pale); }
+    .benefit-row { display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:center; margin-bottom:60px; }
+    .benefit-row.flip { direction:rtl; }
+    .benefit-row.flip > * { direction:ltr; }
+    .benefit-photo { border-radius:20px; overflow:hidden; }
+    .benefit-photo img { width:100%; height:320px; object-fit:cover; display:block; }
+    .benefit-text h3 { font-size:1.5rem; font-weight:800; color:var(--maroon); margin-bottom:12px; line-height:1.3; }
+    .benefit-text p { font-size:15px; color:var(--ink-60); line-height:1.8; margin-bottom:16px; }
+    .check-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; }
+    .check-list li { display:flex; align-items:flex-start; gap:10px; font-size:14px; color:var(--ink-80); line-height:1.6; }
+    .check-list li::before { content:"✓"; color:var(--coral); font-weight:800; flex-shrink:0; margin-top:1px; }
+    .trimester-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .t-card { background:#fff; border-radius:20px; padding:28px; border:2px solid var(--ink-10); text-align:center; transition:border-color 0.2s; }
+    .t-card:hover { border-color:var(--coral); }
+    .t-badge { display:inline-block; background:var(--coral-pale); color:var(--coral-dark); font-size:11px; font-weight:700; letter-spacing:1px; padding:4px 12px; border-radius:20px; margin-bottom:12px; text-transform:uppercase; }
+    .t-weeks { font-size:24px; font-weight:900; color:var(--maroon); margin-bottom:6px; }
+    .t-desc { font-size:13px; color:var(--ink-60); line-height:1.7; }
+    .saheli-bubble { background:var(--bg-warm); border-radius:20px; padding:20px 24px; margin-bottom:12px; position:relative; }
+    .saheli-bubble.user { background:var(--coral-pale); margin-left:40px; }
+    .saheli-bubble.ai { background:#fff; margin-right:40px; border:1px solid var(--ink-10); }
+    .bubble-label { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--ink-40); margin-bottom:6px; }
+    .bubble-text { font-size:14px; color:var(--ink-80); line-height:1.7; }
+    @media(max-width:768px){ .benefit-row,.benefit-row.flip{grid-template-columns:1fr;direction:ltr;} .trimester-grid{grid-template-columns:1fr;} }
+    .all-features-card { background:#fff; border:1px solid var(--ink-10); border-radius:var(--radius-xl); padding:20px; transition:box-shadow .2s; }
+    .all-features-card:hover { box-shadow:var(--shadow-md); }
+    .af-icon { font-size:26px; margin-bottom:8px; }
+    .af-title { font-size:14px; font-weight:700; color:var(--maroon); margin-bottom:4px; }
+    .af-desc  { font-size:12px; color:var(--ink-60); line-height:1.65; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="logo" aria-label="Aayi.ai Home"><img src="/images/logo-nav.png" alt="Aayi.ai" style="height:40px;width:auto;max-width:none;display:block" loading="eager"></a>
+    <ul class="nav-links">
+      <li><a href="/for-moms/" class="active">For Moms</a></li>
+      <li><a href="/for-parents/">For Parents</a></li>
+      <li><a href="/for-doctors/">For Doctors</a></li>
+      <li><a href="/for-pediatricians/">For Pediatricians</a></li>
+      <li><a href="/for-hospitals/">For Hospitals</a></li>
+      <li><a href="/ai-saheli/">AI Saheli</a></li>
+      <li><a href="/blog/">Blog</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="/#demo" class="btn btn-primary btn-sm">Book Demo</a>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <nav aria-label="Breadcrumb"><ol class="breadcrumb"><li><a href="/">Home</a></li><li class="sep">›</li><li>For Expecting Moms</li></ol></nav>
+    <span class="tag" style="margin-bottom:16px;display:inline-block">For Expecting Moms</span>
+    <h1 class="page-hero-title">You deserve a companion who's <span class="accent">always there</span> — not just at appointments.</h1>
+    <p class="page-hero-sub">Aayi.ai is your doctor-recommended pregnancy companion — daily guidance, 24/7 AI support, vitamin reminders, and a direct line to your care team.</p>
+    <div style="margin-top:32px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center">
+      <a href="/#demo" class="btn btn-primary btn-lg">Ask Your Doctor About Aayi →</a>
+      <a href="/ai-saheli/" class="btn btn-ghost-white btn-lg">Meet AI Saheli</a>
+    </div>
+    <div style="margin-top:36px;border-radius:20px;overflow:hidden">
+      <svg viewBox="0 0 1200 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:340px;display:block">
+        <defs>
+          <linearGradient id="momBg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1a0810"/>
+            <stop offset="60%" stop-color="#3d1020"/>
+            <stop offset="100%" stop-color="#5c1a30"/>
+          </linearGradient>
+          <radialGradient id="momGlow" cx="38%" cy="50%" r="45%">
+            <stop offset="0%" stop-color="#e86b52" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="#e86b52" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="momGlow2" cx="75%" cy="40%" r="30%">
+            <stop offset="0%" stop-color="#f4a261" stop-opacity="0.15"/>
+            <stop offset="100%" stop-color="#f4a261" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="1200" height="340" fill="url(#momBg)"/>
+        <rect width="1200" height="340" fill="url(#momGlow)"/>
+        <rect width="1200" height="340" fill="url(#momGlow2)"/>
+        <!-- Decorative circles -->
+        <circle cx="100" cy="280" r="120" fill="none" stroke="#e86b52" stroke-width="1" opacity="0.1"/>
+        <circle cx="100" cy="280" r="80" fill="none" stroke="#e86b52" stroke-width="1" opacity="0.1"/>
+        <circle cx="1100" cy="60" r="100" fill="none" stroke="#e86b52" stroke-width="1" opacity="0.08"/>
+        <!-- Heartbeat line -->
+        <polyline points="200,170 280,170 310,100 340,230 370,130 400,170 600,170" fill="none" stroke="#e86b52" stroke-width="2" opacity="0.4"/>
+        <!-- Pregnant woman silhouette -->
+        <g transform="translate(420, 20)">
+          <!-- Head -->
+          <ellipse cx="130" cy="52" rx="38" ry="42" fill="#d4856a" opacity="0.92"/>
+          <!-- Hair -->
+          <path d="M92 45 Q90 10 130 8 Q170 10 168 45 Q155 20 130 18 Q105 20 92 45Z" fill="#3d1a0e" opacity="0.9"/>
+          <!-- Neck -->
+          <rect x="118" y="90" width="24" height="20" rx="5" fill="#d4856a" opacity="0.9"/>
+          <!-- Body -->
+          <path d="M85 108 Q70 140 68 195 Q66 240 72 285 L192 285 Q198 240 196 195 Q194 140 179 108 Z" fill="#a0522d" opacity="0.85"/>
+          <!-- Pregnant belly -->
+          <ellipse cx="130" cy="215" rx="68" ry="60" fill="#c4724e" opacity="0.9"/>
+          <!-- Dress/top detail -->
+          <path d="M85 108 Q90 125 130 130 Q170 125 179 108" fill="none" stroke="#8b3a1f" stroke-width="2" opacity="0.5"/>
+          <!-- Left arm -->
+          <path d="M85 115 Q55 155 50 200 Q60 205 75 200 Q80 165 100 130Z" fill="#a0522d" opacity="0.85"/>
+          <!-- Right arm -->
+          <path d="M179 115 Q209 155 214 200 Q204 205 189 200 Q184 165 164 130Z" fill="#a0522d" opacity="0.85"/>
+          <!-- Hands on belly -->
+          <ellipse cx="56" cy="208" rx="20" ry="14" fill="#d4856a" opacity="0.88"/>
+          <ellipse cx="208" cy="208" rx="20" ry="14" fill="#d4856a" opacity="0.88"/>
+          <!-- Baby outline inside belly -->
+          <circle cx="130" cy="210" r="22" fill="none" stroke="#e8b4a0" stroke-width="1.5" opacity="0.4" stroke-dasharray="4,3"/>
+        </g>
+        <!-- Floating hearts -->
+        <text x="680" y="110" font-size="26" fill="#e86b52" opacity="0.5">♡</text>
+        <text x="640" y="220" font-size="18" fill="#e86b52" opacity="0.35">♡</text>
+        <text x="730" y="180" font-size="14" fill="#e86b52" opacity="0.25">♡</text>
+        <!-- Stars -->
+        <circle cx="780" cy="80" r="2.5" fill="white" opacity="0.5"/>
+        <circle cx="850" cy="140" r="2" fill="white" opacity="0.35"/>
+        <circle cx="950" cy="90" r="3" fill="white" opacity="0.4"/>
+        <circle cx="1050" cy="180" r="2" fill="white" opacity="0.3"/>
+        <circle cx="1000" cy="260" r="2" fill="white" opacity="0.25"/>
+        <circle cx="180" cy="60" r="2" fill="white" opacity="0.3"/>
+        <circle cx="250" cy="250" r="2" fill="white" opacity="0.2"/>
+        <!-- Text labels -->
+        <text x="730" y="155" font-family="Georgia, serif" font-size="28" font-weight="700" fill="white" opacity="0.9">Your pregnancy,</text>
+        <text x="730" y="195" font-family="Georgia, serif" font-size="28" font-weight="700" fill="#e86b52" opacity="0.95">beautifully guided.</text>
+        <text x="732" y="228" font-family="Arial, sans-serif" font-size="14" fill="rgba(255,255,255,0.55)">24/7 AI Saheli · Doctor Dashboard · ANC Tracking</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- TRIMESTER GUIDE -->
+<section class="section" style="background:var(--bg-warm);">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">Your Pregnancy Journey</div>
+      <h2 class="section-title">Guidance for every trimester</h2>
+      <p class="section-sub mx-auto">Aayi.ai gives you the right information at the right time — not everything at once, not too late.</p>
+    </div>
+    <div class="trimester-grid animate-on-scroll" style="margin-top:40px">
+      <div class="t-card">
+        <span class="t-badge">First Trimester</span>
+        <div class="t-weeks">Weeks 1–12</div>
+        <div class="t-desc">Morning sickness, early scan prep, folic acid, what's safe to eat, fatigue, mood changes — all answered by AI Saheli the moment you wonder.</div>
+        <ul class="check-list" style="margin-top:16px;text-align:left">
+          <li>Daily supplement reminders</li>
+          <li>Nausea and fatigue guidance</li>
+          <li>Food safety and cravings</li>
+          <li>First scan preparation</li>
+        </ul>
+      </div>
+      <div class="t-card" style="border-color:var(--coral)">
+        <span class="t-badge">Second Trimester</span>
+        <div class="t-weeks">Weeks 13–26</div>
+        <div class="t-desc">Baby movements, anatomy scans, glucose testing, growing belly, sleep positions, and continuing to track your daily health for your doctor.</div>
+        <ul class="check-list" style="margin-top:16px;text-align:left">
+          <li>Baby kick counting</li>
+          <li>Anatomy scan guidance</li>
+          <li>Gestational diabetes prep</li>
+          <li>Sleep & exercise safety</li>
+        </ul>
+      </div>
+      <div class="t-card">
+        <span class="t-badge">Third Trimester</span>
+        <div class="t-weeks">Weeks 27–40</div>
+        <div class="t-desc">Birth prep, hospital bag checklist, labour signs, Braxton Hicks vs real contractions, when to call your doctor — and postpartum care.</div>
+        <ul class="check-list" style="margin-top:16px;text-align:left">
+          <li>Labour signs & timing</li>
+          <li>Birth plan support</li>
+          <li>Hospital bag checklist</li>
+          <li>Postpartum recovery</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFIT 1: AI SAHELI -->
+<section class="section">
+  <div class="container">
+    <div class="benefit-row animate-on-scroll">
+      <div class="benefit-photo">
+        <img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=700&h=420&fit=crop"
+             alt="Woman relaxing at home with laptop" loading="lazy">
+      </div>
+      <div class="benefit-text">
+        <div class="eyebrow">AI Saheli</div>
+        <h3>Your 2am question finally has a trustworthy answer.</h3>
+        <p>Google gives you ten possible diagnoses for every symptom. AI Saheli gives you one evidence-based, calm, medically curated response — exactly what your doctor would tell you, instantly available.</p>
+        <ul class="check-list">
+          <li>Evidence-based answers, never invented information</li>
+          <li>Knows your gestational age and medical history</li>
+          <li>Alerts your doctor if anything needs clinical attention</li>
+          <li>Available in English, Hindi, Telugu, and Arabic</li>
+          <li>Curated by qualified OB-GYN doctors and midwives</li>
+        </ul>
+        <a href="/ai-saheli/" class="btn btn-primary" style="margin-top:24px">Meet AI Saheli →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI SAHELI DEMO BUBBLES -->
+<section class="section" style="background:var(--bg-warm);">
+  <div class="container" style="max-width:680px">
+    <div class="text-center">
+      <div class="eyebrow">AI Saheli in Action</div>
+      <h2 class="section-title">Real questions. Real answers. Instantly.</h2>
+    </div>
+    <div style="margin-top:36px;display:flex;flex-direction:column;gap:12px" class="animate-on-scroll">
+      <div class="saheli-bubble user">
+        <div class="bubble-label">You asked</div>
+        <div class="bubble-text">I'm 18 weeks and I've been having lower back pain since yesterday. Is this normal?</div>
+      </div>
+      <div class="saheli-bubble ai">
+        <div class="bubble-label">AI Saheli</div>
+        <div class="bubble-text">Lower back pain at 18 weeks is very common and usually a normal part of pregnancy. Your growing uterus is shifting your centre of gravity, and the ligaments in your pelvis are softening (called relaxin). Try resting, a warm compress, and avoiding sitting for long periods. If the pain is severe, one-sided, or comes with fever, bleeding, or difficulty urinating — contact your doctor right away. I've noted this for your doctor's review at your next appointment. 🤱</div>
+      </div>
+      <div class="saheli-bubble user">
+        <div class="bubble-label">You asked</div>
+        <div class="bubble-text">Can I eat paneer during pregnancy?</div>
+      </div>
+      <div class="saheli-bubble ai">
+        <div class="bubble-label">AI Saheli</div>
+        <div class="bubble-text">Yes! Paneer is an excellent source of protein and calcium during pregnancy. It's safe to eat as long as it's made from pasteurised milk and cooked through. Avoid raw or uncooked paneer from unknown sources. It's a great addition to your pregnancy diet — your doctor's meal plan has more details. 🧀</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFIT 2: COMPLIANCE TRACKER -->
+<section class="section">
+  <div class="container">
+    <div class="benefit-row flip animate-on-scroll">
+      <div class="benefit-photo">
+        <img src="https://images.pexels.com/photos/3845457/pexels-photo-3845457.jpeg?auto=compress&cs=tinysrgb&w=700&h=420&fit=crop"
+             alt="Newborn baby wrapped warmly" loading="lazy">
+      </div>
+      <div class="benefit-text">
+        <div class="eyebrow">Daily Health Tracker</div>
+        <h3>Your doctor knows how you're doing — without you having to call.</h3>
+        <p>Log your symptoms, mood, vitamins, meals, and vitals in under 2 minutes a day. Your doctor sees this in real time on their dashboard — so your next consultation starts already informed.</p>
+        <ul class="check-list">
+          <li>Daily vitamin and supplement reminders</li>
+          <li>Symptom and mood logging</li>
+          <li>Weight and blood pressure tracking</li>
+          <li>Automatic 30-day trend summary for your doctor</li>
+          <li>Consent-first — you control what your doctor sees</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFIT 3: PHOTO + PEACE OF MIND -->
+<section class="section" style="background:var(--bg-warm);">
+  <div class="container">
+    <div class="benefit-row animate-on-scroll">
+      <div class="benefit-photo">
+        <img src="https://images.pexels.com/photos/6129048/pexels-photo-6129048.jpeg?auto=compress&cs=tinysrgb&w=700&h=420&fit=crop"
+             alt="Prenatal care clinic visit" loading="lazy">
+      </div>
+      <div class="benefit-text">
+        <div class="eyebrow">Peace of Mind</div>
+        <h3>Less anxiety. More confidence. Every single day.</h3>
+        <p>Pregnancy comes with hundreds of unknowns. Aayi.ai replaces "I googled it and now I'm terrified" with "I asked AI Saheli and my doctor knows." That shift — from anxiety to informed calm — changes the whole experience of pregnancy.</p>
+        <ul class="check-list">
+          <li>Reduces unnecessary midnight calls to your doctor</li>
+          <li>Replaces unreliable Google searches with curated answers</li>
+          <li>Keeps your care team informed between appointments</li>
+          <li>Available offline — works even with poor internet</li>
+          <li>Secure, encrypted, consent-first data handling</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO GET ACCESS -->
+<section class="section">
+  <div class="container" style="max-width:760px;text-align:center">
+    <div class="eyebrow">How to Get Access</div>
+    <h2 class="section-title">Aayi.ai is recommended by your doctor</h2>
+    <p class="section-sub mx-auto">Aayi.ai is not a standalone consumer app — it's a doctor-prescribed companion. Your treating OB-GYN enrolls you and configures the app for your specific pregnancy. This ensures everything you receive is medically appropriate for you.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:40px 0" class="animate-on-scroll">
+      <div style="text-align:center;padding:24px;background:var(--bg-warm);border-radius:16px">
+        <div style="font-size:36px;margin-bottom:12px">👩‍⚕️</div>
+        <div style="font-weight:700;color:var(--maroon);margin-bottom:8px">Step 1</div>
+        <div style="font-size:13px;color:var(--ink-60);line-height:1.7">Ask your OB-GYN if they use Aayi.ai — or share this page with them</div>
+      </div>
+      <div style="text-align:center;padding:24px;background:var(--bg-warm);border-radius:16px">
+        <div style="font-size:36px;margin-bottom:12px">📱</div>
+        <div style="font-weight:700;color:var(--maroon);margin-bottom:8px">Step 2</div>
+        <div style="font-size:13px;color:var(--ink-60);line-height:1.7">Your doctor enrolls you and the app is configured for your pregnancy stage</div>
+      </div>
+      <div style="text-align:center;padding:24px;background:var(--bg-warm);border-radius:16px">
+        <div style="font-size:36px;margin-bottom:12px">🤱</div>
+        <div style="font-weight:700;color:var(--maroon);margin-bottom:8px">Step 3</div>
+        <div style="font-size:13px;color:var(--ink-60);line-height:1.7">Start logging, ask AI Saheli anything, and enjoy your pregnancy with real support</div>
+      </div>
+    </div>
+    <a href="/#demo" class="btn btn-primary btn-lg">My Doctor Should Know About This →</a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background:var(--bg-warm);">
+  <div class="container" style="max-width:720px">
+    <div class="text-center">
+      <div class="eyebrow">Questions</div>
+      <h2 class="section-title">What expecting moms ask most</h2>
+    </div>
+    <div class="faq-list" style="margin-top:32px">
+      <details class="faq-item">
+        <summary class="faq-question">Is Aayi.ai safe to use during pregnancy? <span class="faq-chevron">⌄</span></summary>
+        <div class="faq-answer"><p>Yes. Aayi.ai is recommended by your treating OB-GYN. All content is curated by qualified medical professionals and aligned to WHO and NMC antenatal guidelines. AI Saheli provides evidence-based answers only within its curated knowledge base — it never diagnoses or replaces your doctor.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">How does AI Saheli know about my pregnancy? <span class="faq-chevron">⌄</span></summary>
+        <div class="faq-answer"><p>Your doctor configures AI Saheli with your pregnancy details — gestational age, medical history, and specific notes. So when you ask a question, AI Saheli responds in context. A question about nausea at 8 weeks gets a different, more relevant answer than the same question at 30 weeks.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">Does Aayi.ai replace my doctor? <span class="faq-chevron">⌄</span></summary>
+        <div class="faq-answer"><p>No. Aayi.ai is a doctor-recommended companion, not a replacement. Everything you do in the app is visible to your treating doctor on their dashboard. If AI Saheli flags anything that needs clinical attention, your doctor is notified immediately.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">Is my health data private and secure? <span class="faq-chevron">⌄</span></summary>
+        <div class="faq-answer"><p>Yes. Your data is encrypted end-to-end and you are in full control. You decide what is shared with your doctor and for how long. Aayi.ai is compliant with India's DPDP Act and UAE PDPL. Your data is never sold or used for advertising.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">Does Aayi.ai work without internet? <span class="faq-chevron">⌄</span></summary>
+        <div class="faq-answer"><p>Yes. The core features — daily logging, AI Saheli cached responses, reminders, and checklists — work offline. Everything syncs automatically when connectivity is restored.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Everything in the App</div>
+    <h2 class="section-title">All the tools Aayi.ai gives you</h2>
+    <div class="grid-3" style="margin-top:32px">
+      <div class="all-features-card"><div class="af-icon">📆</div><div class="af-title">Pregnancy Timeline</div><div class="af-desc">Week-by-week milestones, fetal development updates, and trimester guides — the right information at the right time.</div></div>
+      <div class="all-features-card"><div class="af-icon">💉</div><div class="af-title">Vaccination Tracker</div><div class="af-desc">Automated mother and baby vaccination schedule with reminders — never miss a due date again.</div></div>
+      <div class="all-features-card"><div class="af-icon">🦶</div><div class="af-title">Kick Counter</div><div class="af-desc">Log daily kick sessions in seconds. Data is shared with your doctor — early peace of mind for both of you.</div></div>
+      <div class="all-features-card"><div class="af-icon">⚖️</div><div class="af-title">Weight & Growth Tracking</div><div class="af-desc">Log your weight and baby growth continuously. Your doctor sees the trend — no more scrambling at appointments.</div></div>
+      <div class="all-features-card"><div class="af-icon">🩺</div><div class="af-title">Health Score</div><div class="af-desc">Weekly score across checklist, vaccination, and growth — a simple indicator of how your pregnancy week went.</div></div>
+      <div class="all-features-card"><div class="af-icon">✅</div><div class="af-title">Daily Checklist</div><div class="af-desc">Vitamin, hydration, and prenatal care reminders every day — logged in under 2 minutes.</div></div>
+      <div class="all-features-card"><div class="af-icon">🧠</div><div class="af-title">Mental Health Screen</div><div class="af-desc">Built-in PHQ-9 screening — flags low mood early so you and your doctor can act before it becomes a problem.</div></div>
+      <div class="all-features-card"><div class="af-icon">🔴</div><div class="af-title">Emergency SOS</div><div class="af-desc">One tap to alert your emergency contacts — because peace of mind matters most when you need it.</div></div>
+      <div class="all-features-card"><div class="af-icon">📓</div><div class="af-title">Baby Journal</div><div class="af-desc">Capture bump and baby photos, notes, and memories — and download a beautiful printable keepsake PDF.</div></div>
+      <div class="all-features-card"><div class="af-icon">📚</div><div class="af-title">Medical Library</div><div class="af-desc">Curated pregnancy articles and references — WHO-aligned, doctor-verified, no misinformation.</div></div>
+      <div class="all-features-card"><div class="af-icon">🚫</div><div class="af-title">Myth Buster</div><div class="af-desc">Evidence-based myth-vs-fact answers to the most common pregnancy myths — so you stop worrying about the wrong things.</div></div>
+      <div class="all-features-card"><div class="af-icon">💌</div><div class="af-title">Invitation Maker</div><div class="af-desc">Create and share beautiful baby shower invitations directly from the app — personalised for your big day.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA band -->
+<section aria-label="Book a demo" style="background:#B04A2F url('/images/bg-terracotta.png') center/cover no-repeat;padding:72px 24px;text-align:center">
+  <h2 style="font-size:clamp(24px,3.5vw,36px);font-weight:900;color:#fff;letter-spacing:-0.5px;line-height:1.25;max-width:620px;margin:0 auto 14px">Every mother deserves care that never sleeps.</h2>
+  <p style="font-size:16px;color:rgba(255,255,255,0.85);line-height:1.7;max-width:500px;margin:0 auto 30px">See how Aayi.ai works for you — a 20-minute demo, no commitment.</p>
+  <a href="/#demo" class="btn" style="background:#fff;color:#B04A2F;padding:13px 30px;font-weight:700">Book a Free Demo →</a>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:none;padding-top:0">
+      <p>© 2026 Aayi.ai — RDN Biofuture. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="/privacy/">Privacy Policy</a>
+        <a href="/terms/">Terms of Service</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/">Home</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/919999999999?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20Aayi.ai%20for%20expecting%20moms"
+   class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <span class="wa-tooltip">Chat with us</span>💬
+</a>
+
+</body>
+</html>
