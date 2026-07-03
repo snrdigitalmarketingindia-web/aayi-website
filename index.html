@@ -447,13 +447,13 @@
       letter-spacing: -0.5px; flex-shrink: 0;
     }
     .logo span { color: var(--coral); }
-    .logo-img { display: block; height: 80px; width: auto; max-width: none; }
+    .logo-img { display: block; height: 160px; width: auto; max-width: none; }
     .nav-links { display: flex; gap: 6px; list-style: none; flex: 1; justify-content: center; flex-wrap: nowrap; }
     .nav-links a {
       display: inline-block; white-space: nowrap;
-      font-size: 12px; font-weight: 700;
+      font-size: 13px; font-weight: 700;
       text-decoration: none;
-      padding: 6px 10px; border-radius: 999px;
+      padding: 8px 13px; border-radius: 999px;
       transition: background .18s, color .18s, transform .18s, box-shadow .18s;
     }
     .nav-links a:hover { color: #fff; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(42,16,8,0.18); }
@@ -471,12 +471,13 @@
     .nav-links li:nth-child(5) a:hover { background: #35948A; }
     .nav-links li:nth-child(6) a:hover { background: #7C5DB8; }
     .nav-links li:nth-child(7) a:hover { background: #C77435; }
-    @media (max-width: 1100px) { .logo-img { height: 80px; } }
+    @media (max-width: 1200px) { .logo-img { height: 120px; } }
+    @media (max-width: 900px)  { .logo-img { height: 96px; } }
     @media (max-width: 768px) {
       .nav-inner { padding: 8px 0; }
-      .logo-img { height: 56px; }
+      .logo-img { height: 64px; }
     }
-    @media (max-width: 480px) { .logo-img { height: 48px; } }
+    @media (max-width: 480px) { .logo-img { height: 52px; } }
     .nav-cta { display: flex; flex-direction: column; gap: 6px; align-items: stretch; flex-shrink: 0; }
     .nav-cta .btn { font-size: 13px; padding: 7px 16px; text-align: center; }
     .nav-burger { display: none; background: none; border: 0; font-size: 26px; line-height: 1; color: var(--maroon); cursor: pointer; padding: 6px 2px 6px 10px; }
@@ -1005,11 +1006,11 @@
       alt="Aayi.ai — Your AI companion for pregnancy & motherhood" width="384" height="128"
       loading="eager"></a>
         <ul class="nav-links">
-          <li><a href="/for-moms/">For Moms</a></li>
-          <li><a href="/for-parents/">For Parents</a></li>
-          <li><a href="/for-doctors/">For Doctors</a></li>
-          <li><a href="/for-pediatricians/">For Pediatricians</a></li>
-          <li><a href="/for-hospitals/">For Hospitals</a></li>
+          <li><a href="/for-moms/">Moms</a></li>
+          <li><a href="/for-parents/">Parents</a></li>
+          <li><a href="/for-doctors/">Doctors</a></li>
+          <li><a href="/for-pediatricians/">Pediatricians</a></li>
+          <li><a href="/for-hospitals/">Hospitals</a></li>
           <li><a href="/markets/">Markets</a></li>
           <li><a href="/faq/">FAQ</a></li>
         </ul>
