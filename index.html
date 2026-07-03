@@ -354,6 +354,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="/images/hero-art.jpg" fetchpriority="high">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
 
   <style>
@@ -870,6 +871,10 @@
       box-shadow: 0 0 0 3px rgba(232,107,82,0.14);
     }
     .form-input::placeholder { color: var(--ink-40); }
+    .form-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23E86B52' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center;
+    }
 
     /* ── FOOTER ── */
     .footer {
@@ -934,8 +939,8 @@
       from { opacity: 0; transform: translateY(24px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-    .animate-on-scroll { opacity: 0; }
-    .animate-on-scroll.visible { animation: fadeInUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
+    .js-anim .animate-on-scroll { opacity: 0; }
+    .js-anim .animate-on-scroll.visible { animation: fadeInUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
     /* ── PHOTO STRIP ── */
     .photo-strip { display:grid; grid-template-columns:repeat(3,1fr); height:320px; overflow:hidden; }
     .photo-strip-item { overflow:hidden; position:relative; }
@@ -1033,9 +1038,9 @@
 
         <!-- App UI preview -->
         <div class="hero-visual" aria-hidden="true">
-          <img src="/images/hero-art.png" alt=""
-               style="width:100%;max-width:440px;border-radius:24px;box-shadow:0 24px 64px rgba(0,0,0,0.35);display:block;margin:0 auto 28px"
-               loading="eager">
+          <img src="/images/hero-art.jpg" alt="" width="734" height="626"
+               style="width:100%;max-width:440px;height:auto;border-radius:24px;box-shadow:0 24px 64px rgba(0,0,0,0.35);display:block;margin:0 auto 28px"
+               loading="eager" fetchpriority="high">
         </div>
       </div>
     </section>
@@ -1301,8 +1306,7 @@
 
               <div class="form-group">
                 <label class="form-label" for="specialty">Specialisation *</label>
-                <select class="form-select" id="specialty" name="specialty" required
-                        style="background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23E86B52' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\");background-repeat:no-repeat;background-position:right 14px center">
+                <select class="form-select" id="specialty" name="specialty" required>
                   <option value="">Select specialisation</option>
                   <option value="obgyn">OB-GYN / Obstetrics</option>
                   <option value="pediatrics">Pediatrician</option>
@@ -1314,8 +1318,7 @@
 
               <div class="form-group">
                 <label class="form-label" for="country">Country *</label>
-                <select class="form-select" id="country" name="country" required
-                        style="background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23E86B52' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\");background-repeat:no-repeat;background-position:right 14px center">
+                <select class="form-select" id="country" name="country" required>
                   <option value="">Select country</option>
                   <optgroup label="Asia">
                     <option value="IN">India</option>
@@ -1381,9 +1384,9 @@
 
     <!-- ═══ MOTHERHOOD BANNER ══════════════════════════════ -->
     <section aria-label="Motherhood support"
-             style="background:#FFF6E9 url('/images/bg-blobs.png') center/cover no-repeat;padding:88px 24px;text-align:center">
-      <img src="/images/hero-art.png" alt=""
-           style="width:140px;border-radius:18px;box-shadow:0 12px 32px rgba(42,16,8,0.15);display:block;margin:0 auto 28px"
+             style="background:#FFF6E9 url('/images/bg-blobs.jpg') center/cover no-repeat;padding:88px 24px;text-align:center">
+      <img src="/images/hero-art.jpg" alt="" width="734" height="626"
+           style="width:140px;height:auto;border-radius:18px;box-shadow:0 12px 32px rgba(42,16,8,0.15);display:block;margin:0 auto 28px"
            loading="lazy">
       <h2 style="font-size:clamp(26px,4vw,40px);font-weight:900;color:var(--maroon);letter-spacing:-0.5px;line-height:1.2;max-width:640px;margin:0 auto 16px">
         Warm support for mothers, newborns and families
@@ -1454,19 +1457,8 @@
   </footer>
 
   <!-- ═══ SCRIPTS ════════════════════════════════════════════ -->
+  <script src="/js/aayi.js"></script>
   <script>
-    // Scroll animation observer
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
-
     // GA4 — form start tracking
     const form = document.getElementById('demo-form');
     let formStarted = false;

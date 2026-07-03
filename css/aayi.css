@@ -240,9 +240,10 @@ details[open] .faq-chevron { transform: rotate(180deg); }
 .article-callout { background: var(--bg-warm); border: 1px solid var(--ink-10); border-radius: var(--radius-xl); padding: 28px 32px; margin: 32px 0; }
 
 /* ── ANIMATION ── */
+/* .js-anim is added by js/aayi.js, so content stays visible without JS */
 @keyframes fadeInUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
-.animate { opacity:0; }
-.animate.visible { animation: fadeInUp 0.55s cubic-bezier(0.16,1,0.3,1) forwards; }
+.js-anim .animate-on-scroll { opacity:0; }
+.js-anim .animate-on-scroll.visible { animation: fadeInUp 0.55s cubic-bezier(0.16,1,0.3,1) forwards; }
 
 /* ── MOBILE ── */
 @media (max-width: 768px) {
