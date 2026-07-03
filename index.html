@@ -438,22 +438,22 @@
     .nav-inner {
       display: flex; align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap; height: auto;
-      padding: 14px 0 16px; gap: 10px 16px;
+      flex-wrap: nowrap; height: auto;
+      padding: 10px 0; gap: 16px;
     }
     .logo {
       font-size: 26px; font-weight: 900;
       color: var(--maroon); text-decoration: none;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.5px; flex-shrink: 0;
     }
     .logo span { color: var(--coral); }
-    .logo-img { display: block; height: 128px; width: auto; max-width: none; }
-    .nav-links { display: flex; gap: 8px; list-style: none; order: 3; width: 100%; justify-content: center; flex-wrap: wrap; }
+    .logo-img { display: block; height: 80px; width: auto; max-width: none; }
+    .nav-links { display: flex; gap: 6px; list-style: none; flex: 1; justify-content: center; flex-wrap: nowrap; }
     .nav-links a {
       display: inline-block; white-space: nowrap;
-      font-size: 14px; font-weight: 700;
+      font-size: 12px; font-weight: 700;
       text-decoration: none;
-      padding: 9px 15px; border-radius: 999px;
+      padding: 6px 10px; border-radius: 999px;
       transition: background .18s, color .18s, transform .18s, box-shadow .18s;
     }
     .nav-links a:hover { color: #fff; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(42,16,8,0.18); }
@@ -471,13 +471,14 @@
     .nav-links li:nth-child(5) a:hover { background: #35948A; }
     .nav-links li:nth-child(6) a:hover { background: #7C5DB8; }
     .nav-links li:nth-child(7) a:hover { background: #C77435; }
-    @media (max-width: 1100px) { .logo-img { height: 96px; } }
+    @media (max-width: 1100px) { .logo-img { height: 80px; } }
     @media (max-width: 768px) {
-      .nav-inner { flex-wrap: nowrap; padding: 10px 0; }
-      .logo-img { height: 64px; }
+      .nav-inner { padding: 8px 0; }
+      .logo-img { height: 56px; }
     }
-    @media (max-width: 480px) { .logo-img { height: 52px; } }
-    .nav-cta { display: flex; gap: 12px; align-items: center; }
+    @media (max-width: 480px) { .logo-img { height: 48px; } }
+    .nav-cta { display: flex; flex-direction: column; gap: 6px; align-items: stretch; flex-shrink: 0; }
+    .nav-cta .btn { font-size: 13px; padding: 7px 16px; text-align: center; }
     .nav-burger { display: none; background: none; border: 0; font-size: 26px; line-height: 1; color: var(--maroon); cursor: pointer; padding: 6px 2px 6px 10px; }
 
     /* ── BUTTONS ── */
