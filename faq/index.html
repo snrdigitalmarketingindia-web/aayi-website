@@ -80,20 +80,34 @@
 </head>
 <body>
 
-<nav class="nav">
+<nav class="nav" role="navigation" aria-label="Main navigation">
   <div class="container nav-inner">
-    <a href="/" class="logo" aria-label="Aayi.ai Home"><img src="/images/logo-nav.png" alt="Aayi.ai" style="height:40px;width:auto;max-width:none;display:block" loading="eager"></a>
-    <ul class="nav-links">
-          <li><a href="/for-moms/">For Moms</a></li>
-          <li><a href="/for-parents/">For Parents</a></li>
-      <li><a href="/for-doctors/">For Doctors</a></li>
-      <li><a href="/for-pediatricians/">For Pediatricians</a></li>
-      <li><a href="/for-hospitals/">For Hospitals</a></li>
-      <li><a href="/ai-saheli/">AI Saheli</a></li>
-      <li><a href="/blog/">Blog</a></li>
-    </ul>
-    <div class="nav-cta">
-      <a href="/#demo" class="btn btn-primary btn-sm">Book Demo</a>
+    <div class="nav-top">
+      <a href="/" class="logo" aria-label="Aayi.ai Home">
+        <img class="logo-icon" src="/images/logo-icon-160.png"
+          srcset="/images/logo-icon-160.png 1x, /images/logo-icon-216.png 2x"
+          alt="" width="108" height="108" loading="eager">
+        <div class="logo-text">
+          <span class="logo-wordmark">aayi</span>
+          <span class="logo-sub">Your AI companion for pregnancy &amp; motherhood</span>
+        </div>
+      </a>
+    </div>
+    <div class="nav-bottom">
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/for-moms/">Moms</a></li>
+        <li><a href="/for-parents/">Parents</a></li>
+        <li><a href="/for-doctors/">Doctors</a></li>
+        <li><a href="/for-pediatricians/">Pediatricians</a></li>
+        <li><a href="/for-hospitals/">Hospitals</a></li>
+        <li><a href="/markets/">Markets</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="/#demo" class="btn btn-outline btn-sm" data-ga-event="nav_login" data-ga-category="Navigation">Sign In</a>
+        <a href="/#demo" class="btn btn-primary btn-sm" data-ga-event="nav_book_demo" data-ga-category="Navigation">Book Demo</a>
+      </div>
     </div>
   </div>
 </nav>
