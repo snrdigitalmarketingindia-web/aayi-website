@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download Aayi — Your AI Companion for Pregnancy & Motherhood</title>
+  <meta name="description" content="Download the Aayi app on iPhone, Android, or open it in your browser. Your AI companion for pregnancy and motherhood.">
+  <meta name="author" content="CSR | SNR Digital Marketing">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/aayi.css">
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-cream);
+    }
+    .download-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .download-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      justify-content: center;
+      margin-bottom: 36px;
+      text-decoration: none;
+    }
+    .download-logo img {
+      width: 72px;
+      height: 72px;
+      border-radius: 16px;
+    }
+    .download-logo-wordmark {
+      font-size: 52px;
+      font-weight: 900;
+      color: var(--maroon);
+      letter-spacing: -2px;
+      line-height: 1;
+    }
+    .download-heading {
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 800;
+      color: var(--maroon);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .download-sub {
+      font-size: 17px;
+      color: var(--ink-60);
+      max-width: 480px;
+      margin: 0 auto 48px;
+      line-height: 1.6;
+    }
+    .store-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      max-width: 420px;
+    }
+    .store-card {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      background: #fff;
+      border: 1.5px solid var(--ink-10);
+      border-radius: 18px;
+      padding: 20px 24px;
+      text-decoration: none;
+      transition: box-shadow .18s, transform .18s, border-color .18s;
+      cursor: pointer;
+    }
+    .store-card:hover {
+      box-shadow: 0 8px 28px rgba(42,16,8,0.12);
+      transform: translateY(-2px);
+      border-color: var(--coral-light);
+    }
+    .store-icon {
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      font-size: 30px;
+    }
+    .store-icon.ios    { background: #f0f0f0; }
+    .store-icon.android { background: #e8f5e9; }
+    .store-icon.web    { background: var(--coral-pale); }
+    .store-text { text-align: left; }
+    .store-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink-40);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 3px;
+    }
+    .store-name {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--maroon);
+      line-height: 1.2;
+    }
+    .store-desc {
+      font-size: 13px;
+      color: var(--ink-60);
+      margin-top: 2px;
+    }
+    .store-arrow {
+      margin-left: auto;
+      font-size: 20px;
+      color: var(--ink-40);
+      flex-shrink: 0;
+    }
+    .qr-block {
+      margin-top: 44px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .qr-block img {
+      width: 160px;
+      height: 160px;
+      border-radius: 12px;
+      border: 1px solid var(--ink-10);
+      padding: 6px;
+      background: #FAF7F4;
+    }
+    .qr-label {
+      font-size: 13px;
+      color: var(--ink-40);
+      font-weight: 500;
+    }
+    .redirect-msg {
+      margin-top: 40px;
+      font-size: 13px;
+      color: var(--ink-40);
+    }
+    .redirect-msg span {
+      color: var(--coral-dark);
+      font-weight: 600;
+    }
+    @media (max-width: 480px) {
+      .store-cards { max-width: 100%; }
+      .store-card { padding: 16px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<main class="download-wrap">
+  <a href="/" class="download-logo" aria-label="Aayi home">
+    <img src="/images/logo-icon-160.png"
+         srcset="/images/logo-icon-160.png 1x, /images/logo-icon-216.png 2x"
+         alt="Aayi icon" width="72" height="72" loading="eager">
+    <span class="download-logo-wordmark">aayi</span>
+  </a>
+
+  <h1 class="download-heading">Get the Aayi App</h1>
+  <p class="download-sub">Your AI companion for pregnancy &amp; motherhood — available on iPhone, Android, and in your browser.</p>
+
+  <div class="store-cards">
+    <a href="https://apps.apple.com/app/aayi/PLACEHOLDER_IOS" class="store-card" id="card-ios">
+      <div class="store-icon ios">🍎</div>
+      <div class="store-text">
+        <div class="store-label">Available on</div>
+        <div class="store-name">App Store</div>
+        <div class="store-desc">iPhone &amp; iPad · iOS 15+</div>
+      </div>
+      <span class="store-arrow">›</span>
+    </a>
+
+    <a href="https://play.google.com/store/apps/details?id=PLACEHOLDER_ANDROID" class="store-card" id="card-android">
+      <div class="store-icon android">▶</div>
+      <div class="store-text">
+        <div class="store-label">Get it on</div>
+        <div class="store-name">Google Play</div>
+        <div class="store-desc">Android phones &amp; tablets</div>
+      </div>
+      <span class="store-arrow">›</span>
+    </a>
+
+    <a href="https://app.aayi.ai/" class="store-card" id="card-web">
+      <div class="store-icon web">🌐</div>
+      <div class="store-text">
+        <div class="store-label">Open in</div>
+        <div class="store-name">Web Browser</div>
+        <div class="store-desc">Works on any device, no install needed</div>
+      </div>
+      <span class="store-arrow">›</span>
+    </a>
+  </div>
+
+  <!-- QR code — shown only on desktop via JS -->
+  <div class="qr-block" id="qr-block" style="display:none;">
+    <img src="/images/aayi-qr.png" alt="Scan to download Aayi" width="160" height="160" loading="lazy">
+    <span class="qr-label">Scan with your phone to download</span>
+  </div>
+
+  <p class="redirect-msg" id="redirect-msg"></p>
+</main>
+
+<script>
+  // OS detection — auto-redirect after 2 s, highlight the matched card
+  (function () {
+    var ua = navigator.userAgent || '';
+    var isIOS     = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+    var isAndroid = /Android/.test(ua);
+
+    var IOS_URL     = 'https://apps.apple.com/app/aayi/PLACEHOLDER_IOS';
+    var ANDROID_URL = 'https://play.google.com/store/apps/details?id=PLACEHOLDER_ANDROID';
+    var WEB_URL     = 'https://app.aayi.ai/';
+
+    var targetUrl, cardId, platformName;
+
+    if (isIOS) {
+      targetUrl    = IOS_URL;
+      cardId       = 'card-ios';
+      platformName = 'App Store';
+    } else if (isAndroid) {
+      targetUrl    = ANDROID_URL;
+      cardId       = 'card-android';
+      platformName = 'Google Play';
+    } else {
+      targetUrl    = WEB_URL;
+      cardId       = 'card-web';
+      platformName = 'Web App';
+    }
+
+    // Highlight matched card
+    var card = document.getElementById(cardId);
+    if (card) {
+      card.style.borderColor  = '#E86B52';
+      card.style.background   = '#FFF8F7';
+      card.style.boxShadow    = '0 4px 20px rgba(232,107,82,0.18)';
+    }
+
+    // Show countdown message
+    var msgEl = document.getElementById('redirect-msg');
+    var secs = 3;
+
+    // Only auto-redirect on mobile (not desktop)
+    if (isIOS || isAndroid) {
+      msgEl.innerHTML = 'Taking you to <span>' + platformName + '</span> in <span id="countdown">' + secs + '</span>s…';
+
+      var timer = setInterval(function () {
+        secs--;
+        var cd = document.getElementById('countdown');
+        if (cd) cd.textContent = secs;
+        if (secs <= 0) {
+          clearInterval(timer);
+          window.location.href = targetUrl;
+        }
+      }, 1000);
+    } else {
+      // Desktop — show QR code
+      var qrBlock = document.getElementById('qr-block');
+      if (qrBlock) qrBlock.style.display = 'flex';
+      msgEl.innerHTML = 'Choose your platform above, or <span><a href="' + WEB_URL + '" style="color:var(--coral-dark);font-weight:600;">open the web app</a></span> now.';
+    }
+  })();
+</script>
+
+</body>
+</html>
