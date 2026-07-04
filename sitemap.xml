@@ -54,12 +54,12 @@
   </url>
 
   <url>
-    <loc>https://aayi.ai/ai-saheli/</loc>
-    <lastmod>2026-07-02</lastmod>
+    <loc>https://aayi.ai/aayi-companion/</loc>
+    <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://aayi.ai/ai-saheli/"/>
-    <xhtml:link rel="alternate" hreflang="en"        href="https://aayi.ai/ai-saheli/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aayi.ai/aayi-companion/"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://aayi.ai/aayi-companion/"/>
   </url>
 
   <!-- Blog / Content (for organic SEO reach) -->
@@ -106,8 +106,8 @@
   </url>
 
   <url>
-    <loc>https://aayi.ai/blog/what-is-ai-saheli/</loc>
-    <lastmod>2026-05-15</lastmod>
+    <loc>https://aayi.ai/blog/what-is-aayi-companion/</loc>
+    <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

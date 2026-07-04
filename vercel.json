@@ -1,0 +1,8 @@
+{
+  "redirects": [
+    { "source": "/ai-saheli", "destination": "/aayi-companion/", "permanent": true },
+    { "source": "/ai-saheli/", "destination": "/aayi-companion/", "permanent": true },
+    { "source": "/blog/what-is-ai-saheli", "destination": "/blog/what-is-aayi-companion/", "permanent": true },
+    { "source": "/blog/what-is-ai-saheli/", "destination": "/blog/what-is-aayi-companion/", "permanent": true }
+  ]
+}
