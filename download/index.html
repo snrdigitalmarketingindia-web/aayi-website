@@ -238,33 +238,48 @@
       platformName = 'Web App';
     }
 
-    // Highlight matched card
-    var card = document.getElementById(cardId);
-    if (card) {
-      card.style.borderColor  = '#E86B52';
-      card.style.background   = '#FFF8F7';
-      card.style.boxShadow    = '0 4px 20px rgba(232,107,82,0.18)';
-    }
-
-    // Show countdown message
     var msgEl = document.getElementById('redirect-msg');
-    var secs = 3;
 
-    // Only auto-redirect on mobile (not desktop)
-    if (isIOS || isAndroid) {
-      msgEl.innerHTML = 'Taking you to <span>' + platformName + '</span> in <span id="countdown">' + secs + '</span>s…';
-
+    if (isIOS) {
+      // Hide Android and Web cards
+      document.getElementById('card-android').style.display = 'none';
+      document.getElementById('card-web').style.display     = 'none';
+      // Highlight iOS card
+      var card = document.getElementById('card-ios');
+      card.style.borderColor = '#E86B52';
+      card.style.background  = '#FFF8F7';
+      card.style.boxShadow   = '0 4px 20px rgba(232,107,82,0.18)';
+      // Countdown + redirect
+      var secs = 3;
+      msgEl.innerHTML = 'Taking you to <span>App Store</span> in <span id="countdown">3</span>s…';
       var timer = setInterval(function () {
         secs--;
         var cd = document.getElementById('countdown');
         if (cd) cd.textContent = secs;
-        if (secs <= 0) {
-          clearInterval(timer);
-          window.location.href = targetUrl;
-        }
+        if (secs <= 0) { clearInterval(timer); window.location.href = IOS_URL; }
       }, 1000);
+
+    } else if (isAndroid) {
+      // Hide iOS and Web cards
+      document.getElementById('card-ios').style.display = 'none';
+      document.getElementById('card-web').style.display = 'none';
+      // Highlight Android card
+      var card = document.getElementById('card-android');
+      card.style.borderColor = '#E86B52';
+      card.style.background  = '#FFF8F7';
+      card.style.boxShadow   = '0 4px 20px rgba(232,107,82,0.18)';
+      // Countdown + redirect
+      var secs = 3;
+      msgEl.innerHTML = 'Taking you to <span>Google Play</span> in <span id="countdown">3</span>s…';
+      var timer = setInterval(function () {
+        secs--;
+        var cd = document.getElementById('countdown');
+        if (cd) cd.textContent = secs;
+        if (secs <= 0) { clearInterval(timer); window.location.href = ANDROID_URL; }
+      }, 1000);
+
     } else {
-      // Desktop — show QR code
+      // Desktop — show all 3 cards + QR code
       var qrBlock = document.getElementById('qr-block');
       if (qrBlock) qrBlock.style.display = 'flex';
       msgEl.innerHTML = 'Choose your platform above, or <span><a href="' + WEB_URL + '" style="color:var(--coral-dark);font-weight:600;">open the web app</a></span> now.';
