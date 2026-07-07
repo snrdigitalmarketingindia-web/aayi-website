@@ -212,31 +212,17 @@
 </main>
 
 <script>
-  // OS detection — auto-redirect after 2 s, highlight the matched card
   (function () {
     var ua = navigator.userAgent || '';
-    var isIOS     = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+    // Robust iOS detection: covers iPhone/iPod + iPad (incl. iOS13+ desktop-mode)
+    var isIOS     = /iPhone|iPod/.test(ua) ||
+                    (/iPad/.test(ua)) ||
+                    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
     var isAndroid = /Android/.test(ua);
 
     var IOS_URL     = 'https://apps.apple.com/in/app/aayi-pregnancy-to-motherhood/id6768629490';
     var ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.jananibachpan.app&hl=en_IN';
     var WEB_URL     = 'https://app.aayi.ai/';
-
-    var targetUrl, cardId, platformName;
-
-    if (isIOS) {
-      targetUrl    = IOS_URL;
-      cardId       = 'card-ios';
-      platformName = 'App Store';
-    } else if (isAndroid) {
-      targetUrl    = ANDROID_URL;
-      cardId       = 'card-android';
-      platformName = 'Google Play';
-    } else {
-      targetUrl    = WEB_URL;
-      cardId       = 'card-web';
-      platformName = 'Web App';
-    }
 
     var msgEl = document.getElementById('redirect-msg');
 
