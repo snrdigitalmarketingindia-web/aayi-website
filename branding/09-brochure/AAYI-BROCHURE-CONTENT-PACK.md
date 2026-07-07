@@ -1,6 +1,16 @@
 # Aayi Brochure Final Content Pack — Ready to Paste into Canva
 **A4 Bi-Fold · 4 Pages · Print-Ready · Doctor + Patient Facing**
 
+> ## ⚠️ Review Round 1 applied (2026-07-07 · Abhilash, Rajender, Srinivas, Kiran)
+> 1. **Audience voice:** the brochure is doctor-facing. P3/P4 copy no longer says "your pregnancy / your baby" — patients are "your patients / her / parents"; "you" always means the doctor.
+> 2. **Four-color "aayi":** everywhere the word aayi appears (except on the dark band, where it stays amber), each letter takes one logo-corner color: **a** `#B75E42` (top-left terracotta) · **a** `#E8A141` (bottom-left mustard) · **y** `#D99659` (bottom-right peach, deepened for legibility) · **i** `#9B8741` (top-right olive).
+> 3. **Single font locked:** Inter everywhere (the wordmark font). Playfair Display is retired from this brochure.
+> 4. **Terminology:** "Doctor-connected" → **"Doctor-led"** globally.
+> 5. **P1 now has 6 challenge tiles** (see below); Google → **Instagram/YouTube** Anxiety; footer strip reads "aayi.ai · Doctor-led care, always with you".
+> 6. **P2 headline:** "aayi — your extension, never a replacement." · "…motherhood **& beyond**" · "Zero Extra Burden" → "**Zero Clinical Overhead** / 30-sec onboarding, effortless patient management" · "your practice companion".
+> 7. **P3:** "Pregnancy Library" (was Your Own Library), "Doctor-Led Support / you stay central".
+> 8. **P4:** vaccination = "automated reminders aligned to national immunization guidelines"; QR band redesigned — **no logo chip, no black QR label bar** (use `../../images/aayi-qr.png` (single source — label bar cropped via CSS `object-fit:cover; object-position:top`)), QR ~195 px, text enlarged.
+
 ---
 
 ## 0. Canva Setup (do this first)
@@ -10,8 +20,7 @@
 | Document size | A4 — 210 × 297 mm (create as 4 pages) |
 | Bleed | 3 mm on all sides (File → Settings → Show print bleed) |
 | Safe margin | Keep all text ≥ 10 mm from trim edge |
-| Heading font | **Playfair Display** (SemiBold / Bold) |
-| Body font | **Inter** (Regular / Medium) |
+| All text (locked) | **Inter** — headings SemiBold/Bold, body Regular/Medium. No second family. |
 | Corner radius | 16–24 px on all cards, frames, and photo blocks |
 
 ### Brand Colors (exact hex — from the approved aayi brand kit)
@@ -38,11 +47,11 @@
 
 ---
 
-## P1 — FRONT COVER (v4 — big logo lockup, 4 challenge tiles left, app-tile rail right)
+## P1 — FRONT COVER (v5 — big logo lockup, 6 challenge tiles left, illustration rail right)
 
 ### Layout (top → bottom)
 1. **Top ~20%** — logo lockup, left-aligned: approved **app symbol** (`aayi-app-symbol-…-1024x1024.png`, ~150 px, rounded corners) beside a **large recreated wordmark**: “aayi” (~82 px, bold, near-black `#2E2A26`), coral underline bar, tagline “Your AI companion for pregnancy & motherhood” (~25 px, dark terracotta). The wordmark + tagline are ~2× the size they appear in the baked horizontal logo PNG — rebuild them as live text next to the symbol; do not stretch the PNG.
-2. **Below, two columns**: **left ~58%** = cover title wrapped to 2 lines + 4 numbered challenge tiles; **right ~42%** = full-height vertical rail of **3 app feature tile screenshots from app.aayi.ai** (placeholders until shared). The rail starts level with the cover title, so it gets the full column height.
+2. **Below, two columns**: **left ~58%** = 6 numbered challenge tiles; **right ~42%** = full-height “2 a.m., answered” illustration (`assets/aayi-illustration-2am-answered.png`, cover-crop, 18 px radius) under the heading “aayi in Everyday Care”. The illustration starts level with tile 01.
 3. **Bottom** — thin dark-terracotta footer strip.
 
 ### Top / title copy (paste as-is)
@@ -50,47 +59,50 @@
 **Tagline (Inter, ~21 pt, dark terracotta, single line under the wordmark's coral underline):**
 > Your AI companion for pregnancy & motherhood
 
-**Cover title (Playfair Display SemiBold, ~26 pt, maroon, single line, full page width):**
+**Cover title (Inter SemiBold, ~26 pt, maroon, single line, full page width):**
 > **Pregnancy, Motherhood & Child Care Companion**
 
 The terracotta bar (4 px, rounded) starts right after the title text and **continues to the right page margin** — one continuous rule on the title line.
 
 **Footer strip (white text on `#C94A35`):**
-> aayi.ai   ·   Doctor-connected care, always with you
+> aayi.ai   ·   Doctor-led care, always with you
 
-### LEFT 58% — 4 challenge tiles
+### LEFT 58% — 6 challenge tiles
 
 **Tiles heading (Inter SemiBold, ~9.5 pt, uppercase, letter-spaced, dark terracotta, left-aligned):**
 > KEY CHALLENGES AAYI HELPS SOLVE
 
-Four compact horizontal tiles (14 px radius): big Playfair number on the left, then title → 2-line description → white solution chip. Tiles 02–04 are condensed from the live for-doctors page — keep the pain/solution pairing.
+Six compact horizontal tiles (14 px radius): big Inter ExtraBold number (~30 px) on the left, then title (16 px SemiBold) → description (13 px) → white solution chip (12.5 px SemiBold). Fill colors cycle: peach `#FFF0EE`, cream-amber `#FFF8E8`, warm sand `#F5EEE8`, blush `#FDE8E4`, then repeat.
 
-**Tile 01 (fill `#FFF0EE`, number in coral `#E86B52`):**
-> **01 — Bridging the Gap**
-> Between a 15-minute consultation and 30 days of patient choices at home, care loses continuity.
-> *Solution chip:* **aayi: doctor-connected care between visits**
+**Tile 01** (number coral `#E86B52`):
+> **Bridging the Gap** — Between a 15-minute consultation and 30 days of patient choices at home, care loses continuity.
+> *Chip:* **aayi: doctor-led care between visits**
 
-**Tile 02 (fill `#FFF8E8`, number in amber `#F0A030`):**
-> **02 — Google Anxiety & Midnight Calls**
-> Routine worries turn into panic searches and midnight messages — with zero clinical documentation.
-> *Solution chip:* **aayi Companion — 24/7 evidence-based answers**
+**Tile 02** (number amber `#F0A030`):
+> **Instagram/YouTube Anxiety & Midnight Calls** — Reels and panic scrolling turn routine worries into midnight messages — with zero clinical documentation.
+> *Chip:* **aayi Companion — 24/7 evidence-based answers**
 
-**Tile 03 (fill `#F5EEE8`, number in maroon-light `#5A2820`):**
-> **03 — Patient Compliance Gaps**
-> Lapses in vitamins, diet, and screening schedules stay invisible until the next visit.
-> *Solution chip:* **aayi: real-time compliance dashboard & alerts**
+**Tile 03** (number maroon-light `#5A2820`):
+> **Patient Compliance Gaps** — Lapses in vitamins, diet, and screening schedules stay invisible until the next visit.
+> *Chip:* **aayi: real-time compliance dashboard & alerts**
 
-**Tile 04 (fill `#FDE8E4`, number in dark terracotta `#C94A35`):**
-> **04 — Fragmented Patient Histories**
-> Consultation time is lost piecing together a month of symptoms, vitals, and concerns.
-> *Solution chip:* **aayi: 30-second consultation prep summary**
+**Tile 04** (number dark terracotta `#C94A35`):
+> **Fragmented Patient Histories** — Consultation time is lost piecing together a month of symptoms, vitals, and concerns.
+> *Chip:* **aayi: 30-second consultation prep — aayi AI Summary**
+
+**Tile 05** (number coral `#E86B52`):
+> **Continuous Lifecycle Bridge** — Seamless, uninterrupted transition from pregnancy and newborn care to parenting.
+> *Chip:* **aayi: one journey — pregnancy to parenting**
+
+**Tile 06** (number amber `#F0A030`):
+> **Precision Trackers, Zero Paywalls** — Mothers get vital, premium tracking tools — kick counters, weight logs, and contraction timers.
+> *Chip:* **aayi: health metrics, all in one place**
 
 > Source: these three tiles mirror “The Three Clinical Pain Points” section on the live for-doctors page (Google Anxiety & Midnight Calls → aayi Companion (formerly AI Saheli); Patient Compliance Gaps → Real-Time Compliance Dashboard; Fragmented Patient Histories → 30-Second Consultation Prep).
 
-### RIGHT 40% — app feature tile rail (full height, top to bottom)
+### (Moved) iPhone app-tile mockup — now on P3, right column
 
-**Rail heading (Inter SemiBold, ~9.5 pt, uppercase, letter-spaced, dark terracotta, centered):**
-> FROM THE AAYI APP
+*(This phone mockup was moved from P1 to P3 during review; P1's right rail is the illustration described above.)*
 
 **Presentation: iPhone 17 Pro-style phone mockup.** Dark near-black bezel (`#1C1B1E`, 42 px outer radius, ~9 px bezel width), warm cream screen (`#FBF3EA`, 34 px radius), Dynamic Island pill centered at top (≈82×20 px), thin home-indicator bar at the bottom. **The phone's top edge aligns exactly with the top of tile 01 in the left column** (the “From the aayi App” heading sits above, on the same baseline as the left column's “Key Challenges” heading). Inside the screen, stack the five tile screenshots with tight, even spacing.
 
@@ -248,7 +260,7 @@ Right side — details:
 - ✅ Premium, reassuring, doctor-trusted tone
 
 ## Design Rules Recap for the Designer
-- **Brand-name highlight:** every occurrence of “aayi” in copy is SemiBold dark terracotta `#C94A35` (use amber `#F0A030` on dark terracotta backgrounds like the contact band). Exception: the logo lockup itself keeps its own colors. Never plain black.
+- **Brand-name treatment (Review R1):** every occurrence of “aayi” is SemiBold with per-letter logo-corner colors — a `#B75E42`, a `#E8A141`, y `#D99659`, i `#9B8741`. On dark terracotta backgrounds use single-color amber `#F0A030`. Never plain black.
 - Cream `#FAF7F4` base on all 4 pages; never pure white
 - One dark band per page maximum (cover footer strip, back-cover contact band)
 - Rounded corners everywhere (16–24 px); no sharp rectangles
