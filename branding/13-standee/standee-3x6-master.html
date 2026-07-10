@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>aayi Standee — 3×6 ft Master</title>
+<style>@font-face { font-family:'Great Vibes'; font-weight:400; src:url('../09-brochure/fonts/great-vibes-400.woff2') format('woff2'); }</style>
+<style>
+@font-face { font-family:'Inter'; font-weight:400; src:url('../09-brochure/fonts/inter-400.woff2') format('woff2'); }
+@font-face { font-family:'Inter'; font-weight:500; src:url('../09-brochure/fonts/inter-500.woff2') format('woff2'); }
+@font-face { font-family:'Inter'; font-weight:600; src:url('../09-brochure/fonts/inter-600.woff2') format('woff2'); }
+@font-face { font-family:'Inter'; font-weight:700; src:url('../09-brochure/fonts/inter-700.woff2') format('woff2'); }
+@font-face { font-family:'Inter'; font-weight:800; src:url('../09-brochure/fonts/inter-800.woff2') format('woff2'); }
+
+:root {
+  --cream:  #F5EDE0;
+  --cream2: #EDE0CE;
+  --amber:  #E8A141;
+  --coral:  #C94A35;
+  --olive:  #9A8030;
+  --gold:   #D99659;
+  --dark:   #2B1810;
+  --muted:  #7A5C48;
+  --white:  #FFFFFF;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: #c8b89a;
+  display: flex; align-items: flex-start; justify-content: center;
+  font-family: 'Inter', sans-serif;
+  min-height: 100%;
+}
+
+.standee {
+  width: 900px;
+  min-height: 1960px;
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Blob accents */
+.blob { position: absolute; border-radius: 50%; z-index: 0; pointer-events: none; }
+.blob-1 { width:280px; height:220px; top:-40px;   right:-40px;  background:rgba(201,74,53,0.12);  border-radius:60% 40% 55% 45%; }
+.blob-2 { width:200px; height:160px; top:60px;    right:10px;   background:rgba(154,128,48,0.09); border-radius:45% 55% 40% 60%; }
+.blob-3 { width:240px; height:190px; bottom:300px;left:-60px;   background:rgba(232,161,65,0.11); border-radius:55% 45% 60% 40%; }
+.blob-4 { width:160px; height:160px; bottom:160px;right:-20px;  background:rgba(217,150,89,0.09); border-radius:50%; }
+
+/* Phone mockup — full standee cover */
+.bg-phone {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+  width: auto;
+  min-width: 100%;
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
+  object-fit: cover;
+}
+
+.standee > *:not(.blob):not(.bg-phone) { position: relative; z-index: 1; }
+
+/* ══ ZONE 1 — LOGO + QR ══ */
+.logo-zone {
+  background: var(--white);
+  padding: 20px 40px;
+  border-bottom: 3px solid var(--coral);
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.logo-left { display: flex; align-items: center; gap: 22px; flex: 1; }
+.logo-symbol { width: 140px; height: 140px; object-fit: contain; border-radius: 14px; flex: 0 0 140px; }
+.logo-text { flex: 1; }
+.logo-wordmark { font-size: 96px; font-weight: 800; line-height: 0.95; letter-spacing: -3px; }
+.logo-wordmark .l-a1 { color: var(--amber); }
+.logo-wordmark .l-a2 { color: var(--coral); }
+.logo-wordmark .l-y  { color: var(--olive); }
+.logo-wordmark .l-i  { color: var(--gold);  }
+.logo-rule { width: 190px; height: 4px; background: var(--coral); border-radius: 2px; margin: 8px 0 10px; }
+.logo-tagline { font-size: 21px; font-weight: 500; color: var(--coral); line-height: 1.3; }
+.logo-qr { flex: 0 0 auto; text-align: center; }
+.logo-qr img { width: 108px; height: 108px; border: 3px solid var(--cream2); border-radius: 10px; padding: 5px; display: block; }
+.logo-qr .qr-lbl { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 6px; }
+
+/* ══ ZONE 2 — HERO (headline first) ══ */
+.hero {
+  padding: 28px 52px 24px;
+  flex: 0 0 auto;
+}
+.hero-h1 {
+  font-size: 52px; font-weight: 800;
+  color: var(--dark); line-height: 1.08; letter-spacing: -1.5px;
+}
+.hero-divider { width: 56px; height: 5px; background: var(--coral); border-radius: 3px; margin: 18px 0; }
+.hero-sub {
+  font-size: 26px; font-weight: 500;
+  color: var(--muted); line-height: 1.5; text-align: justify;
+}
+.hero-sub strong { color: var(--coral); font-weight: 800; }
+
+/* ══ ZONE 3 — CATEGORY BADGE (below hero) ══ */
+.cat-zone { padding: 20px 52px 20px; flex: 0 0 auto; }
+.cat-pill {
+  background: rgba(232,161,65,0.15);
+  border: 2px solid var(--amber);
+  border-radius: 12px;
+  padding: 14px 32px;
+  text-align: center;
+}
+.cat-intro { font-size: 16px; font-weight: 700; color: var(--olive); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 6px; }
+.cat-name  { font-size: 34px; font-weight: 800; color: var(--dark); letter-spacing: -0.5px; }
+
+/* ══ ZONE 4 — FEATURES 1×6 plain text ══ */
+.feat-zone { padding: 20px 52px 20px; flex: 1; background: rgba(245,237,224,0.65); }
+.feat-grid { display: flex; flex-direction: column; gap: 28px; }
+.feat { display: flex; align-items: baseline; gap: 18px; padding: 6px 0; }
+.feat-icon { font-size: 44px; line-height: 1; flex: 0 0 50px; }
+.feat-body { flex: 1; }
+.feat-name { font-size: 46px; font-weight: 800; line-height: 1.05; }
+.feat:nth-child(1) .feat-name { color: #8B5500; }
+.feat:nth-child(2) .feat-name { color: #9B2A18; }
+.feat:nth-child(3) .feat-name { color: #3A2D08; }
+.feat:nth-child(4) .feat-name { color: #7A3E08; }
+.feat:nth-child(5) .feat-name { color: #8B5500; }
+.feat:nth-child(6) .feat-name { color: #9B2A18; }
+.feat-desc { font-size: 32px; font-weight: 400; color: var(--muted); line-height: 1.3; margin-top: 4px; }
+
+/* ══ ZONE 5 — 3-PILLAR STAT CARD ══ */
+.stat-zone { padding: 16px 52px 16px; flex: 0 0 auto; }
+.stat-card { background: var(--dark); border-radius: 20px; padding: 28px 32px; display: flex; align-items: stretch; }
+.stat-pillar { flex: 1; padding: 0 20px; display: flex; flex-direction: column; gap: 8px; }
+.stat-pillar:first-child { padding-left: 0; }
+.stat-pillar:last-child  { padding-right: 0; }
+.stat-sep { width: 1px; background: rgba(255,255,255,0.12); flex: 0 0 1px; margin: 4px 0; }
+.stat-number { font-size: 54px; font-weight: 800; color: var(--amber); line-height: 1; letter-spacing: -2px; }
+.stat-unit   { font-size: 17px; font-weight: 700; color: var(--gold); letter-spacing: 0; margin-left: 2px; }
+.stat-label  { font-size: 10px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 4px; }
+.stat-body p { font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.78); line-height: 1.5; }
+.stat-body p strong { color: var(--white); font-weight: 700; }
+
+/* ══ ZONE 6 — CTA ══ */
+.cta-zone {
+  padding: 18px 52px 36px;
+  flex: 0 0 auto;
+  text-align: left;
+  border-top: 2px solid var(--cream2);
+}
+.cta-signature {
+  font-family: 'Great Vibes', cursive;
+  font-size: 46px;
+  color: var(--dark);
+  line-height: 1.2;
+  transform: rotate(-0.75deg);
+  display: block;
+  margin-bottom: 6px;
+}
+.cta-signature em {
+  font-style: normal;
+  color: var(--coral);
+}
+.cta-sub  { font-size: 14px; font-weight: 400; color: var(--muted); margin-bottom: 14px; text-align: center; }
+.cta-btn-wrap { text-align: center; }
+.cta-btn  { display: inline-block; background: var(--coral); color: var(--white); font-size: 16px; font-weight: 700; padding: 12px 34px; border-radius: 100px; }
+
+@page { size: 900px 1800px; margin: 0; }
+@media print { html, body { background: none; } }
+</style>
+</head>
+<body>
+<div class="standee">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+
+  <img class="bg-phone" src="aayi-mother-trimmed.png" alt="">
+
+  <!-- ZONE 1: Logo + QR top-right -->
+  <div class="logo-zone">
+    <div class="logo-left">
+      <img class="logo-symbol"
+           src="../01-logo-transparent/aayi-logo-symbol-transparent-approved-artwork-1024x1024.png" alt="aayi">
+      <div class="logo-text">
+        <div class="logo-wordmark">
+          <span class="l-a1">a</span><span class="l-a2">a</span><span class="l-y">y</span><span class="l-i">i</span>
+        </div>
+        <div class="logo-rule"></div>
+        <div class="logo-tagline">Your AI companion for pregnancy &amp; motherhood</div>
+      </div>
+    </div>
+    <div class="logo-qr">
+      <img src="../../images/aayi-qr.png" alt="Scan to explore aayi">
+      <div class="qr-lbl">Scan to explore</div>
+    </div>
+  </div>
+
+  <!-- ZONE 2: Hero headline (now FIRST) -->
+  <div class="hero">
+    <div class="hero-h1">
+      AN EXPECTING MOM'S ENTIRE<br>PREGNANCY IN ONE SCREEN.
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-sub">
+      AI intelligence that monitors 24×7, summarises 280 days, and delivers
+      <strong>complete clinical context — before she enters the room.</strong>
+    </div>
+  </div>
+
+  <!-- ZONE 3: Category badge (now BELOW hero) -->
+  <div class="cat-zone">
+    <div class="cat-pill">
+      <div class="cat-intro">Introducing a New Category</div>
+      <div class="cat-name">AI-Powered Continuous Maternity Care</div>
+    </div>
+  </div>
+
+  <!-- ZONE 4: Features — 1×6 single column, larger -->
+  <div class="feat-zone">
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="feat-icon">🤖</div>
+        <div class="feat-body">
+          <div class="feat-name"><span style="color:#8B5500">a</span><span style="color:#9B2A18">a</span><span style="color:#3A2D08">y</span><span style="color:#7A3E08">i</span> Companion</div>
+          <div class="feat-desc">24×7 AI pregnancy &amp; motherhood support</div>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">📊</div>
+        <div class="feat-body">
+          <div class="feat-name">Pregnancy Intelligence</div>
+          <div class="feat-desc">Kicks, vitals, mood &amp; nutrition tracking</div>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🧠</div>
+        <div class="feat-body">
+          <div class="feat-name">AI Clinical Summary</div>
+          <div class="feat-desc">AI-summarised insights, ready before each visit</div>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">👶</div>
+        <div class="feat-body">
+          <div class="feat-name">AI Cry Analysis</div>
+          <div class="feat-desc">Decodes hunger, pain &amp; discomfort instantly</div>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">💉</div>
+        <div class="feat-body">
+          <div class="feat-name">Vaccination Intelligence</div>
+          <div class="feat-desc">Automated schedules &amp; smart reminders</div>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">👩‍⚕️</div>
+        <div class="feat-body">
+          <div class="feat-name">Doctor AI Co-Pilot</div>
+          <div class="feat-desc">Your practice, extended beyond the clinic</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ZONE 5: 3-pillar stat card (bottom) -->
+  <div class="stat-zone">
+    <div class="stat-card">
+      <div class="stat-pillar">
+        <div class="stat-number">60<span class="stat-unit">sec</span></div>
+        <div class="stat-body">
+          <div class="stat-label">AI Clinical Summary</div>
+          <p>Full pregnancy history,<br>vitals &amp; risk flags —<br><strong>ready before every visit</strong></p>
+        </div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-pillar">
+        <div class="stat-number">280<span class="stat-unit">days</span></div>
+        <div class="stat-body">
+          <div class="stat-label">Continuous Monitoring</div>
+          <p>Nutrition, mood, Kicks,<br>symptoms &amp; medication —<br><strong>tracked between visits</strong></p>
+        </div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-pillar">
+        <div class="stat-number">0<span class="stat-unit"> extra hrs</span></div>
+        <div class="stat-body">
+          <div class="stat-label">Your Time Cost</div>
+          <p>aayi works silently.<br>You receive intelligence.<br><strong>No extra clinic load</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ZONE 6: CTA -->
+  <div class="cta-zone">
+    <div class="cta-signature">
+      <span style="color:var(--amber)">a</span><span style="color:var(--coral)">a</span><span style="color:var(--olive)">y</span><span style="color:var(--gold)">i</span> that never replaces the doctor.<br><span style="display:block;text-align:right;"><em>It extends the doctor's care.</em></span>
+    </div>
+    <div class="cta-sub">aayi.ai &nbsp;·&nbsp; Book a live demo at the booth</div>
+    <div class="cta-btn-wrap"><div class="cta-btn">Experience aayi →</div></div>
+  </div>
+
+</div>
+</body>
+</html>
