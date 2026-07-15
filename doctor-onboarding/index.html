@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Partnership — Aayi Maternal & Child Digital Ecosystem</title>
+  <meta name="description" content="Discover how Aayi helps OB-GYNs, Pediatricians, and Clinics eliminate admin burden, reduce midnight calls, and deliver better patient outcomes between visits.">
+  <meta property="og:title" content="Partner with Aayi — AI Tools for OB-GYN, Pediatrics & Clinic PMS">
+  <meta property="og:description" content="Bridging the gap between a 15-minute consultation and 30 days of critical patient choices at home.">
+  <meta property="og:image" content="https://aayi.ai/og-image.jpg">
+  <meta property="og:url" content="https://aayi.ai/doctor-onboarding/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://aayi.ai/og-image.jpg">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://aayi.ai/doctor-onboarding/">
+  <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/aayi.css">
+  <style>
+    /* ── Hero ── */
+    .do-hero {
+      background: var(--maroon);
+      color: #fff;
+      padding: 80px 0 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .do-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(201,74,53,0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .do-hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--coral-light);
+      margin-bottom: 20px;
+    }
+    .do-hero-title {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      max-width: 700px;
+      margin-bottom: 20px;
+    }
+    .do-hero-title span { color: var(--coral-light); }
+    .do-hero-sub {
+      font-size: 18px;
+      color: rgba(255,255,255,0.7);
+      max-width: 580px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .do-specialty-pills {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .do-pill {
+      display: inline-block;
+      padding: 10px 22px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+    .do-pill-coral  { background: var(--coral); color: #fff; }
+    .do-pill-teal   { background: #2C7A6E; color: #fff; }
+    .do-pill-navy   { background: #1D3A6E; color: #fff; }
+
+    /* ── Agenda ── */
+    .agenda-list { display: flex; flex-direction: column; gap: 12px; }
+    .agenda-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      background: #fff;
+      border: 1px solid var(--ink-10);
+      border-radius: var(--radius-xl);
+      padding: 18px 22px;
+      box-shadow: var(--shadow-sm);
+    }
+    .agenda-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--coral-pale);
+      border: 2px solid var(--coral);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--coral);
+      flex-shrink: 0;
+    }
+    .agenda-body { flex: 1; }
+    .agenda-title { font-size: 15px; font-weight: 700; color: var(--maroon); margin-bottom: 3px; }
+    .agenda-desc  { font-size: 13px; color: var(--ink-60); }
+    .agenda-time  { font-size: 12px; color: var(--ink-40); font-weight: 600; flex-shrink: 0; margin-top: 4px; }
+
+    /* ── Stats ── */
+    .do-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin: 32px 0;
+    }
+    .stat-card {
+      background: #fff;
+      border: 1px solid var(--ink-10);
+      border-radius: var(--radius-2xl);
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-icon { font-size: 36px; margin-bottom: 12px; }
+    .stat-num {
+      font-size: 48px;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .stat-num.coral  { color: var(--coral); }
+    .stat-num.amber  { color: var(--amber); }
+    .stat-num.maroon { color: var(--maroon); }
+    .stat-label { font-size: 14px; color: var(--ink-60); line-height: 1.5; }
+    .do-result-box {
+      background: var(--bg-cream);
+      border: 1.5px solid rgba(201,74,53,0.15);
+      border-radius: var(--radius-2xl);
+      padding: 28px 32px;
+      text-align: center;
+      font-size: 17px;
+      color: var(--ink);
+      line-height: 1.6;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+
+    /* ── Section divider (dark) ── */
+    .do-section-divider {
+      background: var(--maroon);
+      color: #fff;
+      padding: 60px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .do-section-divider::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 100% at 100% 50%, rgba(201,74,53,0.3) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .do-section-number {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--coral-light);
+      margin-bottom: 12px;
+    }
+    .do-section-name {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .do-section-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 28px;
+    }
+    .do-section-divider .do-specialty-pills { margin-top: 4px; }
+    .do-pill-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.8);
+    }
+    .do-pill-outline::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--coral-light);
+    }
+
+    /* ── Pain-Solution cards ── */
+    .ps-wrap { display: flex; flex-direction: column; gap: 40px; }
+    .ps-challenge-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 6px;
+    }
+    .ps-challenge-title {
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 800;
+      color: var(--maroon);
+      letter-spacing: -.5px;
+      margin-bottom: 24px;
+    }
+    .ps-grid {
+      display: grid;
+      grid-template-columns: 1fr 48px 1fr;
+      gap: 0;
+      align-items: center;
+    }
+    .ps-pain {
+      background: var(--bg-blush, #FFF0EE);
+      border: 1px solid rgba(232,107,82,0.2);
+      border-radius: var(--radius-xl) 0 0 var(--radius-xl);
+      padding: 26px;
+    }
+    .ps-solution {
+      background: #fff;
+      border: 1px solid var(--ink-10);
+      border-left: none;
+      border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+      padding: 26px;
+      box-shadow: var(--shadow-md);
+    }
+    .ps-arrow-col {
+      background: var(--bg-blush, #FFF0EE);
+      border-top: 1px solid rgba(232,107,82,0.2);
+      border-bottom: 1px solid rgba(232,107,82,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: stretch;
+    }
+    .ps-arrow-inner {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--coral-pale, #FDE8E4);
+      border: 2px solid var(--coral);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: var(--coral);
+    }
+    .ps-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 8px;
+      display: block;
+    }
+    .ps-body { font-size: 14px; color: var(--ink-60); line-height: 1.7; }
+
+    /* feature chips below challenge */
+    .ps-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .ps-chip {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 100px;
+      border: 1.5px solid var(--ink-10);
+      color: var(--maroon);
+      background: #fff;
+    }
+    .ps-chip.dark { background: var(--maroon); color: #fff; border-color: var(--maroon); }
+    .ps-chip.coral { background: var(--coral); color: #fff; border-color: var(--coral); }
+
+    /* workflow steps */
+    .workflow-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 20px;
+      position: relative;
+    }
+    .workflow-steps::before {
+      content: '';
+      position: absolute;
+      top: 22px;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: repeating-linear-gradient(90deg, var(--coral) 0 6px, transparent 6px 12px);
+    }
+    .ws-item { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 8px; }
+    .ws-num {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--coral);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
+    }
+    .ws-label { font-size: 13px; color: var(--ink-60); line-height: 1.5; }
+
+    /* ── Feature summary grid ── */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .feature-card {
+      background: #fff;
+      border: 1px solid var(--ink-10);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .feature-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .fc-icon { font-size: 28px; margin-bottom: 10px; }
+    .fc-title { font-size: 14px; font-weight: 700; color: var(--maroon); margin-bottom: 6px; }
+    .fc-desc  { font-size: 13px; color: var(--ink-60); line-height: 1.6; }
+
+    /* ── Partnership CTA ── */
+    .do-cta-band {
+      background: linear-gradient(135deg, var(--maroon) 0%, #4A1A0A 100%);
+      color: #fff;
+      padding: 80px 0;
+      text-align: center;
+    }
+    .do-cta-title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    .do-cta-sub {
+      font-size: 17px;
+      color: rgba(255,255,255,0.7);
+      max-width: 540px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+    }
+    .do-cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* responsive */
+    @media (max-width: 768px) {
+      .do-stats { grid-template-columns: 1fr; }
+      .ps-grid { grid-template-columns: 1fr; }
+      .ps-pain { border-radius: var(--radius-xl) var(--radius-xl) 0 0; }
+      .ps-solution { border-left: 1px solid var(--ink-10); border-top: none; border-radius: 0 0 var(--radius-xl) var(--radius-xl); }
+      .ps-arrow-col { display: none; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .workflow-steps { grid-template-columns: 1fr 1fr; }
+      .workflow-steps::before { display: none; }
+      .agenda-item { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="container nav-inner">
+    <div class="nav-top">
+      <a href="/" class="logo" aria-label="Aayi.ai Home">
+        <img class="logo-icon" src="/images/logo-icon-160.png"
+          srcset="/images/logo-icon-160.png 1x, /images/logo-icon-216.png 2x"
+          alt="" width="108" height="108" loading="eager">
+        <div class="logo-text">
+          <span class="logo-wordmark">aayi</span>
+          <span class="logo-sub">Your AI companion for pregnancy &amp; motherhood</span>
+        </div>
+      </a>
+    </div>
+    <div class="nav-bottom">
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/for-moms/">Moms</a></li>
+        <li><a href="/for-parents/">Parents</a></li>
+        <li><a href="/for-doctors/">Doctors</a></li>
+        <li><a href="/for-pediatricians/">Pediatricians</a></li>
+        <li><a href="/for-hospitals/">Hospitals</a></li>
+        <li><a href="/markets/">Markets</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/download/">Get App</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="/#demo" class="btn btn-outline btn-sm">Sign In</a>
+        <a href="/#demo" class="btn btn-primary btn-sm">Book Demo</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="do-hero">
+  <div class="container">
+    <nav aria-label="Breadcrumb">
+      <ol class="breadcrumb" style="--bc-color:rgba(255,255,255,0.5)">
+        <li><a href="/" style="color:rgba(255,255,255,0.6)">Home</a></li>
+        <li class="sep" style="color:rgba(255,255,255,0.3)">›</li>
+        <li style="color:rgba(255,255,255,0.9)">Doctor Partnership</li>
+      </ol>
+    </nav>
+    <p class="do-hero-eyebrow" style="margin-top:20px">Maternal &amp; Child Digital Ecosystem</p>
+    <h1 class="do-hero-title">
+      Bridging the gap between a<br>
+      <span>15-minute consultation</span><br>
+      and 30 days at home.
+    </h1>
+    <p class="do-hero-sub">
+      Aayi keeps your patients safe, compliant, and informed between every visit — while giving you back hours of your day.
+    </p>
+    <div class="do-specialty-pills">
+      <span class="do-pill do-pill-coral">OB-GYN</span>
+      <span class="do-pill do-pill-teal">Pediatrics</span>
+      <span class="do-pill do-pill-navy">Clinic PMS</span>
+    </div>
+    <div style="margin-top:36px;display:flex;gap:14px;flex-wrap:wrap">
+      <a href="/#demo" class="btn btn-primary btn-lg">Book a Free Demo →</a>
+      <a href="#obgyn" class="btn btn-ghost-white btn-lg">Explore Solutions</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── AGENDA ── -->
+<section class="section" style="background:var(--bg-cream)">
+  <div class="container" style="max-width:780px">
+    <div class="eyebrow">What We Cover</div>
+    <h2 class="section-title">A 20-minute walk-through built for specialists</h2>
+    <p class="section-sub">From the problem every doctor faces to your personalised workflow audit.</p>
+
+    <div class="agenda-list" style="margin-top:40px">
+      <div class="agenda-item">
+        <div class="agenda-num">1</div>
+        <div class="agenda-body">
+          <div class="agenda-title">The Modern Doctor's Dilemma</div>
+          <div class="agenda-desc">The problem every specialist faces today</div>
+        </div>
+        <div class="agenda-time">3–5 min</div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-num">2</div>
+        <div class="agenda-body">
+          <div class="agenda-title">OB-GYN Solutions</div>
+          <div class="agenda-desc">Google anxiety, compliance, fragmented histories</div>
+        </div>
+        <div class="agenda-time">6–8 min</div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-num">3</div>
+        <div class="agenda-body">
+          <div class="agenda-title">Pediatrician Solutions</div>
+          <div class="agenda-desc">Vaccine tracking, milestones, consultation drain</div>
+        </div>
+        <div class="agenda-time">9–11 min</div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-num">4</div>
+        <div class="agenda-body">
+          <div class="agenda-title">Clinic PMS Value</div>
+          <div class="agenda-desc">Unified automation — admin + patient, one platform</div>
+        </div>
+        <div class="agenda-time">12–14 min</div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-num">5</div>
+        <div class="agenda-body">
+          <div class="agenda-title">Partnership &amp; Next Steps</div>
+          <div class="agenda-desc">Pilot program, ROI, your personalised workflow audit</div>
+        </div>
+        <div class="agenda-time">15–17 min</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── THE DILEMMA ── -->
+<section class="section" style="background:#fff">
+  <div class="container">
+    <div class="eyebrow eyebrow-dark">The Problem</div>
+    <h2 class="section-title">The Modern Doctor's Dilemma</h2>
+    <p class="section-sub">Three forces quietly destroying specialist productivity in India's maternal healthcare space.</p>
+
+    <div class="do-stats">
+      <div class="stat-card">
+        <div class="stat-icon">⏱️</div>
+        <div class="stat-num coral">40%</div>
+        <div class="stat-label">of a doctor's day lost to data entry &amp; admin tasks</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">💬</div>
+        <div class="stat-num amber">24/7</div>
+        <div class="stat-label">unpaid WhatsApp tele-consults draining personal time</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📊</div>
+        <div class="stat-num maroon">Zero</div>
+        <div class="stat-label">structured data exists about patient behaviour between visits</div>
+      </div>
+    </div>
+
+    <div class="do-result-box">
+      The result: Overworked doctors, anxious patients, and a dangerous gap between clinic visits and real-world patient behaviour.
+    </div>
+  </div>
+</section>
+
+<!-- ── OB-GYN SECTION DIVIDER ── -->
+<section class="do-section-divider" id="obgyn">
+  <div class="container">
+    <div class="do-section-number">Section 01</div>
+    <div class="do-section-name">OB-GYN</div>
+    <div class="do-section-sub">Obstetricians &amp; Gynecologists · Three clinical pain points — and how Aayi solves each one.</div>
+    <div class="do-specialty-pills">
+      <span class="do-pill-outline">01 · Google Anxiety</span>
+      <span class="do-pill-outline">02 · Patient Compliance</span>
+      <span class="do-pill-outline">03 · Fragmented Histories</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── OB-GYN CHALLENGES ── -->
+<section class="section" style="background:var(--bg-cream)">
+  <div class="container">
+    <div class="ps-wrap">
+
+      <!-- Challenge 1 -->
+      <div>
+        <div class="ps-challenge-label">OB-GYN · Challenge 1 of 3</div>
+        <h3 class="ps-challenge-title">Combating "Google Anxiety"</h3>
+        <div class="ps-grid">
+          <div class="ps-pain">
+            <span class="ps-tag">Pain Point</span>
+            <p class="ps-body">Expectant mothers panic over routine physiological changes, triggering unnecessary midnight calls and exhausting the doctor's personal time.</p>
+          </div>
+          <div class="ps-arrow-col">
+            <div class="ps-arrow-inner">→</div>
+          </div>
+          <div class="ps-solution">
+            <span class="ps-tag">Aayi Solution</span>
+            <p class="ps-body">Evidence-based daily tips &amp; curated trimester advice anchor mothers in medically sound expectations — filtering anxiety before it reaches the clinic.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Challenge 2 -->
+      <div>
+        <div class="ps-challenge-label">OB-GYN · Challenge 2 of 3</div>
+        <h3 class="ps-challenge-title">Monitoring Patient Compliance</h3>
+        <div class="ps-grid">
+          <div class="ps-pain">
+            <span class="ps-tag">Pain Point</span>
+            <p class="ps-body">Critical lapses in prenatal vitamins, lifestyle modifications, and trimester screening schedules due to patient oversight, compromising maternal outcomes.</p>
+          </div>
+          <div class="ps-arrow-col">
+            <div class="ps-arrow-inner">→</div>
+          </div>
+          <div class="ps-solution">
+            <span class="ps-tag">Aayi Solution</span>
+            <p class="ps-body">Interactive patient portal with automated checklist notifications, tailored meal planners, and built-in health reminders tracking daily compliance seamlessly.</p>
+          </div>
+        </div>
+        <div class="ps-chips">
+          <span class="ps-chip dark">Daily Checklist</span>
+          <span class="ps-chip coral">Meal Planner</span>
+          <span class="ps-chip coral">Vitamin Reminders</span>
+          <span class="ps-chip">Trimester Milestones</span>
+          <span class="ps-chip">Compliance Score</span>
+        </div>
+      </div>
+
+      <!-- Challenge 3 -->
+      <div>
+        <div class="ps-challenge-label">OB-GYN · Challenge 3 of 3</div>
+        <h3 class="ps-challenge-title">Ending Fragmented Patient Histories</h3>
+        <div class="ps-grid">
+          <div class="ps-pain">
+            <span class="ps-tag">Pain Point</span>
+            <p class="ps-body">Consultation time is wasted manually piecing together symptoms, vitals, and concerns from the preceding 4-week window between visits.</p>
+          </div>
+          <div class="ps-arrow-col">
+            <div class="ps-arrow-inner">→</div>
+          </div>
+          <div class="ps-solution">
+            <span class="ps-tag">Aayi Solution</span>
+            <p class="ps-body">A daily health-check dashboard aggregates continuous, real-time physiological logs — making trend spotting clear in under 30 seconds.</p>
+          </div>
+        </div>
+
+        <div style="margin-top:28px">
+          <p style="font-size:13px;font-weight:700;color:var(--ink-60);margin-bottom:16px;text-transform:uppercase;letter-spacing:1px">The 30-Second Consultation Prep Workflow</p>
+          <div class="workflow-steps">
+            <div class="ws-item">
+              <div class="ws-num">1</div>
+              <div class="ws-label">Patient logs daily health data</div>
+            </div>
+            <div class="ws-item">
+              <div class="ws-num">2</div>
+              <div class="ws-label">Aayi aggregates into trends</div>
+            </div>
+            <div class="ws-item">
+              <div class="ws-num">3</div>
+              <div class="ws-label">Doctor reviews 30-sec summary</div>
+            </div>
+            <div class="ws-item">
+              <div class="ws-num">4</div>
+              <div class="ws-label">Consultation begins informed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── OB-GYN FEATURE SUMMARY ── -->
+<section class="section" style="background:#fff">
+  <div class="container">
+    <div class="eyebrow eyebrow-dark">OB-GYN · Full Feature Summary</div>
+    <h2 class="section-title">Everything the OB-GYN gets with Aayi</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="fc-icon">🤖</div>
+        <div class="fc-title">aayi Companion</div>
+        <div class="fc-desc">24/7 evidence-based Q&amp;A for mothers, reducing your off-hours calls.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-icon">✅</div>
+        <div class="fc-title">Compliance Tracker</div>
+        <div class="fc-desc">Vitamin, diet &amp; screening adherence logged daily, visible in your dashboard.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-icon">💓</div>
+        <div class="fc-title">Continuous Health Logs</div>
+        <div class="fc-desc">Symptoms, mood, sleep, and vitals tracked between every visit.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-icon">📋</div>
+        <div class="fc-title">Digital Prescriptions</div>
+        <div class="fc-desc">One-click diet charts, supplements &amp; instructions sent directly to the patient's phone.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-icon">📈</div>
+        <div class="fc-title">Trend Dashboard</div>
+        <div class="fc-desc">30-day physiological trends ready before the patient enters the room.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-icon">🔒</div>
+        <div class="fc-title">Secured Data</div>
+        <div class="fc-desc">All data encrypted end-to-end. Patient consent-first architecture.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PEDIATRICS SECTION DIVIDER ── -->
+<section class="do-section-divider" id="pediatrics">
+  <div class="container">
+    <div class="do-section-number">Section 02</div>
+    <div class="do-section-name">PEDIATRICS</div>
+    <div class="do-section-sub">From Birth to Age 12 · Three clinical pain points — and how Aayi solves each one.</div>
+    <div class="do-specialty-pills">
+      <span class="do-pill-outline">Vaccine Scheduling</span>
+      <span class="do-pill-outline">Milestone Tracking</span>
+      <span class="do-pill-outline">Consultation Drain</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── PEDIATRICS CHALLENGES ── -->
+<section class="section" style="background:var(--bg-cream)">
+  <div class="container">
+    <div class="ps-wrap">
+
+      <!-- Peds Challenge 1 -->
+      <div>
+        <div class="ps-challenge-label">Pediatrics · Challenge 1 of 3</div>
+        <h3 class="ps-challenge-title">Mastering the Complex Vaccine Window</h3>
+        <div class="ps-grid">
+          <div class="ps-pain">
+            <span class="ps-tag">Pain Point</span>
+            <p class="ps-body">Delayed immunizations due to parental confusion over complex vaccination charts, leading to disrupted clinical tracking and critical healthcare risks.</p>
+          </div>
+          <div class="ps-arrow-col">
+            <div class="ps-arrow-inner">→</div>
+          </div>
+          <div class="ps-solution">
+            <span class="ps-tag">Aayi Solution</span>
+            <p class="ps-body">An intelligent automated vaccination scheduler with proactive push alerts keeps families synchronized with national and regional schedules flawlessly.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Peds Challenge 2 -->
+      <div>
+        <div class="ps-challenge-label">Pediatrics · Challenge 2 of 3</div>
+        <h3 class="ps-challenge-title">Tracking Developmental Milestones</h3>
+        <div class="ps-grid">
+          <div class="ps-pain">
+            <span class="ps-tag">Pain Point</span>
+            <p class="ps-body">Parents miss early developmental red flags between clinic visits, delaying intervention and increasing the cognitive and physical load on the specialist.</p>
+          </div>
+          <div class="ps-arrow-col">
+            <div class="ps-arrow-inner">→</div>
+          </div>
+          <div class="ps-solution">
+            <span class="ps-tag">Aayi Solution</span>
+            <p class="ps-body">Milestone cards and growth charts guide parents through age-appropriate checks — flagging deviations automatically for your clinical review before they escalate.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Peds Challenge 3 -->
+      <div>
+        <div class="ps-challenge-label">Pediatrics · Challenge 3 of 3</div>
+        <h3 class="ps-challenge-title">Reducing the Consultation Drain</h3>
+        <div class="ps-grid">
+          <div class="ps-pain">
+            <span class="ps-tag">Pain Point</span>
+            <p class="ps-body">Routine parenting doubts (feeding frequency, sleep patterns, growth percentiles) flood the clinic with low-acuity visits that consume high-value consultation time.</p>
+          </div>
+          <div class="ps-arrow-col">
+            <div class="ps-arrow-inner">→</div>
+          </div>
+          <div class="ps-solution">
+            <span class="ps-tag">Aayi Solution</span>
+            <p class="ps-body">The aayi Companion answers evidence-based parenting questions 24/7 in Hindi, Telugu &amp; English — reserving your clinic slots for children who genuinely need you.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CLINIC PMS ── -->
+<section class="section" style="background:#fff" id="clinic-pms">
+  <div class="container">
+    <div class="eyebrow eyebrow-dark">Section 03 · Clinic PMS</div>
+    <h2 class="section-title">One platform — admin &amp; patient, unified.</h2>
+    <p class="section-sub">Aayi's Clinic PMS brings scheduling, billing, patient records, and the patient companion into a single dashboard — so your front desk and your patients are always in sync.</p>
+    <div class="feature-grid" style="margin-top:36px">
+      <div class="feature-card">
+        <div class="fc-icon">📅</div>
+        <div class="fc-title">Smart Scheduling</div>
+        <div class="fc-desc">Appointment slots auto-managed with patient reminders and follow-up prompts.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-icon">🗂️</div>
+        <div class="fc-title">Unified Patient Records</div>
+        <div class="fc-desc">Every visit note, scan report, and health log in one place — accessible in seconds.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-icon">💳</div>
+        <div class="fc-title">Billing &amp; Invoicing</div>
+        <div class="fc-desc">Generate and share GST-ready invoices without leaving the patient's profile.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-icon">📲</div>
+        <div class="fc-title">Patient App Integration</div>
+        <div class="fc-desc">Doctor's instructions sync instantly to the patient's aayi app — zero paper, zero WhatsApp.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-icon">📊</div>
+        <div class="fc-title">Clinic Analytics</div>
+        <div class="fc-desc">Footfall trends, compliance rates, and revenue snapshots on one dashboard.</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-icon">🔗</div>
+        <div class="fc-title">Multi-Doctor Support</div>
+        <div class="fc-desc">Role-based access for consultants, residents, and front-desk staff at scale.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PARTNERSHIP CTA ── -->
+<section class="do-cta-band" id="partnership">
+  <div class="container">
+    <div class="eyebrow" style="color:var(--coral-light)">Section 05 · Partnership &amp; Next Steps</div>
+    <h2 class="do-cta-title">Ready to pilot Aayi in your clinic?</h2>
+    <p class="do-cta-sub">Start with a free personalised workflow audit. Our team maps your current bottlenecks and shows you exactly where Aayi saves you time — before you commit to anything.</p>
+    <div class="do-cta-buttons">
+      <a href="/#demo" class="btn btn-primary btn-lg" style="font-size:16px">Book Your Free Demo →</a>
+      <a href="mailto:hello@aayi.ai" class="btn btn-ghost-white btn-lg" style="font-size:16px">Email Us</a>
+    </div>
+    <p style="margin-top:24px;font-size:13px;color:rgba(255,255,255,0.45)">Doctors join free · No credit card required · DPDP compliant</p>
+  </div>
+</section>
+
+<footer class="footer" role="contentinfo">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="/images/logo-icon-160.png" alt="Aayi icon" width="40" height="40" loading="lazy">
+      <span class="footer-wordmark">aayi</span>
+    </div>
+    <p class="footer-copy">© 2025 Aayi.ai · <a href="/privacy/">Privacy Policy</a> · <a href="mailto:hello@aayi.ai">hello@aayi.ai</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
