@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>aayi — Doctor Partner Presentation</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --amber:  #E8A141;
+    --coral:  #C94A35;
+    --olive:  #9A8030;
+    --gold:   #D99659;
+    --dark:   #1C1C1E;
+    --sub:    #6D6D72;
+    --sep:    #E5E5EA;
+    --bg:     #F2F2F7;
+    --bg2:    #FFFFFF;
+    --amberT: #FFF4E5;
+    --coralT: #FDF0EE;
+    --oliveT: #EEF3E8;
+    --goldT:  #FDF7EE;
+    --teal:   #2A9D78;
+    --tealT:  #E8F5F0;
+  }
+
+  body {
+    background: #111;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  }
+
+  /* ─── Deck wrapper ─── */
+  #deck {
+    position: relative;
+    /* Fill viewport maintaining 16:9 */
+    width: min(100vw, 177.78vh);
+    height: min(100vh, 56.25vw);
+    background: var(--bg2);
+    overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.7);
+  }
+
+  /* ─── Slides ─── */
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    background: var(--bg2);
+  }
+  .slide.active {
+    display: flex;
+    animation: fadeIn 0.28s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* ─── Shared header ─── */
+  .slide-header {
+    background: #fff;
+    padding: 12px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--sep);
+    flex-shrink: 0;
+  }
+  .header-logo {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .wordmark {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    line-height: 1;
+  }
+  .wordmark-a1 { color: var(--amber); }
+  .wordmark-a2 { color: var(--coral); }
+  .wordmark-y  { color: var(--olive); }
+  .wordmark-i  { color: var(--gold);  }
+  .header-tagline {
+    font-size: 10px;
+    color: var(--sub);
+    letter-spacing: 0.02em;
+    margin-top: 2px;
+  }
+  .slide-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.2px;
+  }
+
+  /* ─── Slide body ─── */
+  .slide-body {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ════════════════════════════════
+     SLIDE 1 — Brand Film
+  ════════════════════════════════ */
+  #s1 {
+    background: var(--dark);
+  }
+  .s1-inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    position: relative;
+  }
+  .s1-glow {
+    position: absolute;
+    width: 480px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(232,161,65,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .s1-wordmark {
+    font-size: 64px;
+    font-weight: 900;
+    letter-spacing: -2px;
+    line-height: 1;
+    position: relative;
+  }
+  .s1-tagline {
+    color: rgba(255,255,255,0.55);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    position: relative;
+  }
+  .s1-play {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--amber);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    box-shadow: 0 0 0 10px rgba(232,161,65,0.15), 0 0 0 20px rgba(232,161,65,0.07);
+  }
+  .s1-play:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 12px rgba(232,161,65,0.18), 0 0 0 24px rgba(232,161,65,0.08);
+  }
+  .s1-play svg { margin-left: 4px; }
+  .s1-label {
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    position: relative;
+  }
+
+  /* ════════════════════════════════
+     SLIDE 2 — The Problem
+  ════════════════════════════════ */
+  .s2-body {
+    padding: 22px 28px 18px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .problem-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    flex: 1;
+  }
+  .pcard {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--sep);
+  }
+  .pcard-top {
+    height: 5px;
+  }
+  .pcard-inner {
+    padding: 14px 16px 14px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .pcard-badge {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .pcard-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+  .pcard-divider {
+    height: 1px;
+    background: var(--sep);
+  }
+  .pcard-body {
+    font-size: 12px;
+    color: var(--sub);
+    line-height: 1.6;
+    flex: 1;
+  }
+  .pcard-chip {
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 7px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.01em;
+    line-height: 1.4;
+  }
+
+  /* ════════════════════════════════
+     SLIDE 3 — aayi Works For You
+  ════════════════════════════════ */
+  .s3-body {
+    padding: 20px 28px 18px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .benefit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 12px;
+    flex: 1;
+  }
+  .bcard {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid var(--sep);
+    padding: 16px 16px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .bcard-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+  .bcard-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.3;
+  }
+  .bcard-body {
+    font-size: 11.5px;
+    color: var(--sub);
+    line-height: 1.55;
+  }
+
+  /* ════════════════════════════════
+     SLIDE 4 — Save Time
+  ════════════════════════════════ */
+  .s4-body {
+    padding: 20px 28px 18px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .stat-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .stat-tile {
+    border-radius: 10px;
+    padding: 14px 16px;
+    border-width: 1.5px;
+    border-style: solid;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .stat-num {
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -1.5px;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-top: 4px;
+  }
+  .stat-note {
+    font-size: 11px;
+    color: var(--sub);
+    line-height: 1.5;
+    margin-top: 2px;
+  }
+  .feature-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    flex: 1;
+  }
+  .fcard {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid var(--sep);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .fcard-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.3;
+  }
+  .fcard-body {
+    font-size: 11.5px;
+    color: var(--sub);
+    line-height: 1.6;
+  }
+
+  /* ════════════════════════════════
+     SLIDE 5 — Patient History
+  ════════════════════════════════ */
+  .s5-body {
+    padding: 14px 28px 14px;
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 14px;
+    overflow: hidden;
+  }
+  .s5-left {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow: hidden;
+  }
+  .hcard {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid var(--sep);
+    display: flex;
+    overflow: hidden;
+    flex: 1;
+    min-height: 0;
+  }
+  .hcard-strip {
+    width: 4px;
+    flex-shrink: 0;
+  }
+  .hcard-inner {
+    padding: 9px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    justify-content: center;
+  }
+  .hcard-icon {
+    font-size: 13px;
+    margin-bottom: 1px;
+  }
+  .hcard-title {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.3;
+  }
+  .hcard-body {
+    font-size: 10px;
+    color: var(--sub);
+    line-height: 1.5;
+  }
+  .s5-right {
+    display: flex;
+    flex-direction: column;
+  }
+  .portal-mock {
+    flex: 1;
+    border-radius: 10px;
+    border: 1px solid var(--sep);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  }
+  .portal-header {
+    background: var(--coralT);
+    padding: 10px 14px;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--coral);
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid rgba(201,74,53,0.15);
+  }
+  .portal-patient {
+    padding: 12px 14px 10px;
+    border-bottom: 1px solid var(--sep);
+  }
+  .patient-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .risk-badge {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    color: var(--coral);
+    background: var(--coralT);
+    border: 1px solid var(--coral);
+    padding: 2px 7px;
+    border-radius: 100px;
+  }
+  .patient-sub {
+    font-size: 11px;
+    color: var(--coral);
+    margin-top: 4px;
+    font-weight: 500;
+  }
+  .ai-summary-block {
+    margin: 10px 14px;
+    background: var(--amberT);
+    border: 1.5px solid rgba(232,161,65,0.4);
+    border-radius: 8px;
+    padding: 10px 12px;
+    flex: 1;
+  }
+  .ai-summary-header {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--amber);
+    letter-spacing: 0.03em;
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .ai-bullet {
+    font-size: 10.5px;
+    color: var(--dark);
+    line-height: 1.7;
+    display: block;
+  }
+
+  /* ════════════════════════════════
+     SLIDE 6 — What Patients Get
+  ════════════════════════════════ */
+  .s6-body {
+    padding: 16px 20px 14px;
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 14px;
+  }
+  .s6-left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .section-eyebrow {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sub);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--sep);
+  }
+  .ai-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+    flex: 1;
+  }
+  .ai-tile {
+    border-radius: 9px;
+    border-width: 1.5px;
+    border-style: solid;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+  }
+  .ai-tile-top {
+    padding: 9px 11px 7px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .ai-tile-icon { font-size: 18px; }
+  .ai-badge {
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    color: #fff;
+    padding: 2px 5px;
+    border-radius: 4px;
+  }
+  .ai-tile-body {
+    padding: 0 11px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .ai-tile-title {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.3;
+  }
+  .std-eyebrow-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .pricing-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--amber);
+    letter-spacing: 0.01em;
+  }
+  .chips-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .chip {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 4px 9px;
+    border-radius: 100px;
+    background: var(--bg);
+    color: var(--dark);
+    border: 1px solid var(--sep);
+  }
+  .cta-bar {
+    background: var(--amberT);
+    border: 1.5px solid rgba(232,161,65,0.35);
+    border-radius: 8px;
+    padding: 9px 13px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--dark);
+    text-align: center;
+    line-height: 1.4;
+  }
+  .s6-right {
+    display: flex;
+    flex-direction: column;
+  }
+  .thankyou-card {
+    flex: 1;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid var(--sep);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+  .ty-header {
+    background: var(--amberT);
+    border-bottom: 2px solid var(--amber);
+    padding: 16px 20px 14px;
+    text-align: center;
+  }
+  .ty-big {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--amber);
+    letter-spacing: -0.5px;
+    line-height: 1;
+  }
+  .ty-sub {
+    font-size: 12px;
+    color: var(--sub);
+    margin-top: 3px;
+  }
+  .ty-body {
+    padding: 14px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+  }
+  .ty-question {
+    text-align: center;
+  }
+  .ty-q-main {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--dark);
+  }
+  .ty-q-sub {
+    font-size: 11px;
+    color: var(--sub);
+    font-style: italic;
+    margin-top: 2px;
+  }
+  .action-buttons {
+    display: flex;
+    gap: 7px;
+  }
+  .action-btn {
+    flex: 1;
+    background: var(--bg);
+    border: 1px solid var(--sep);
+    border-radius: 8px;
+    padding: 9px 6px;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--dark);
+    text-align: center;
+    cursor: default;
+    line-height: 1.4;
+  }
+  .qr-block {
+    background: var(--amberT);
+    border: 1.5px solid rgba(232,161,65,0.4);
+    border-radius: 10px;
+    padding: 12px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .qr-svg-wrap {
+    flex-shrink: 0;
+  }
+  .qr-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .qr-scan-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--dark);
+  }
+  .qr-wordmark-large {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    line-height: 1;
+  }
+  .qr-platforms {
+    font-size: 9.5px;
+    color: var(--sub);
+    line-height: 1.4;
+  }
+  .qr-url {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--amber);
+    letter-spacing: 0.01em;
+  }
+  .contact-bar {
+    background: var(--coral);
+    padding: 9px 16px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.02em;
+  }
+
+  /* ─── Navigation ─── */
+  #nav {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    z-index: 100;
+  }
+  .nav-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.8);
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .nav-btn:hover {
+    background: rgba(255,255,255,0.16);
+    border-color: rgba(255,255,255,0.4);
+  }
+  .nav-btn:focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 2px;
+  }
+  .dots {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .dot.active {
+    background: var(--amber);
+    transform: scale(1.2);
+  }
+  .dot:focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 2px;
+  }
+  #slide-counter {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.05em;
+    font-variant-numeric: tabular-nums;
+    min-width: 40px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div id="deck">
+
+  <!-- ══════════════════════════════════════
+       SLIDE 1 — Brand Film
+  ══════════════════════════════════════ -->
+  <div class="slide active" id="s1">
+    <div class="slide-body">
+      <div class="s1-inner">
+        <div class="s1-glow"></div>
+        <div class="s1-wordmark">
+          <span class="wordmark-a1">a</span><span class="wordmark-a2">a</span><span class="wordmark-y">y</span><span class="wordmark-i">i</span>
+        </div>
+        <div class="s1-tagline">Your AI companion for pregnancy &amp; motherhood</div>
+        <div class="s1-play" role="button" aria-label="Play brand film" tabindex="0">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <polygon points="7,4 19,11 7,18" fill="#1C1C1E"/>
+          </svg>
+        </div>
+        <div class="s1-label">Brand Film &mdash; 2 min</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SLIDE 2 — The Problem
+  ══════════════════════════════════════ -->
+  <div class="slide" id="s2">
+    <div class="slide-header">
+      <div class="header-logo">
+        <div class="wordmark"><span class="wordmark-a1">a</span><span class="wordmark-a2">a</span><span class="wordmark-y">y</span><span class="wordmark-i">i</span></div>
+        <div class="header-tagline">Your AI companion for pregnancy &amp; motherhood</div>
+      </div>
+      <div class="slide-title">The Problem</div>
+    </div>
+    <div class="slide-body s2-body">
+      <div class="problem-cards">
+
+        <!-- Card 01 coral -->
+        <div class="pcard">
+          <div class="pcard-top" style="background:var(--coral)"></div>
+          <div class="pcard-inner">
+            <div class="pcard-badge" style="background:var(--coral)">01</div>
+            <div class="pcard-title">Fragmented Patient Histories</div>
+            <div class="pcard-divider"></div>
+            <div class="pcard-body">Consultation time is lost piecing together a month of symptoms, vitals, and concerns — with no structured record from between visits.</div>
+            <div class="pcard-chip" style="background:var(--coralT);border:1.5px solid var(--coral);color:var(--coral)">
+              <strong>aayi:</strong> 30-sec AI Summary before every visit
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 02 amber -->
+        <div class="pcard">
+          <div class="pcard-top" style="background:var(--amber)"></div>
+          <div class="pcard-inner">
+            <div class="pcard-badge" style="background:var(--amber)">02</div>
+            <div class="pcard-title">Midnight Calls &amp; Social Media Anxiety</div>
+            <div class="pcard-divider"></div>
+            <div class="pcard-body">Instagram reels and panic scrolling turn routine worries into late-night messages — with zero clinical documentation and no continuity.</div>
+            <div class="pcard-chip" style="background:var(--amberT);border:1.5px solid var(--amber);color:var(--amber)">
+              <strong>aayi:</strong> 24/7 evidence-based answers, doctor-connected
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 03 olive -->
+        <div class="pcard">
+          <div class="pcard-top" style="background:var(--olive)"></div>
+          <div class="pcard-inner">
+            <div class="pcard-badge" style="background:var(--olive)">03</div>
+            <div class="pcard-title">Patient Compliance Gaps</div>
+            <div class="pcard-divider"></div>
+            <div class="pcard-body">Lapses in vitamins, diet, and screening schedules stay invisible until the next visit — by then, it's too late to intervene early.</div>
+            <div class="pcard-chip" style="background:var(--oliveT);border:1.5px solid var(--olive);color:var(--olive)">
+              <strong>aayi:</strong> real-time compliance dashboard &amp; alerts
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SLIDE 3 — aayi Works For You
+  ══════════════════════════════════════ -->
+  <div class="slide" id="s3">
+    <div class="slide-header">
+      <div class="header-logo">
+        <div class="wordmark"><span class="wordmark-a1">a</span><span class="wordmark-a2">a</span><span class="wordmark-y">y</span><span class="wordmark-i">i</span></div>
+        <div class="header-tagline">Your AI companion for pregnancy &amp; motherhood</div>
+      </div>
+      <div class="slide-title">aayi Works For You</div>
+    </div>
+    <div class="slide-body s3-body">
+      <div class="benefit-grid">
+
+        <div class="bcard">
+          <div class="bcard-icon" style="background:var(--amberT)">🔄</div>
+          <div class="bcard-title">Continuous Care</div>
+          <div class="bcard-body">Support that carries on between clinic visits — no gaps in your patient's journey.</div>
+        </div>
+
+        <div class="bcard">
+          <div class="bcard-icon" style="background:var(--coralT)">📊</div>
+          <div class="bcard-title">Patient Monitoring</div>
+          <div class="bcard-body">A clear, real-time view of each patient's compliance, vitals, and daily progress.</div>
+        </div>
+
+        <div class="bcard">
+          <div class="bcard-icon" style="background:var(--oliveT)">🔔</div>
+          <div class="bcard-title">Follow-up Support</div>
+          <div class="bcard-body">Timely automated reminders that bring patients back on schedule — without extra calls.</div>
+        </div>
+
+        <div class="bcard">
+          <div class="bcard-icon" style="background:var(--goldT)">📋</div>
+          <div class="bcard-title">Practice Visibility</div>
+          <div class="bcard-body">Organised tracking from pregnancy through motherhood — all in one place.</div>
+        </div>
+
+        <div class="bcard">
+          <div class="bcard-icon" style="background:var(--coralT)">🩺</div>
+          <div class="bcard-title">Doctor-Led Care</div>
+          <div class="bcard-body">Every answer aayi gives keeps your guidance central. aayi never replaces you.</div>
+        </div>
+
+        <div class="bcard">
+          <div class="bcard-icon" style="background:var(--amberT)">✅</div>
+          <div class="bcard-title">Zero Clinical Overhead</div>
+          <div class="bcard-body">30-sec onboarding. Nothing to set up. Nothing to manage. You see more, without doing more.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SLIDE 4 — Save Time Every Consultation
+  ══════════════════════════════════════ -->
+  <div class="slide" id="s4">
+    <div class="slide-header">
+      <div class="header-logo">
+        <div class="wordmark"><span class="wordmark-a1">a</span><span class="wordmark-a2">a</span><span class="wordmark-y">y</span><span class="wordmark-i">i</span></div>
+        <div class="header-tagline">Your AI companion for pregnancy &amp; motherhood</div>
+      </div>
+      <div class="slide-title">Save Time Every Consultation</div>
+    </div>
+    <div class="slide-body s4-body">
+      <div class="stat-row">
+        <div class="stat-tile" style="background:var(--amberT);border-color:var(--amber)">
+          <div class="stat-num" style="color:var(--amber)">30s</div>
+          <div class="stat-label">Consultation Prep</div>
+          <div class="stat-note">aayi AI Summary ready before you walk in</div>
+        </div>
+        <div class="stat-tile" style="background:var(--coralT);border-color:var(--coral)">
+          <div class="stat-num" style="color:var(--coral)">24/7</div>
+          <div class="stat-label">Patient Support</div>
+          <div class="stat-note">aayi handles routine questions — no midnight calls</div>
+        </div>
+        <div class="stat-tile" style="background:var(--oliveT);border-color:var(--olive)">
+          <div class="stat-num" style="color:var(--olive)">0</div>
+          <div class="stat-label">Extra Clinical Overhead</div>
+          <div class="stat-note">30-sec onboarding — easy to get started</div>
+        </div>
+      </div>
+
+      <div class="feature-row">
+        <div class="fcard">
+          <div class="fcard-title">AI Clinical Summary</div>
+          <div class="fcard-body">Before you see a patient, aayi generates a structured summary — symptoms logged, compliance status, flagged concerns. You walk in prepared.</div>
+        </div>
+        <div class="fcard">
+          <div class="fcard-title">Who Needs Follow-up</div>
+          <div class="fcard-body">aayi flags patients who missed check-ins, skipped vitamins, or logged concerning symptoms — so you prioritise without chasing.</div>
+        </div>
+        <div class="fcard">
+          <div class="fcard-title">One-View Patient Timeline</div>
+          <div class="fcard-body">Every symptom, vital, mood check, and question — organised chronologically. No piecing together a month of scattered notes.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SLIDE 5 — Full Patient History at a Glance
+  ══════════════════════════════════════ -->
+  <div class="slide" id="s5">
+    <div class="slide-header">
+      <div class="header-logo">
+        <div class="wordmark"><span class="wordmark-a1">a</span><span class="wordmark-a2">a</span><span class="wordmark-y">y</span><span class="wordmark-i">i</span></div>
+        <div class="header-tagline">Your AI companion for pregnancy &amp; motherhood</div>
+      </div>
+      <div class="slide-title">Full Patient History at a Glance</div>
+    </div>
+    <div class="slide-body s5-body">
+
+      <div class="s5-left">
+        <div class="hcard">
+          <div class="hcard-strip" style="background:var(--coral)"></div>
+          <div class="hcard-inner">
+            <div class="hcard-icon">📋</div>
+            <div class="hcard-title">AI Clinical Summary</div>
+            <div class="hcard-body">Auto-generated before each visit — symptoms, vitals, compliance, mood. Structured and ready in 30 seconds.</div>
+          </div>
+        </div>
+        <div class="hcard">
+          <div class="hcard-strip" style="background:var(--amber)"></div>
+          <div class="hcard-inner">
+            <div class="hcard-icon">⚠️</div>
+            <div class="hcard-title">High-Risk Flags</div>
+            <div class="hcard-body">Patients with missed scans, abnormal vitals, or PHQ-9 concerns are automatically surfaced for priority review.</div>
+          </div>
+        </div>
+        <div class="hcard">
+          <div class="hcard-strip" style="background:var(--olive)"></div>
+          <div class="hcard-inner">
+            <div class="hcard-icon">📈</div>
+            <div class="hcard-title">Compliance Dashboard</div>
+            <div class="hcard-body">See at a glance who followed their vitamin schedule, diet plan, and screening reminders between visits.</div>
+          </div>
+        </div>
+        <div class="hcard">
+          <div class="hcard-strip" style="background:var(--gold)"></div>
+          <div class="hcard-inner">
+            <div class="hcard-icon">💬</div>
+            <div class="hcard-title">All Questions Logged</div>
+            <div class="hcard-body">Every question a patient asked aayi — with the response given — is visible to you. Nothing is invisible.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="s5-right">
+        <div class="portal-mock">
+          <div class="portal-header">Doctor Portal &middot; app.aayi.ai/doctor-portal</div>
+          <div class="portal-patient">
+            <div class="patient-name">
+              Priya Sharma &middot; 28 weeks
+              <span class="risk-badge">HIGH RISK</span>
+            </div>
+            <div class="patient-sub">Next scan due in 3 days &middot; Missed iron supplement &times;2</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;padding-bottom:12px;">
+            <div class="ai-summary-block">
+              <div class="ai-summary-header">
+                <span style="background:var(--amber);color:#fff;font-size:8px;font-weight:800;padding:2px 5px;border-radius:4px;letter-spacing:0.07em">AI</span>
+                AI Clinical Summary
+              </div>
+              <span class="ai-bullet">• Patient reports mild lower-back pain (logged 3&times; this week)</span>
+              <span class="ai-bullet">• BP within normal range. Weight gain: +0.8 kg (on track)</span>
+              <span class="ai-bullet">• PHQ-9 score 7 — mild anxiety. Suggested counselling.</span>
+              <span class="ai-bullet">• Missed iron supplement: 2 of last 7 days</span>
+              <span class="ai-bullet">• All scheduled scans completed. Next: anomaly scan Fri</span>
+              <span class="ai-bullet">• 14 questions asked aayi this week — 2 flagged for doctor review</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SLIDE 6 — What Your Patients Get
+  ══════════════════════════════════════ -->
+  <div class="slide" id="s6">
+    <div class="slide-header">
+      <div class="header-logo">
+        <div class="wordmark"><span class="wordmark-a1">a</span><span class="wordmark-a2">a</span><span class="wordmark-y">y</span><span class="wordmark-i">i</span></div>
+        <div class="header-tagline">Your AI companion for pregnancy &amp; motherhood</div>
+      </div>
+      <div class="slide-title">What Your Patients Get</div>
+    </div>
+    <div class="slide-body s6-body">
+
+      <!-- LEFT PANEL -->
+      <div class="s6-left">
+        <div class="section-eyebrow">✦ AI-Powered Features</div>
+
+        <div class="ai-grid">
+
+          <!-- 24/7 AI Companion -->
+          <div class="ai-tile" style="border-color:var(--coral)">
+            <div class="ai-tile-top" style="background:var(--coralT)">
+              <span class="ai-tile-icon">🤖</span>
+              <span class="ai-badge" style="background:var(--coral)">AI</span>
+            </div>
+            <div class="ai-tile-body">
+              <div class="ai-tile-title" style="color:var(--coral)">24/7 AI Companion</div>
+            </div>
+          </div>
+
+          <!-- AI Wellness Insights -->
+          <div class="ai-tile" style="border-color:var(--amber)">
+            <div class="ai-tile-top" style="background:var(--amberT)">
+              <span class="ai-tile-icon">🧠</span>
+              <span class="ai-badge" style="background:var(--amber)">AI</span>
+            </div>
+            <div class="ai-tile-body">
+              <div class="ai-tile-title" style="color:var(--amber)">AI Wellness Insights</div>
+            </div>
+          </div>
+
+          <!-- AI Health Summary -->
+          <div class="ai-tile" style="border-color:var(--olive)">
+            <div class="ai-tile-top" style="background:var(--oliveT)">
+              <span class="ai-tile-icon">📊</span>
+              <span class="ai-badge" style="background:var(--olive)">AI</span>
+            </div>
+            <div class="ai-tile-body">
+              <div class="ai-tile-title" style="color:var(--olive)">AI Health Summary</div>
+            </div>
+          </div>
+
+          <!-- Cry Analyser -->
+          <div class="ai-tile" style="border-color:var(--teal)">
+            <div class="ai-tile-top" style="background:var(--tealT)">
+              <span class="ai-tile-icon">🎙️</span>
+              <span class="ai-badge" style="background:var(--teal)">AI</span>
+            </div>
+            <div class="ai-tile-body">
+              <div class="ai-tile-title" style="color:var(--teal)">Cry Analyser</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="std-eyebrow-row">
+          <div class="section-eyebrow" style="flex:1;margin-right:10px">Standard Features</div>
+          <span class="pricing-label">₹1,999/yr &middot; ₹2,999 lifetime &middot; Doctors free</span>
+        </div>
+
+        <div class="chips-row">
+          <span class="chip">📈 Growth Charts</span>
+          <span class="chip">💉 Vaccination Schedule</span>
+          <span class="chip">📅 Health Trackers</span>
+          <span class="chip">👶 Milestone Tracker</span>
+          <span class="chip">🤰 Pregnancy Tools</span>
+        </div>
+
+        <div class="cta-bar">
+          <span style="color:var(--amber);font-weight:700">aayi</span> supports your care — it never replaces it.
+        </div>
+      </div>
+
+      <!-- RIGHT PANEL -->
+      <div class="s6-right">
+        <div class="thankyou-card">
+          <div class="ty-header">
+            <div class="ty-big">Thank you</div>
+            <div class="ty-sub">for your time today</div>
+          </div>
+          <div class="ty-body">
+            <div class="ty-question">
+              <div class="ty-q-main">Any Questions?</div>
+              <div class="ty-q-sub">We'd love to hear from you</div>
+            </div>
+            <div class="action-buttons">
+              <div class="action-btn">📱<br>Try aayi App</div>
+              <div class="action-btn">📅<br>Book a Demo</div>
+              <div class="action-btn">🤝<br>Partner With Us</div>
+            </div>
+            <div class="qr-block">
+              <div class="qr-svg-wrap">
+                <!-- QR placeholder SVG -->
+                <svg width="90" height="90" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg" style="border-radius:6px;background:#fff;padding:4px">
+                  <!-- position detection patterns -->
+                  <rect x="4" y="4" width="22" height="22" rx="2" fill="#E8A141"/>
+                  <rect x="7" y="7" width="16" height="16" rx="1" fill="#fff"/>
+                  <rect x="10" y="10" width="10" height="10" fill="#E8A141"/>
+                  <rect x="64" y="4" width="22" height="22" rx="2" fill="#E8A141"/>
+                  <rect x="67" y="7" width="16" height="16" rx="1" fill="#fff"/>
+                  <rect x="70" y="10" width="10" height="10" fill="#E8A141"/>
+                  <rect x="4" y="64" width="22" height="22" rx="2" fill="#E8A141"/>
+                  <rect x="7" y="67" width="16" height="16" rx="1" fill="#fff"/>
+                  <rect x="10" y="70" width="10" height="10" fill="#E8A141"/>
+                  <!-- data modules -->
+                  <rect x="32" y="4" width="4" height="4" fill="#C94A35"/>
+                  <rect x="38" y="4" width="4" height="4" fill="#9A8030"/>
+                  <rect x="44" y="4" width="4" height="4" fill="#C94A35"/>
+                  <rect x="50" y="4" width="4" height="4" fill="#E8A141"/>
+                  <rect x="56" y="4" width="4" height="4" fill="#9A8030"/>
+                  <rect x="32" y="10" width="4" height="4" fill="#E8A141"/>
+                  <rect x="44" y="10" width="4" height="4" fill="#E8A141"/>
+                  <rect x="56" y="10" width="4" height="4" fill="#C94A35"/>
+                  <rect x="32" y="16" width="4" height="4" fill="#9A8030"/>
+                  <rect x="38" y="16" width="4" height="4" fill="#C94A35"/>
+                  <rect x="50" y="16" width="4" height="4" fill="#E8A141"/>
+                  <rect x="4" y="32" width="4" height="4" fill="#C94A35"/>
+                  <rect x="10" y="32" width="4" height="4" fill="#E8A141"/>
+                  <rect x="16" y="32" width="4" height="4" fill="#9A8030"/>
+                  <rect x="4" y="38" width="4" height="4" fill="#E8A141"/>
+                  <rect x="16" y="38" width="4" height="4" fill="#C94A35"/>
+                  <rect x="4" y="44" width="4" height="4" fill="#9A8030"/>
+                  <rect x="10" y="44" width="4" height="4" fill="#E8A141"/>
+                  <rect x="16" y="44" width="4" height="4" fill="#E8A141"/>
+                  <rect x="4" y="50" width="4" height="4" fill="#C94A35"/>
+                  <rect x="16" y="50" width="4" height="4" fill="#9A8030"/>
+                  <rect x="4" y="56" width="4" height="4" fill="#E8A141"/>
+                  <rect x="10" y="56" width="4" height="4" fill="#C94A35"/>
+                  <rect x="16" y="56" width="4" height="4" fill="#E8A141"/>
+                  <rect x="64" y="32" width="4" height="4" fill="#E8A141"/>
+                  <rect x="70" y="32" width="4" height="4" fill="#C94A35"/>
+                  <rect x="76" y="32" width="4" height="4" fill="#9A8030"/>
+                  <rect x="82" y="32" width="4" height="4" fill="#E8A141"/>
+                  <rect x="64" y="38" width="4" height="4" fill="#C94A35"/>
+                  <rect x="76" y="38" width="4" height="4" fill="#E8A141"/>
+                  <rect x="64" y="44" width="4" height="4" fill="#E8A141"/>
+                  <rect x="70" y="44" width="4" height="4" fill="#9A8030"/>
+                  <rect x="82" y="44" width="4" height="4" fill="#C94A35"/>
+                  <rect x="64" y="50" width="4" height="4" fill="#9A8030"/>
+                  <rect x="76" y="50" width="4" height="4" fill="#E8A141"/>
+                  <rect x="64" y="56" width="4" height="4" fill="#C94A35"/>
+                  <rect x="70" y="56" width="4" height="4" fill="#E8A141"/>
+                  <rect x="82" y="56" width="4" height="4" fill="#9A8030"/>
+                  <rect x="32" y="32" width="4" height="4" fill="#E8A141"/>
+                  <rect x="38" y="32" width="4" height="4" fill="#C94A35"/>
+                  <rect x="44" y="32" width="4" height="4" fill="#9A8030"/>
+                  <rect x="50" y="32" width="4" height="4" fill="#E8A141"/>
+                  <rect x="56" y="32" width="4" height="4" fill="#C94A35"/>
+                  <rect x="32" y="38" width="4" height="4" fill="#9A8030"/>
+                  <rect x="44" y="38" width="4" height="4" fill="#C94A35"/>
+                  <rect x="50" y="38" width="4" height="4" fill="#9A8030"/>
+                  <rect x="56" y="38" width="4" height="4" fill="#E8A141"/>
+                  <rect x="32" y="44" width="4" height="4" fill="#C94A35"/>
+                  <rect x="38" y="44" width="4" height="4" fill="#E8A141"/>
+                  <rect x="44" y="44" width="4" height="4" fill="#9A8030"/>
+                  <rect x="56" y="44" width="4" height="4" fill="#C94A35"/>
+                  <rect x="32" y="50" width="4" height="4" fill="#E8A141"/>
+                  <rect x="38" y="50" width="4" height="4" fill="#9A8030"/>
+                  <rect x="50" y="50" width="4" height="4" fill="#E8A141"/>
+                  <rect x="56" y="50" width="4" height="4" fill="#9A8030"/>
+                  <rect x="32" y="56" width="4" height="4" fill="#C94A35"/>
+                  <rect x="44" y="56" width="4" height="4" fill="#E8A141"/>
+                  <rect x="50" y="56" width="4" height="4" fill="#C94A35"/>
+                  <rect x="56" y="56" width="4" height="4" fill="#E8A141"/>
+                  <rect x="32" y="64" width="4" height="4" fill="#E8A141"/>
+                  <rect x="38" y="64" width="4" height="4" fill="#C94A35"/>
+                  <rect x="44" y="64" width="4" height="4" fill="#9A8030"/>
+                  <rect x="50" y="64" width="4" height="4" fill="#E8A141"/>
+                  <rect x="56" y="64" width="4" height="4" fill="#C94A35"/>
+                  <rect x="32" y="70" width="4" height="4" fill="#9A8030"/>
+                  <rect x="44" y="70" width="4" height="4" fill="#E8A141"/>
+                  <rect x="56" y="70" width="4" height="4" fill="#9A8030"/>
+                  <rect x="32" y="76" width="4" height="4" fill="#C94A35"/>
+                  <rect x="38" y="76" width="4" height="4" fill="#E8A141"/>
+                  <rect x="44" y="76" width="4" height="4" fill="#C94A35"/>
+                  <rect x="50" y="76" width="4" height="4" fill="#9A8030"/>
+                  <rect x="56" y="76" width="4" height="4" fill="#E8A141"/>
+                  <rect x="32" y="82" width="4" height="4" fill="#E8A141"/>
+                  <rect x="44" y="82" width="4" height="4" fill="#9A8030"/>
+                  <rect x="50" y="82" width="4" height="4" fill="#C94A35"/>
+                  <rect x="56" y="82" width="4" height="4" fill="#E8A141"/>
+                  <rect x="64" y="64" width="4" height="4" fill="#C94A35"/>
+                  <rect x="70" y="64" width="4" height="4" fill="#E8A141"/>
+                  <rect x="76" y="64" width="4" height="4" fill="#9A8030"/>
+                  <rect x="82" y="64" width="4" height="4" fill="#C94A35"/>
+                  <rect x="64" y="70" width="4" height="4" fill="#E8A141"/>
+                  <rect x="76" y="70" width="4" height="4" fill="#E8A141"/>
+                  <rect x="64" y="76" width="4" height="4" fill="#9A8030"/>
+                  <rect x="70" y="76" width="4" height="4" fill="#C94A35"/>
+                  <rect x="82" y="76" width="4" height="4" fill="#E8A141"/>
+                  <rect x="64" y="82" width="4" height="4" fill="#E8A141"/>
+                  <rect x="70" y="82" width="4" height="4" fill="#9A8030"/>
+                  <rect x="76" y="82" width="4" height="4" fill="#C94A35"/>
+                  <rect x="82" y="82" width="4" height="4" fill="#E8A141"/>
+                </svg>
+              </div>
+              <div class="qr-text">
+                <div class="qr-scan-label">Scan to Download</div>
+                <div class="qr-wordmark-large">
+                  <span style="color:var(--amber)">a</span><span style="color:var(--coral)">a</span><span style="color:var(--olive)">y</span><span style="color:var(--gold)">i</span>
+                </div>
+                <div class="qr-platforms">Free &middot; iOS &amp; Android<br>30 seconds to set up</div>
+                <div class="qr-url">app.aayi.ai</div>
+              </div>
+            </div>
+          </div>
+          <div class="contact-bar">hello@aayi.ai &middot; aayi.ai &middot; Book a live demo</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── Navigation ─── -->
+  <div id="nav">
+    <button class="nav-btn" id="prevBtn" aria-label="Previous slide">&#8592;</button>
+    <div class="dots" id="dots"></div>
+    <button class="nav-btn" id="nextBtn" aria-label="Next slide">&#8594;</button>
+    <span id="slide-counter">1 / 6</span>
+  </div>
+
+</div><!-- /#deck -->
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const dotsContainer = document.getElementById('dots');
+  const counter = document.getElementById('slide-counter');
+  const total = slides.length;
+  let current = 0;
+
+  // Build dots
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    d.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(d);
+  });
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    dotsContainer.children[current].classList.remove('active');
+    current = (n + total) % total;
+    slides[current].classList.add('active');
+    dotsContainer.children[current].classList.add('active');
+    counter.textContent = (current + 1) + ' / ' + total;
+  }
+
+  document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); goTo(current + 1); }
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   { e.preventDefault(); goTo(current - 1); }
+  });
+</script>
+
+</body>
+</html>
