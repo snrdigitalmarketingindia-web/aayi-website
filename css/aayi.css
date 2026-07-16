@@ -101,7 +101,7 @@ a    { color: var(--coral); }
 .logo { display: flex; align-items: center; gap: 18px; text-decoration: none; flex-shrink: 0; }
 .logo-icon { display: block; width: 108px; height: 108px; flex-shrink: 0; }
 .logo-text { display: flex; flex-direction: column; gap: 4px; }
-.logo-wordmark { font-size: 78px; font-weight: 900; line-height: 1; color: var(--maroon); letter-spacing: -3px; }
+.logo-wordmark { font-size: 78px; font-weight: 900; line-height: 1; letter-spacing: -3px; }
 .logo-sub { font-size: 15px; color: var(--ink-60); font-weight: 500; white-space: nowrap; }
 /* Pills + CTA row */
 .nav-bottom { display: flex; align-items: center; gap: 12px; }
