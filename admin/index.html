@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>aayi · Admin</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --maroon:#8B1A2E;--amber:#E8A141;--coral:#C94A35;--olive:#9A8030;--gold:#D99659;
+  --bg:#F8F6F1;--surface:#FFFFFF;--border:#E8E4DC;--text:#1A1A1A;--muted:#6B6B6B;--light:#F2EFE8;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* ── LOGIN ── */
+#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem}
+.login-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2.5rem 2rem;width:100%;max-width:380px;text-align:center;box-shadow:0 4px 24px rgba(0,0,0,.06)}
+.login-logo{font-size:48px;font-weight:900;letter-spacing:-2px;line-height:1;margin-bottom:4px}
+.login-logo .la1{color:#E8A141}.login-logo .la2{color:#C94A35}.login-logo .ly{color:#9A8030}.login-logo .li{color:#D99659}
+.login-sub{font-size:13px;color:var(--muted);margin-bottom:2rem}
+.login-label{font-size:12px;color:var(--muted);text-align:left;margin-bottom:6px;display:block}
+.login-input{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:10px 14px;font-size:15px;outline:none;transition:border-color .2s;background:var(--bg)}
+.login-input:focus{border-color:var(--amber)}
+.login-btn{width:100%;margin-top:14px;padding:11px;background:var(--maroon);color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:500;cursor:pointer;transition:opacity .2s}
+.login-btn:hover{opacity:.88}
+.login-err{font-size:13px;color:var(--coral);margin-top:10px;display:none}
+.login-note{font-size:11px;color:var(--muted);margin-top:1.5rem;line-height:1.5}
+
+/* ── ADMIN PANEL ── */
+#admin-panel{display:none}
+.top-bar{background:var(--maroon);color:#fff;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:100}
+.top-bar-logo{font-size:28px;font-weight:900;letter-spacing:-1.5px}
+.top-bar-logo .la1{color:#E8A141}.top-bar-logo .la2{color:#C94A35}.top-bar-logo .ly{color:#9A8030}.top-bar-logo .li{color:#D99659}
+.top-bar-title{font-size:13px;opacity:.75;margin-left:12px}
+.top-bar-right{display:flex;align-items:center;gap:12px}
+.logout-btn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:6px;padding:5px 12px;font-size:13px;cursor:pointer}
+.logout-btn:hover{background:rgba(255,255,255,.25)}
+
+.admin-body{max-width:1200px;margin:0 auto;padding:2rem 1.5rem}
+
+/* stats */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:2rem}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center}
+.stat-num{font-size:28px;font-weight:700;line-height:1}
+.stat-label{font-size:12px;color:var(--muted);margin-top:4px}
+.stat-amber .stat-num{color:var(--amber)}
+.stat-coral .stat-num{color:var(--coral)}
+.stat-olive .stat-num{color:var(--olive)}
+.stat-maroon .stat-num{color:var(--maroon)}
+
+/* toolbar */
+.toolbar{display:flex;align-items:center;gap:10px;margin-bottom:1rem;flex-wrap:wrap}
+.toolbar-title{font-size:17px;font-weight:600;flex:1}
+.filter-btn{background:var(--light);border:1px solid var(--border);border-radius:6px;padding:5px 12px;font-size:12px;cursor:pointer;color:var(--muted)}
+.filter-btn.active{background:var(--maroon);color:#fff;border-color:var(--maroon)}
+.export-btn{background:var(--surface);border:1.5px solid var(--border);border-radius:6px;padding:5px 14px;font-size:12px;cursor:pointer;font-weight:500}
+.export-btn:hover{background:var(--light)}
+.search-box{border:1.5px solid var(--border);border-radius:6px;padding:5px 12px;font-size:13px;width:200px;outline:none}
+.search-box:focus{border-color:var(--amber)}
+
+/* leads grid */
+.leads-grid{display:flex;flex-direction:column;gap:10px}
+.lead-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.lead-header{display:flex;align-items:center;gap:14px;padding:14px 16px;cursor:pointer;user-select:none}
+.lead-header:hover{background:var(--light)}
+.avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0}
+.av1{background:#E1F5EE;color:#0F6E56}
+.av2{background:#FAECE7;color:#993C1D}
+.av3{background:#E6F1FB;color:#185FA5}
+.av4{background:#FAEEDA;color:#854F0B}
+.av5{background:#EEEDFE;color:#534AB7}
+.av6{background:#FBEAF0;color:#993556}
+.lead-info{flex:1}
+.lead-name{font-weight:600;font-size:14px}
+.lead-role{font-size:12px;color:var(--muted);margin-top:2px}
+.lead-tags{display:flex;gap:6px;align-items:center}
+.tag{font-size:11px;padding:3px 8px;border-radius:20px;white-space:nowrap}
+.tag-v{background:#EAF3DE;color:#3B6D11}
+.tag-u{background:#FAEEDA;color:#854F0B}
+.tag-m{background:#E6F1FB;color:#185FA5}
+.chevron{transition:transform .2s;color:var(--muted);font-size:18px}
+.lead-card.open .chevron{transform:rotate(180deg)}
+
+.lead-body{display:none;border-top:1px solid var(--border);padding:14px 16px}
+.lead-card.open .lead-body{display:block}
+.detail-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px 20px;margin-bottom:12px}
+.detail-item{}
+.detail-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.detail-val{font-size:13px;color:var(--text)}
+.detail-val a{color:var(--maroon);text-decoration:none}
+.detail-val a:hover{text-decoration:underline}
+.social-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.s-pill{display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:4px 10px;border-radius:20px;text-decoration:none;border:1px solid;white-space:nowrap}
+.s-fb{background:#EEF2FF;border-color:#B5D4F4;color:#185FA5}
+.s-ig{background:#FBEAF0;border-color:#ED93B1;color:#993556}
+.s-yt{background:#FCEBEB;border-color:#F09595;color:#A32D2D}
+.s-tw{background:#E6F1FB;border-color:#85B7EB;color:#185FA5}
+.s-web{background:var(--light);border-color:var(--border);color:var(--muted)}
+.s-none{background:var(--light);border-color:var(--border);color:var(--muted);font-style:italic}
+.geo-badge{font-size:11px;color:var(--muted);margin-top:6px}
+
+.hidden{display:none!important}
+.empty-state{text-align:center;padding:3rem;color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+
+<!-- ── LOGIN ── -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo"><span class="la1">a</span><span class="la2">a</span><span class="ly">y</span><span class="li">i</span></div>
+    <div class="login-sub">Admin Portal</div>
+    <label class="login-label" for="pwd">Password</label>
+    <input id="pwd" class="login-input" type="password" placeholder="Enter admin password" autocomplete="current-password">
+    <button class="login-btn" onclick="tryLogin()">Sign In</button>
+    <div id="login-err" class="login-err">Incorrect password. Try again.</div>
+    <div class="login-note">This portal is for authorised aayi team members only.<br>Access is logged.</div>
+  </div>
+</div>
+
+<!-- ── ADMIN PANEL ── -->
+<div id="admin-panel">
+  <div class="top-bar">
+    <div style="display:flex;align-items:center">
+      <span class="top-bar-logo"><span class="la1">a</span><span class="la2">a</span><span class="ly">y</span><span class="li">i</span></span>
+      <span class="top-bar-title">· Admin · Fehmicon Leads</span>
+    </div>
+    <div class="top-bar-right">
+      <span id="session-user" style="font-size:12px;opacity:.7"></span>
+      <button class="logout-btn" onclick="logout()">Sign out</button>
+    </div>
+  </div>
+
+  <div class="admin-body">
+    <div class="stats-row">
+      <div class="stat-card stat-amber"><div class="stat-num">6</div><div class="stat-label">Total leads</div></div>
+      <div class="stat-card stat-coral"><div class="stat-num">5</div><div class="stat-label">Doctors</div></div>
+      <div class="stat-card stat-olive"><div class="stat-num">4</div><div class="stat-label">Verified + social</div></div>
+      <div class="stat-card stat-maroon"><div class="stat-num">1</div><div class="stat-label">High priority</div></div>
+    </div>
+
+    <div class="toolbar">
+      <span class="toolbar-title">Fehmicon 2026 — Doctor Leads</span>
+      <button class="filter-btn active" data-filter="all" onclick="setFilter(this)">All</button>
+      <button class="filter-btn" data-filter="verified" onclick="setFilter(this)">Verified</button>
+      <button class="filter-btn" data-filter="unverified" onclick="setFilter(this)">Needs follow-up</button>
+      <button class="filter-btn" data-filter="media" onclick="setFilter(this)">Media</button>
+      <input class="search-box" type="text" placeholder="Search name, hospital…" oninput="searchLeads(this.value)">
+      <button class="export-btn" onclick="exportCSV()">⬇ Export CSV</button>
+    </div>
+
+    <div class="leads-grid" id="leads-grid"></div>
+    <div id="empty-state" class="empty-state hidden">No leads match your search.</div>
+  </div>
+</div>
+
+<script>
+const PWD_HASH = '64cb4de9a48ee662f5bd3736479212ffe5536c63c1e35347fd4e13d6de37f9f6';
+
+const LEADS = [
+  {
+    id:1, initials:'SV', avClass:'av1',
+    name:'Dr Sri Vidya (Srividya Tadru)', role:'Gynecologist & Obstetrician',
+    hospital:'Samraksha Hospital for Women & Children', area:'Hasthinapuram / BN Reddy Nagar, Hyderabad',
+    address:'8-7-91/15/115, Nagarjuna Sagar Rd, Phase 4, Hasthinapuram South, Hyderabad — 500 079',
+    phone:'+91 88923 19999 / +91 63095 85858', email:'info@samrakshahospital.com',
+    specialties:'Hysteroscopy · Infertility · Laparoscopy · Fetal medicine',
+    qualifications:'MBBS, MD OBG', experience:'',
+    geo:'17.3092° N, 78.5527° E',
+    social:{
+      fb:'https://www.facebook.com/samrakshahospitals.in/',
+      ig:'https://www.instagram.com/samraksha.hospital/',
+      igHandle:'@samraksha.hospital (1,509 followers)',
+      yt:'https://www.youtube.com/channel/UC4pY-zXLtpuf32ijz82Xtfw',
+      web:'https://samrakshahospital.com'
+    },
+    status:'verified', priority:'normal',
+    notes:'Instagram active; YouTube active. Tagline: "From bump to baby & beyond".'
+  },
+  {
+    id:2, initials:'SP', avClass:'av2',
+    name:'Dr Sushmitha Palleboina', role:'Gynecologist / Obstetrician',
+    hospital:'Private clinic', area:'Balapur, South Hyderabad',
+    address:'Balapur, Hyderabad', phone:'—', email:'—',
+    specialties:'OBG', qualifications:'—', experience:'',
+    geo:'17.3089° N, 78.5622° E',
+    social:{},
+    status:'unverified', priority:'normal',
+    notes:'No public listing found. Surname spelling may vary. Confirm phone and details directly.'
+  },
+  {
+    id:3, initials:'RD', avClass:'av3',
+    name:'Dr P Rama Devi', role:'Gynecologist & Obstetrician · 43 yrs experience',
+    hospital:'Rama Devi Hospitals', area:'Moulali / Secunderabad, Hyderabad',
+    address:'MIG-H-97, Ambica Towers, Moula Ali Rd, MJ Colony, Moulali, Secunderabad — 500 040',
+    phone:'9848965608', email:'—',
+    specialties:'IVF-ET · Menopausal care · Nuchal scan · Fertility · Lactation counselling',
+    qualifications:'MBBS (1983) · MD OBG (1986) — Gandhi Medical College · IMA member', experience:'43 years',
+    geo:'17.4629° N, 78.5612° E',
+    social:{},
+    status:'verified', priority:'normal',
+    notes:'Also listed online as +91 96764 74415. No confirmed social media for Moula Ali branch.'
+  },
+  {
+    id:4, initials:'GR', avClass:'av4',
+    name:'Gayatri Reddy', role:'Media — G3 Media channel',
+    hospital:'G3 Media', area:'Hyderabad',
+    address:'Hyderabad (address not publicly listed)', phone:'9110535330', email:'—',
+    specialties:'Media / Journalism', qualifications:'—', experience:'',
+    geo:'17.3619° N, 78.4754° E',
+    social:{
+      ig:'https://www.instagram.com/g3_journal/',
+      igHandle:'@g3_journal',
+      yt:'https://www.youtube.com/@gayathri_reddy',
+      tw:'https://x.com/gayatri008_16',
+      twHandle:'@gayatri008_16'
+    },
+    status:'media', priority:'normal',
+    notes:'Media partner, not a doctor. Personal creator accounts found. G3 Media as org not in mainstream directories — confirm channel type.'
+  },
+  {
+    id:5, initials:'LR', avClass:'av5',
+    name:'Dr K Lalitha Reddy', role:'Gynecologist & Obstetrician · 33 yrs experience',
+    hospital:'Nightingale Multispeciality Hospital', area:'Santosh Nagar, Saidabad, Hyderabad',
+    address:'17-1-383/9, Saidabad X Road, Santosh Nagar, Hyderabad — 500 059',
+    phone:'9246346367', email:'—',
+    specialties:'OBG · Multispeciality', qualifications:'—', experience:'33 years',
+    geo:'17.3564° N, 78.5088° E',
+    social:{
+      fb:'https://www.facebook.com/p/Nightingale-Hospital-100092403657998/',
+      ig:'https://www.instagram.com/nightingale_hospital/',
+      igHandle:'@nightingale_hospital (127 posts)',
+      web:'https://nightingalehospitals.in'
+    },
+    status:'verified', priority:'normal',
+    notes:'Hospital rated 4.4/5 with 1,504 ratings. Near Hima Bindu Blood Bank. Opp. Ambar Biscuit Factory.'
+  },
+  {
+    id:6, initials:'SR', avClass:'av6',
+    name:'Dr B Sandhya Rani', role:'OBG Association President, Warangal · FICOG · 30 yrs',
+    hospital:'Laxmi Narasimha Hospital', area:'Kishanpura, Hanamkonda, Warangal',
+    address:'2-2-316, Warangal-Huzurabad Road, Naim Nagar, beside Pushpanjali Function Hall, Kishanpura, Hanamkonda, Warangal — 506 001',
+    phone:'+91 95509 78696 / +91 63665 30173', email:'—',
+    specialties:'High-risk pregnancy · Gynaecological endoscopy · Infertility · Laparoscopy',
+    qualifications:'MBBS · DGO · MD OBG · FICOG', experience:'30 years',
+    geo:'17.9785° N, 79.5941° E',
+    social:{
+      fb:'https://www.facebook.com/LaxmiNarasimhaHospital/',
+      ig:'https://www.instagram.com/laxminarasimhahospital/',
+      igHandle:'@laxminarasimhahospital',
+      web:'https://www.laxminarasimhahospital.in'
+    },
+    status:'verified', priority:'high',
+    notes:'OBG Association President — invited aayi team to Warangal. NABH accredited. Best chapter demo opportunity — follow up urgently.'
+  }
+];
+
+async function sha256(str){
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+async function tryLogin(){
+  const val = document.getElementById('pwd').value;
+  const hash = await sha256(val);
+  if(hash === PWD_HASH){
+    sessionStorage.setItem('aayi_admin','1');
+    document.getElementById('login-screen').style.display='none';
+    document.getElementById('admin-panel').style.display='block';
+    renderLeads(LEADS);
+  } else {
+    const err = document.getElementById('login-err');
+    err.style.display='block';
+    document.getElementById('pwd').value='';
+    setTimeout(()=>err.style.display='none', 3000);
+  }
+}
+
+document.getElementById('pwd').addEventListener('keydown',e=>{if(e.key==='Enter') tryLogin();});
+
+function logout(){
+  sessionStorage.removeItem('aayi_admin');
+  location.reload();
+}
+
+if(sessionStorage.getItem('aayi_admin')==='1'){
+  document.getElementById('login-screen').style.display='none';
+  document.getElementById('admin-panel').style.display='block';
+  renderLeads(LEADS);
+}
+
+let currentFilter='all';
+
+function setFilter(btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  currentFilter = btn.dataset.filter;
+  applyFilters();
+}
+
+function searchLeads(q){
+  applyFilters(q);
+}
+
+function applyFilters(q){
+  const query = (q || document.querySelector('.search-box').value || '').toLowerCase();
+  let filtered = LEADS;
+  if(currentFilter !== 'all') filtered = filtered.filter(l=>l.status===currentFilter);
+  if(query) filtered = filtered.filter(l=>(l.name+l.hospital+l.area+l.role).toLowerCase().includes(query));
+  renderLeads(filtered);
+}
+
+function renderLeads(list){
+  const grid = document.getElementById('leads-grid');
+  const empty = document.getElementById('empty-state');
+  if(!list.length){ grid.innerHTML=''; empty.classList.remove('hidden'); return; }
+  empty.classList.add('hidden');
+  grid.innerHTML = list.map(l=>cardHTML(l)).join('');
+}
+
+function cardHTML(l){
+  const statusTag = l.status==='verified' ? '<span class="tag tag-v">Verified</span>'
+    : l.status==='media' ? '<span class="tag tag-m">Media</span>'
+    : '<span class="tag tag-u">Needs follow-up</span>';
+  const priorityTag = l.priority==='high' ? '<span class="tag" style="background:#FCEBEB;color:#A32D2D">High priority</span>' : '';
+
+  const socials = [];
+  if(l.social.fb) socials.push(`<a class="s-pill s-fb" href="${l.social.fb}" target="_blank" rel="noopener">📘 Facebook</a>`);
+  if(l.social.ig) socials.push(`<a class="s-pill s-ig" href="${l.social.ig}" target="_blank" rel="noopener">📷 ${l.social.igHandle||'Instagram'}</a>`);
+  if(l.social.yt) socials.push(`<a class="s-pill s-yt" href="${l.social.yt}" target="_blank" rel="noopener">▶ YouTube</a>`);
+  if(l.social.tw) socials.push(`<a class="s-pill s-tw" href="${l.social.tw}" target="_blank" rel="noopener">𝕏 ${l.social.twHandle||'Twitter/X'}</a>`);
+  if(l.social.web) socials.push(`<a class="s-pill s-web" href="${l.social.web}" target="_blank" rel="noopener">🌐 Website</a>`);
+  if(!socials.length) socials.push(`<span class="s-pill s-none">No social media found</span>`);
+
+  const gmapsUrl = `https://www.google.com/maps/search/${encodeURIComponent(l.hospital+' '+l.area)}`;
+
+  return `
+<div class="lead-card" id="card-${l.id}">
+  <div class="lead-header" onclick="toggleCard(${l.id})">
+    <div class="avatar ${l.avClass}">${l.initials}</div>
+    <div class="lead-info">
+      <div class="lead-name">${l.name}</div>
+      <div class="lead-role">${l.hospital} · ${l.area}</div>
+    </div>
+    <div class="lead-tags">${statusTag}${priorityTag}</div>
+    <span class="chevron">⌄</span>
+  </div>
+  <div class="lead-body">
+    <div class="detail-grid">
+      <div class="detail-item">
+        <div class="detail-label">Role</div>
+        <div class="detail-val">${l.role}</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">Hospital / Organisation</div>
+        <div class="detail-val">${l.hospital}</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">Address</div>
+        <div class="detail-val"><a href="${gmapsUrl}" target="_blank" rel="noopener">${l.address}</a></div>
+        <div class="geo-badge">📍 ${l.geo}</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">Phone</div>
+        <div class="detail-val">${l.phone !== '—' ? `<a href="tel:${l.phone.replace(/[^+\d]/g,'')}">${l.phone}</a>` : '—'}</div>
+      </div>
+      ${l.email && l.email!=='—' ? `<div class="detail-item"><div class="detail-label">Email</div><div class="detail-val"><a href="mailto:${l.email}">${l.email}</a></div></div>` : ''}
+      ${l.specialties ? `<div class="detail-item"><div class="detail-label">Specialties</div><div class="detail-val">${l.specialties}</div></div>` : ''}
+      ${l.qualifications && l.qualifications!=='—' ? `<div class="detail-item"><div class="detail-label">Qualifications</div><div class="detail-val">${l.qualifications}</div></div>` : ''}
+      ${l.experience ? `<div class="detail-item"><div class="detail-label">Experience</div><div class="detail-val">${l.experience}</div></div>` : ''}
+      ${l.notes ? `<div class="detail-item" style="grid-column:1/-1"><div class="detail-label">Notes</div><div class="detail-val">${l.notes}</div></div>` : ''}
+    </div>
+    <div class="detail-label">Social media</div>
+    <div class="social-row">${socials.join('')}</div>
+  </div>
+</div>`;
+}
+
+function toggleCard(id){
+  const card = document.getElementById('card-'+id);
+  card.classList.toggle('open');
+}
+
+function exportCSV(){
+  const headers = ['Name','Role','Hospital','Area','Address','Phone','Email','Specialties','Qualifications','Experience','Geo','Facebook','Instagram','YouTube','Twitter/X','Website','Status','Notes'];
+  const rows = LEADS.map(l=>[
+    l.name, l.role, l.hospital, l.area, l.address, l.phone, l.email,
+    l.specialties, l.qualifications, l.experience, l.geo,
+    l.social.fb||'', l.social.ig||'', l.social.yt||'', l.social.tw||'', l.social.web||'',
+    l.status, l.notes
+  ].map(v=>`"${String(v).replace(/"/g,'""')}"`).join(','));
+  const csv = [headers.join(','), ...rows].join('\n');
+  const a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,'+encodeURIComponent(csv);
+  a.download = 'fehmicon_leads.csv';
+  a.click();
+}
+</script>
+</body>
+</html>
