@@ -491,7 +491,11 @@
     /* CTA buttons — horizontal on pills row */
     .nav-cta { display: flex; flex-direction: row; gap: 8px; align-items: center; flex-shrink: 0; }
     .nav-cta .btn { font-size: 13px; padding: 9px 18px; text-align: center; }
-    .nav-burger { display: none; background: none; border: 0; font-size: 26px; line-height: 1; color: var(--maroon); cursor: pointer; padding: 6px 2px 6px 10px; }
+    .nav-burger {
+      display: none; background: none; border: 0;
+      font-size: 26px; line-height: 1; color: var(--maroon);
+      cursor: pointer; padding: 6px; margin-left: auto; flex-shrink: 0;
+    }
     /* Responsive */
     @media (max-width: 900px) {
       .logo-icon { width: 80px; height: 80px; }
@@ -982,19 +986,30 @@
       .footer-grid  { grid-template-columns: 1fr 1fr; gap: 32px; }
       .pain-solution-row { grid-template-columns: 1fr; }
       .pain-solution-arrow { display: none; }
-      .nav-links { display: none; }
+      .cta-split-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+      .hero-trust { flex-wrap: wrap; gap: 12px 20px; }
+      .trust-stat { flex: 1; min-width: 90px; }
+      .trust-divider { display: none; }
+      .trust-logos { gap: 16px; }
+      .trust-bar-inner { gap: 12px; }
+      .nav-bottom { display: none; }
       .nav-burger { display: block; }
-      .nav.nav-open .nav-links {
-        display: flex; flex-direction: column; gap: 18px;
-        position: absolute; top: 100%; left: 0; right: 0;
-        background: #fff; padding: 20px 24px 24px;
+      .nav.nav-open .nav-bottom {
+        display: flex; flex-direction: column; gap: 0;
+        position: absolute; top: 100%; left: 0; right: 0; z-index: 999;
+        background: #fff; padding: 12px 20px 20px;
         border-bottom: 1px solid var(--ink-10);
         box-shadow: 0 12px 24px rgba(42,16,8,0.12);
       }
-      .section  { padding: 64px 0; }
-    }
-    @media (max-width: 480px) {
-      .nav-cta .btn-outline { display: none; }
+      .nav.nav-open .nav-links {
+        display: flex; flex-direction: column; gap: 4px; margin-bottom: 14px;
+      }
+      .nav.nav-open .nav-links a { border-radius: 8px; padding: 10px 14px; font-size: 15px; }
+      .nav.nav-open .nav-cta {
+        display: flex; gap: 8px; border-top: 1px solid var(--ink-10); padding-top: 14px;
+      }
+      .nav.nav-open .nav-cta .btn { flex: 1; justify-content: center; }
+      .section { padding: 64px 0; }
     }
 
     /* ── ANIMATION ── */
@@ -1394,7 +1409,7 @@
     <!-- ═══ DEMO FORM + CTA ════════════════════════════════ -->
     <section class="cta-section" id="demo" aria-labelledby="demo-heading">
       <div class="container cta-inner">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;text-align:left">
+        <div class="cta-split-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;text-align:left">
           <div>
             <div class="eyebrow eyebrow-dark">Start Today — Free Pilot</div>
             <h2 id="demo-heading" class="cta-title" style="text-align:left">

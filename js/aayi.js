@@ -24,7 +24,8 @@
         burger.setAttribute('aria-label', 'Open menu');
       }
     });
-    inner.appendChild(burger);
+    var navTop = nav.querySelector('.nav-top') || inner;
+    navTop.appendChild(burger);
   }
 
   /* Scroll-reveal */
