@@ -95,7 +95,7 @@ a    { color: var(--coral); }
   border-bottom: 1px solid var(--ink-10);
   box-shadow: 0 2px 12px rgba(42,16,8,0.07);
 }
-.nav-inner { display: flex; flex-direction: column; padding: 14px 0 10px; gap: 10px; }
+.nav-inner { display: flex; flex-direction: column; padding-top: 14px; padding-bottom: 10px; gap: 10px; }
 .nav-top { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 /* Logo: icon + HTML wordmark */
 .logo { display: flex; align-items: center; gap: 18px; text-decoration: none; flex-shrink: 0; }
@@ -140,10 +140,11 @@ a    { color: var(--coral); }
   .nav-links a { font-size: 13px; padding: 8px 14px; }
 }
 @media (max-width: 768px) {
-  .nav-inner { padding: 8px 0 6px; gap: 6px; }
-  .logo-icon { width: 52px; height: 52px; }
-  .logo-wordmark { font-size: 38px; letter-spacing: -1px; }
+  .nav-inner { padding-top: 10px; padding-bottom: 10px; gap: 6px; }
+  .logo-icon { width: 40px; height: 40px; }
+  .logo-wordmark { font-size: 30px; letter-spacing: -1px; }
   .logo-sub { display: none; }
+  .logo { gap: 10px; }
 }
 @media (max-width: 480px) {
   .logo-icon { width: 40px; height: 40px; }
@@ -295,15 +296,17 @@ details[open] .faq-chevron { transform: rotate(180deg); }
 /* ── MOBILE NAV ── */
 .nav-burger {
   display: none; background: none; border: 0;
-  font-size: 26px; line-height: 1; color: var(--maroon);
-  cursor: pointer; padding: 6px; margin-left: auto; flex-shrink: 0;
+  font-size: 22px; line-height: 1; color: var(--maroon);
+  cursor: pointer; padding: 10px; flex-shrink: 0;
+  min-width: 44px; min-height: 44px;
+  display: none; align-items: center; justify-content: center;
 }
 
 /* ── MOBILE ── */
 @media (max-width: 768px) {
   .grid-3, .grid-2 { grid-template-columns: 1fr; }
   .nav-bottom { display: none; }
-  .nav-burger { display: block; }
+  .nav-burger { display: flex; }
   .nav.nav-open .nav-bottom {
     display: flex; flex-direction: column; gap: 0;
     position: absolute; top: 100%; left: 0; right: 0; z-index: 999;

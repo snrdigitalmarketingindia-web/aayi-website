@@ -437,7 +437,7 @@
     }
     .nav-inner {
       display: flex; flex-direction: column;
-      padding: 14px 0 10px; gap: 10px;
+      padding-top: 14px; padding-bottom: 10px; gap: 10px;
     }
     .nav-top {
       display: flex; align-items: center;
@@ -493,8 +493,10 @@
     .nav-cta .btn { font-size: 13px; padding: 9px 18px; text-align: center; }
     .nav-burger {
       display: none; background: none; border: 0;
-      font-size: 26px; line-height: 1; color: var(--maroon);
-      cursor: pointer; padding: 6px; margin-left: auto; flex-shrink: 0;
+      font-size: 22px; line-height: 1; color: var(--maroon);
+      cursor: pointer; padding: 10px; flex-shrink: 0;
+      min-width: 44px; min-height: 44px;
+      align-items: center; justify-content: center;
     }
     /* Responsive */
     @media (max-width: 900px) {
@@ -503,10 +505,12 @@
       .nav-links a { font-size: 13px; padding: 8px 14px; }
     }
     @media (max-width: 768px) {
-      .nav-inner { padding: 8px 0 6px; gap: 6px; }
-      .logo-icon { width: 52px; height: 52px; }
-      .logo-wordmark { font-size: 38px; letter-spacing: -1px; }
+      .nav-inner { padding-top: 10px; padding-bottom: 10px; gap: 6px; }
+      .logo-icon { width: 40px; height: 40px; }
+      .logo-wordmark { font-size: 30px; letter-spacing: -1px; }
       .logo-sub { display: none; }
+      .logo { gap: 10px; }
+      .nav-burger { display: flex; }
     }
     @media (max-width: 480px) {
       .logo-icon { width: 40px; height: 40px; }
@@ -993,7 +997,7 @@
       .trust-logos { gap: 16px; }
       .trust-bar-inner { gap: 12px; }
       .nav-bottom { display: none; }
-      .nav-burger { display: block; }
+      .nav-burger { display: flex; }
       .nav.nav-open .nav-bottom {
         display: flex; flex-direction: column; gap: 0;
         position: absolute; top: 100%; left: 0; right: 0; z-index: 999;
