@@ -95,21 +95,22 @@ a    { color: var(--coral); }
   border-bottom: 1px solid var(--ink-10);
   box-shadow: 0 2px 12px rgba(42,16,8,0.07);
 }
-.nav-inner { display: flex; flex-direction: column; padding-top: 14px; padding-bottom: 10px; gap: 10px; }
-.nav-top { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-/* Logo: icon + HTML wordmark */
-.logo { display: flex; align-items: center; gap: 18px; text-decoration: none; flex-shrink: 0; }
-.logo-icon { display: block; width: 108px; height: 108px; flex-shrink: 0; }
-.logo-text { display: flex; flex-direction: column; gap: 4px; }
-.logo-wordmark { font-size: 78px; font-weight: 900; line-height: 1; letter-spacing: -3px; }
-.logo-sub { font-size: 15px; color: var(--ink-60); font-weight: 500; white-space: nowrap; }
-/* Pills + CTA row */
-.nav-bottom { display: flex; align-items: center; gap: 12px; }
-.nav-links { display: flex; gap: 8px; list-style: none; flex-wrap: nowrap; }
+/* Single-row on desktop: logo left | links right */
+.nav-inner { display: flex; flex-direction: row; align-items: center; padding: 10px 0; gap: 20px; }
+.nav-top { display: flex; align-items: center; flex-shrink: 0; }
+/* Logo */
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
+.logo-icon { display: block; width: 44px; height: 44px; flex-shrink: 0; }
+.logo-text { display: flex; flex-direction: column; gap: 2px; }
+.logo-wordmark { font-size: 32px; font-weight: 900; line-height: 1; letter-spacing: -1.5px; }
+.logo-sub { display: none; }
+/* Pills + CTA row — takes remaining space, right-aligned */
+.nav-bottom { flex: 1; display: flex; align-items: center; justify-content: flex-end; gap: 12px; }
+.nav-links { display: flex; gap: 6px; list-style: none; flex-wrap: nowrap; }
 .nav-links a {
   display: inline-block; white-space: nowrap;
-  font-size: 15px; font-weight: 700; text-decoration: none;
-  padding: 10px 20px; border-radius: 999px;
+  font-size: 13px; font-weight: 700; text-decoration: none;
+  padding: 8px 14px; border-radius: 999px;
   transition: background .18s, color .18s, transform .18s, box-shadow .18s;
 }
 .nav-links a:hover { color: #fff; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(42,16,8,0.18); }
@@ -133,22 +134,18 @@ a    { color: var(--coral); }
 /* CTA */
 .nav-cta { display: flex; flex-direction: row; gap: 8px; align-items: center; flex-shrink: 0; }
 .nav-cta .btn { font-size: 13px; padding: 9px 18px; text-align: center; }
-/* Responsive */
-@media (max-width: 900px) {
-  .logo-icon { width: 80px; height: 80px; }
-  .logo-wordmark { font-size: 58px; }
-  .nav-links a { font-size: 13px; padding: 8px 14px; }
+/* Tablet — tighten links */
+@media (max-width: 1100px) {
+  .nav-links a { font-size: 12px; padding: 7px 10px; }
+  .nav-links { gap: 4px; }
 }
+/* Mobile — switch to hamburger layout */
 @media (max-width: 768px) {
-  .nav-inner { padding-top: 10px; padding-bottom: 10px; gap: 6px; }
-  .logo-icon { width: 40px; height: 40px; }
-  .logo-wordmark { font-size: 30px; letter-spacing: -1px; }
-  .logo-sub { display: none; }
-  .logo { gap: 10px; }
-}
-@media (max-width: 480px) {
-  .logo-icon { width: 40px; height: 40px; }
-  .logo-wordmark { font-size: 30px; }
+  .nav-inner { flex-direction: column; align-items: stretch; padding-top: 10px; padding-bottom: 10px; gap: 4px; }
+  .nav-top { justify-content: space-between; }
+  .logo-icon { width: 38px; height: 38px; }
+  .logo-wordmark { font-size: 26px; letter-spacing: -1px; }
+  .logo { gap: 8px; }
 }
 
 /* ── CARDS ── */
