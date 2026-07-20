@@ -1,0 +1,493 @@
+<title>Fehmicon Doctors — Social Media Audit</title>
+<style>
+  :root {
+    --bg: #F8F9FC;
+    --surface: #FFFFFF;
+    --border: #E2E8F0;
+    --text: #1A202C;
+    --muted: #718096;
+    --accent: #0B7FD4;
+    --teal: #0891B2;
+    --green: #059669;
+    --amber: #D97706;
+    --red: #DC2626;
+    --pill-bg: #EFF6FF;
+    --th-bg: #F1F5F9;
+    --shadow: 0 1px 3px rgba(0,0,0,.08);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0F172A;
+      --surface: #1E293B;
+      --border: #334155;
+      --text: #F1F5F9;
+      --muted: #94A3B8;
+      --accent: #38BDF8;
+      --teal: #22D3EE;
+      --green: #34D399;
+      --amber: #FBBF24;
+      --red: #F87171;
+      --pill-bg: #1E3A5F;
+      --th-bg: #273549;
+      --shadow: 0 1px 4px rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A; --surface: #1E293B; --border: #334155;
+    --text: #F1F5F9; --muted: #94A3B8; --accent: #38BDF8;
+    --teal: #22D3EE; --green: #34D399; --amber: #FBBF24;
+    --red: #F87171; --pill-bg: #1E3A5F; --th-bg: #273549;
+    --shadow: 0 1px 4px rgba(0,0,0,.4);
+  }
+  :root[data-theme="light"] {
+    --bg: #F8F9FC; --surface: #FFFFFF; --border: #E2E8F0;
+    --text: #1A202C; --muted: #718096; --accent: #0B7FD4;
+    --teal: #0891B2; --green: #059669; --amber: #D97706;
+    --red: #DC2626; --pill-bg: #EFF6FF; --th-bg: #F1F5F9;
+    --shadow: 0 1px 3px rgba(0,0,0,.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 24px 20px 40px;
+  }
+
+  header { margin-bottom: 24px; }
+  header h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; }
+  header p { color: var(--muted); font-size: 13px; margin-top: 4px; }
+
+  .legend {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    margin-bottom: 20px; font-size: 12px;
+  }
+  .legend span { display: flex; align-items: center; gap: 5px; color: var(--muted); }
+  .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+  .dot-g { background: var(--green); }
+  .dot-a { background: var(--amber); }
+  .dot-r { background: var(--red); }
+  .dot-m { background: var(--muted); }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+
+  .doctor-header {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  }
+  .doctor-name { font-weight: 700; font-size: 15px; }
+  .doctor-meta { color: var(--muted); font-size: 12px; }
+  .overall-pill {
+    margin-left: auto;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .pill-active  { background: #D1FAE5; color: #065F46; }
+  .pill-low     { background: #FEF3C7; color: #92400E; }
+  .pill-dead    { background: #FEE2E2; color: #991B1B; }
+  .pill-none    { background: var(--th-bg); color: var(--muted); }
+  @media (prefers-color-scheme: dark) {
+    .pill-active { background: #064E3B; color: #6EE7B7; }
+    .pill-low    { background: #451A03; color: #FCD34D; }
+    .pill-dead   { background: #450A0A; color: #FCA5A5; }
+  }
+  :root[data-theme="dark"] .pill-active { background: #064E3B; color: #6EE7B7; }
+  :root[data-theme="dark"] .pill-low    { background: #451A03; color: #FCD34D; }
+  :root[data-theme="dark"] .pill-dead   { background: #450A0A; color: #FCA5A5; }
+  :root[data-theme="light"] .pill-active { background: #D1FAE5; color: #065F46; }
+  :root[data-theme="light"] .pill-low    { background: #FEF3C7; color: #92400E; }
+  :root[data-theme="light"] .pill-dead   { background: #FEE2E2; color: #991B1B; }
+
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; min-width: 620px; }
+  thead tr { background: var(--th-bg); }
+  th {
+    padding: 9px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  td {
+    padding: 10px 14px;
+    border-top: 1px solid var(--border);
+    vertical-align: middle;
+    font-size: 13px;
+  }
+  tr:hover td { background: color-mix(in srgb, var(--accent) 4%, transparent); }
+
+  .platform-icon {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-weight: 600; color: var(--text);
+  }
+  .icon { font-size: 15px; }
+
+  .followers { font-variant-numeric: tabular-nums; font-weight: 600; }
+  .na { color: var(--muted); font-style: italic; }
+
+  .freq-badge {
+    padding: 2px 8px; border-radius: 4px;
+    font-size: 11px; font-weight: 600;
+    white-space: nowrap;
+  }
+  .freq-active  { background: #DCFCE7; color: #166534; }
+  .freq-low     { background: #FEF9C3; color: #713F12; }
+  .freq-dead    { background: #FEE2E2; color: #991B1B; }
+  .freq-none    { background: var(--th-bg); color: var(--muted); }
+  @media (prefers-color-scheme: dark) {
+    .freq-active { background: #14532D; color: #86EFAC; }
+    .freq-low    { background: #422006; color: #FDE68A; }
+    .freq-dead   { background: #450A0A; color: #FCA5A5; }
+  }
+  :root[data-theme="dark"] .freq-active { background: #14532D; color: #86EFAC; }
+  :root[data-theme="dark"] .freq-low    { background: #422006; color: #FDE68A; }
+  :root[data-theme="dark"] .freq-dead   { background: #450A0A; color: #FCA5A5; }
+
+  .handle a { color: var(--teal); text-decoration: none; font-size: 12px; }
+  .handle a:hover { text-decoration: underline; }
+
+  .note-row td {
+    background: color-mix(in srgb, var(--teal) 5%, transparent);
+    font-size: 12px; color: var(--muted);
+    padding: 7px 14px;
+    border-top: none;
+  }
+
+  .summary-table { margin-top: 28px; }
+  .summary-table h2 { font-size: 15px; font-weight: 700; margin-bottom: 12px; }
+
+  .bar-wrap { display: flex; align-items: center; gap: 8px; }
+  .bar { height: 8px; border-radius: 4px; background: var(--accent); min-width: 2px; }
+
+  footer { margin-top: 28px; font-size: 11px; color: var(--muted); }
+</style>
+
+<header>
+  <h1>Fehmicon Doctors — Social Media Audit</h1>
+  <p>Researched 20 Jul 2026 · Followers / last activity / posting frequency</p>
+</header>
+
+<div class="legend">
+  <span><span class="dot dot-g"></span> Active (monthly+)</span>
+  <span><span class="dot dot-a"></span> Low (quarterly)</span>
+  <span><span class="dot dot-r"></span> Inactive / Dead</span>
+  <span><span class="dot dot-m"></span> No presence</span>
+</div>
+
+<!-- ── Dr Sri Vidya ───────────────────────────────────────── -->
+<div class="card">
+  <div class="doctor-header">
+    <div>
+      <div class="doctor-name">Dr Sri Vidya (Srividya Tadru)</div>
+      <div class="doctor-meta">Samraksha Hospital · Hasthinapuram, Hyderabad · Infertility, Laparoscopy, Fetal Medicine</div>
+    </div>
+    <span class="overall-pill pill-low">Low–Moderate</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th>Platform</th><th>Handle</th><th>Followers</th>
+        <th>Last Post</th><th>Frequency</th><th>Content</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="platform-icon"><span class="icon">📘</span> Facebook</span></td>
+          <td class="handle"><a href="https://www.facebook.com/samrakshahospitals.in/" target="_blank">@samrakshahospitals.in</a></td>
+          <td class="followers">~6,600 likes</td>
+          <td>Active (unconfirmed date)</td>
+          <td><span class="freq-badge freq-low">Monthly</span></td>
+          <td>Hospital services, health tips</td>
+        </tr>
+        <tr>
+          <td><span class="platform-icon"><span class="icon">📸</span> Instagram</span></td>
+          <td class="handle"><a href="https://www.instagram.com/samraksha.hospital/" target="_blank">@samraksha.hospital</a></td>
+          <td class="followers">1,509 · 757 posts</td>
+          <td>Dec 21, 2024</td>
+          <td><span class="freq-badge freq-low">2–4× / month</span></td>
+          <td>Pediatric reels, health awareness</td>
+        </tr>
+        <tr>
+          <td><span class="platform-icon"><span class="icon">▶️</span> YouTube</span></td>
+          <td class="handle"><a href="https://www.youtube.com/channel/UC4pY-zXLtpuf32ijz82Xtfw" target="_blank">Samraksha YouTube</a></td>
+          <td class="na">Not indexed</td>
+          <td class="na">Occasional</td>
+          <td><span class="freq-badge freq-dead">Rare</span></td>
+          <td>Procedures, health education</td>
+        </tr>
+        <tr class="note-row"><td colspan="6">⚠ Last confirmed Instagram post Dec 2024 — no 2025 activity indexed. Avg engagement ~2 likes/post. Strong growth opportunity.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ── Dr Sushmitha ───────────────────────────────────────── -->
+<div class="card">
+  <div class="doctor-header">
+    <div>
+      <div class="doctor-name">Dr Sushmitha Palleboina</div>
+      <div class="doctor-meta">Private Clinic · Balapur, South Hyderabad · OBG</div>
+    </div>
+    <span class="overall-pill pill-dead">Near-Inactive</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th>Platform</th><th>Handle</th><th>Followers</th>
+        <th>Last Post</th><th>Frequency</th><th>Content</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="platform-icon"><span class="icon">📸</span> Instagram</span></td>
+          <td class="handle"><a href="https://www.instagram.com/maacarehospitalhyd/" target="_blank">@maacarehospitalhyd</a></td>
+          <td class="followers">60 · 29 posts</td>
+          <td class="na">Unconfirmed</td>
+          <td><span class="freq-badge freq-dead">Very infrequent</span></td>
+          <td>General hospital content</td>
+        </tr>
+        <tr>
+          <td><span class="platform-icon"><span class="icon">📘</span> Facebook</span></td>
+          <td class="handle"><a href="https://www.facebook.com/maacarehospital" target="_blank">@maacarehospital</a></td>
+          <td class="na">Not confirmed</td>
+          <td class="na">Unknown</td>
+          <td><span class="freq-badge freq-none">Unknown</span></td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td><span class="platform-icon"><span class="icon">👤</span> Personal</span></td>
+          <td class="na">—</td>
+          <td class="na">Not found</td>
+          <td class="na">—</td>
+          <td><span class="freq-badge freq-none">None</span></td>
+          <td>—</td>
+        </tr>
+        <tr class="note-row"><td colspan="6">⚠ Effectively invisible online. 60 followers despite 29 posts — never promoted. Best handle match is Maa Care Hospital, Balapur X Roads (profile fits OBG speciality). Confirm with doctor directly.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ── Dr P Rama Devi ─────────────────────────────────────── -->
+<div class="card">
+  <div class="doctor-header">
+    <div>
+      <div class="doctor-name">Dr P Rama Devi</div>
+      <div class="doctor-meta">Rama Devi Hospitals · Moulali / Secunderabad · IVF-ET, Fertility · 43 yrs experience</div>
+    </div>
+    <span class="overall-pill pill-none">No Social Media</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th>Platform</th><th>Handle</th><th>Followers</th>
+        <th>Last Post</th><th>Frequency</th><th>Content</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="platform-icon"><span class="icon">📘</span> Facebook</span></td>
+          <td class="na">Not found</td>
+          <td class="na">—</td><td class="na">—</td>
+          <td><span class="freq-badge freq-none">None</span></td><td class="na">—</td>
+        </tr>
+        <tr>
+          <td><span class="platform-icon"><span class="icon">📸</span> Instagram</span></td>
+          <td class="na">Not found</td>
+          <td class="na">—</td><td class="na">—</td>
+          <td><span class="freq-badge freq-none">None</span></td><td class="na">—</td>
+        </tr>
+        <tr>
+          <td><span class="platform-icon"><span class="icon">🗺</span> Directories</span></td>
+          <td class="na">Practo · Justdial · Skedoc</td>
+          <td>4.6★ · 67 reviews</td><td class="na">Ongoing</td>
+          <td><span class="freq-badge freq-none">Passive</span></td>
+          <td>Patient reviews only</td>
+        </tr>
+        <tr class="note-row"><td colspan="6">✦ Zero social media presence. All online visibility is through third-party directories. Strongest "ground-up" opportunity — 43 years of credibility with no digital voice yet. Prime Aayi onboarding candidate.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ── Dr K Lalitha Reddy ─────────────────────────────────── -->
+<div class="card">
+  <div class="doctor-header">
+    <div>
+      <div class="doctor-name">Dr K Lalitha Reddy</div>
+      <div class="doctor-meta">Nightingale Hospital · Saidabad, Hyderabad · OBG · 33 yrs experience</div>
+    </div>
+    <span class="overall-pill pill-dead">Effectively Inactive</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th>Platform</th><th>Handle</th><th>Followers</th>
+        <th>Last Post</th><th>Frequency</th><th>Content</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="platform-icon"><span class="icon">📘</span> Facebook</span></td>
+          <td class="handle"><a href="https://www.facebook.com/p/Nightingale-Hospital-100092403657998/" target="_blank">Nightingale Hospital</a></td>
+          <td class="na">Not confirmed</td>
+          <td class="na">Unknown</td>
+          <td><span class="freq-badge freq-none">Unknown</span></td>
+          <td>Hospital services</td>
+        </tr>
+        <tr>
+          <td><span class="platform-icon"><span class="icon">📸</span> Instagram</span></td>
+          <td class="handle"><a href="https://www.instagram.com/nightingale_hospital/" target="_blank">@nightingale_hospital</a></td>
+          <td class="followers">4 · 127 posts</td>
+          <td class="na">Unknown</td>
+          <td><span class="freq-badge freq-dead">Dead</span></td>
+          <td>Multi-speciality content</td>
+        </tr>
+        <tr>
+          <td><span class="platform-icon"><span class="icon">🌐</span> Website</span></td>
+          <td class="handle"><a href="https://nightingalehospitals.in" target="_blank">nightingalehospitals.in</a></td>
+          <td class="na">—</td>
+          <td>Active</td>
+          <td><span class="freq-badge freq-low">Updated</span></td>
+          <td>Hospital info</td>
+        </tr>
+        <tr class="note-row"><td colspan="6">⚠ Instagram has 127 posts but only 4 followers — account was never linked or promoted anywhere. 4.4★ with 1,504 Google reviews = strong offline reputation, no digital amplification. Also note: a different @doclalithareddy.palle (wellness) has 26K followers — unrelated.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ── Dr B Sandhya Rani ───────────────────────────────────── -->
+<div class="card">
+  <div class="doctor-header">
+    <div>
+      <div class="doctor-name">Dr B Sandhya Rani</div>
+      <div class="doctor-meta">Laxmi Narasimha Hospital · Hanamkonda, Warangal · OBG Assoc. President · FICOG · 30 yrs</div>
+    </div>
+    <span class="overall-pill pill-low">Low–Moderate</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th>Platform</th><th>Handle</th><th>Followers</th>
+        <th>Last Post</th><th>Frequency</th><th>Content</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="platform-icon"><span class="icon">📘</span> Facebook</span></td>
+          <td class="handle"><a href="https://www.facebook.com/LaxmiNarasimhaHospital/" target="_blank">@LaxmiNarasimhaHospital</a></td>
+          <td class="followers">~1,400</td>
+          <td class="na">Not confirmed</td>
+          <td><span class="freq-badge freq-low">Low–moderate</span></td>
+          <td>Health content, maternity</td>
+        </tr>
+        <tr>
+          <td><span class="platform-icon"><span class="icon">📸</span> Instagram</span></td>
+          <td class="handle"><a href="https://www.instagram.com/laxminarasimhahospital/" target="_blank">@laxminarasimhahospital</a></td>
+          <td class="na">Not confirmed</td>
+          <td class="na">Unknown</td>
+          <td><span class="freq-badge freq-none">Unknown</span></td>
+          <td>Gynaecology, fertility</td>
+        </tr>
+        <tr>
+          <td><span class="platform-icon"><span class="icon">💼</span> LinkedIn</span></td>
+          <td class="na">Laxmi Narasimha Hospital (co.)</td>
+          <td class="na">Not confirmed</td>
+          <td class="na">Unknown</td>
+          <td><span class="freq-badge freq-none">Unknown</span></td>
+          <td>Professional/corporate</td>
+        </tr>
+        <tr>
+          <td><span class="platform-icon"><span class="icon">🌐</span> Website</span></td>
+          <td class="handle"><a href="https://www.laxminarasimhahospital.in" target="_blank">laxminarasimhahospital.in</a></td>
+          <td class="na">—</td>
+          <td>Active</td>
+          <td><span class="freq-badge freq-low">Updated</span></td>
+          <td>Full site + blog + doctor profiles</td>
+        </tr>
+        <tr class="note-row"><td colspan="6">✦ NABH-accredited, strongest website of the group. Facebook at ~1,400 followers is the best among the mid-tier hospitals. OBG Association President role = major credibility leverage. Best positioned for authority-content strategy.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ── Quick-compare summary ──────────────────────────────── -->
+<div class="summary-table">
+  <h2>Quick Comparison</h2>
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>Doctor</th><th>Facebook</th><th>Instagram</th><th>YouTube</th><th>Website</th><th>Overall</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Dr Sri Vidya</strong><br><span style="color:var(--muted);font-size:11px">Samraksha, Hasthinapuram</span></td>
+            <td>
+              <div class="bar-wrap"><div class="bar" style="width:66px"></div><span>~6,600</span></div>
+            </td>
+            <td>
+              <div class="bar-wrap"><div class="bar" style="width:15px;background:var(--teal)"></div><span>1,509</span></div>
+            </td>
+            <td><span class="na">Exists</span></td>
+            <td>✓</td>
+            <td><span class="freq-badge freq-low">Moderate</span></td>
+          </tr>
+          <tr>
+            <td><strong>Dr Sushmitha</strong><br><span style="color:var(--muted);font-size:11px">Maa Care, Balapur</span></td>
+            <td><span class="na">—</span></td>
+            <td>
+              <div class="bar-wrap"><div class="bar" style="width:1px;background:var(--red)"></div><span>60</span></div>
+            </td>
+            <td><span class="na">—</span></td>
+            <td><span class="na">—</span></td>
+            <td><span class="freq-badge freq-dead">Near-zero</span></td>
+          </tr>
+          <tr>
+            <td><strong>Dr P Rama Devi</strong><br><span style="color:var(--muted);font-size:11px">Rama Devi, Moulali</span></td>
+            <td><span class="na">—</span></td>
+            <td><span class="na">—</span></td>
+            <td><span class="na">—</span></td>
+            <td><span class="na">—</span></td>
+            <td><span class="freq-badge freq-none">None</span></td>
+          </tr>
+          <tr>
+            <td><strong>Dr K Lalitha Reddy</strong><br><span style="color:var(--muted);font-size:11px">Nightingale, Saidabad</span></td>
+            <td><span class="na">Unconfirmed</span></td>
+            <td>
+              <div class="bar-wrap"><div class="bar" style="width:1px;background:var(--red)"></div><span>4 (!)</span></div>
+            </td>
+            <td><span class="na">—</span></td>
+            <td>✓</td>
+            <td><span class="freq-badge freq-dead">Inactive</span></td>
+          </tr>
+          <tr>
+            <td><strong>Dr B Sandhya Rani</strong><br><span style="color:var(--muted);font-size:11px">Laxmi Narasimha, Warangal</span></td>
+            <td>
+              <div class="bar-wrap"><div class="bar" style="width:14px"></div><span>~1,400</span></div>
+            </td>
+            <td><span class="na">Unconfirmed</span></td>
+            <td><span class="na">—</span></td>
+            <td>✓ Best</td>
+            <td><span class="freq-badge freq-low">Low–mod.</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<footer>Data sourced via web research · 20 Jul 2026 · Follower counts are approximate; Instagram/Facebook may restrict public visibility</footer>
