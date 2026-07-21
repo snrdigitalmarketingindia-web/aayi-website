@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doctors CRM — aayi Admin</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f0f4f8;
+    color: #1e293b;
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);
+    color: #fff;
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .header-left h1 { font-size: 20px; font-weight: 700; }
+  .header-left p  { font-size: 12px; opacity: .75; margin-top: 2px; }
+  .header-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 14px; border-radius: 8px;
+    font-size: 13px; font-weight: 600; cursor: pointer;
+    border: none; text-decoration: none; transition: opacity .15s;
+  }
+  .btn:hover { opacity: .85; }
+  .btn-white { background: #fff; color: #1e40af; }
+  .btn-coral { background: #f97316; color: #fff; }
+  .btn-back  { background: rgba(255,255,255,.15); color: #fff; }
+
+  /* ── Stats bar ── */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    padding: 20px 24px;
+    background: #fff;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .stat-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+  }
+  .stat-val { font-size: 28px; font-weight: 800; color: #1e40af; }
+  .stat-lbl { font-size: 11px; color: #64748b; margin-top: 4px; text-transform: uppercase; letter-spacing: .05em; }
+
+  /* ── Filter bar ── */
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 24px;
+    background: #fff;
+    border-bottom: 1px solid #e2e8f0;
+    flex-wrap: wrap;
+  }
+  .filter-bar input, .filter-bar select {
+    padding: 7px 11px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    font-size: 13px;
+    background: #f8fafc;
+    color: #1e293b;
+    outline: none;
+  }
+  .filter-bar input:focus, .filter-bar select:focus { border-color: #6366f1; }
+  .filter-bar input { min-width: 200px; flex: 1; }
+  .result-count { font-size: 12px; color: #64748b; margin-left: auto; }
+
+  /* ── Table ── */
+  .table-wrap {
+    padding: 16px 24px;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  }
+  th {
+    background: #1e40af;
+    color: #fff;
+    text-align: left;
+    padding: 11px 13px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+  }
+  th:hover { background: #1d4ed8; }
+  th .sort-arrow { opacity: .45; font-size: 10px; }
+  th.sorted .sort-arrow { opacity: 1; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td {
+    padding: 9px 13px;
+    border-bottom: 1px solid #e9eef5;
+    vertical-align: middle;
+    max-width: 200px;
+    word-break: break-word;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #eff6ff !important; }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .badge-yes  { background: #d1fae5; color: #065f46; }
+  .badge-no   { background: #f1f5f9; color: #64748b; }
+  .badge-hot  { background: #fef3c7; color: #92400e; }
+
+  /* followers tier badges */
+  .foll-mega  { background: #fce7f3; color: #9d174d; font-weight: 700; }
+  .foll-high  { background: #ede9fe; color: #5b21b6; }
+  .foll-mid   { background: #dbeafe; color: #1e40af; }
+  .foll-low   { background: #f1f5f9; color: #475569; }
+  .foll-none  { background: #fef2f2; color: #991b1b; font-size: 10px; }
+
+  /* status selector */
+  .status-sel {
+    padding: 4px 7px;
+    border-radius: 6px;
+    font-size: 12px;
+    border: 1px solid #cbd5e1;
+    background: #fff;
+    cursor: pointer;
+    width: 150px;
+  }
+  .status-sel.s-new        { background: #f1f5f9; }
+  .status-sel.s-contacted  { background: #dbeafe; border-color: #93c5fd; }
+  .status-sel.s-interested { background: #d1fae5; border-color: #6ee7b7; }
+  .status-sel.s-onboarded  { background: #dcfce7; border-color: #86efac; color: #166534; font-weight: 600; }
+  .status-sel.s-declined   { background: #fee2e2; border-color: #fca5a5; color: #991b1b; }
+  .status-sel.s-followup   { background: #fef3c7; border-color: #fcd34d; }
+
+  .sno-cell { color: #94a3b8; font-size: 11px; width: 36px; }
+  .name-cell { font-weight: 600; }
+  .area-cell { color: #475569; }
+
+  /* No results */
+  .no-results {
+    text-align: center;
+    padding: 60px 20px;
+    color: #94a3b8;
+    font-size: 15px;
+  }
+
+  /* Onboarding summary panel */
+  .onboarding-panel {
+    margin: 0 24px 16px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 16px 20px;
+  }
+  .onboarding-panel h3 { font-size: 14px; font-weight: 700; margin-bottom: 12px; color: #1e293b; }
+  .ob-grid { display: flex; gap: 10px; flex-wrap: wrap; }
+  .ob-card {
+    flex: 1; min-width: 100px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid;
+  }
+  .ob-card .ob-val { font-size: 22px; font-weight: 800; }
+  .ob-card .ob-lbl { font-size: 10px; margin-top: 2px; text-transform: uppercase; letter-spacing: .04em; }
+  .ob-new        { background: #f8fafc; border-color: #e2e8f0; color: #64748b; }
+  .ob-contacted  { background: #eff6ff; border-color: #bfdbfe; color: #1e40af; }
+  .ob-interested { background: #ecfdf5; border-color: #a7f3d0; color: #065f46; }
+  .ob-onboarded  { background: #dcfce7; border-color: #86efac; color: #166534; }
+  .ob-declined   { background: #fef2f2; border-color: #fca5a5; color: #991b1b; }
+  .ob-followup   { background: #fefce8; border-color: #fde047; color: #713f12; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>👩‍⚕️ Doctors CRM — Digital Marketing Pipeline</h1>
+    <p>169 gynecologist leads | Areas: Kukatpally, KPHB, Hyderabad &amp; beyond | Source: WhatsApp leads list</p>
+  </div>
+  <div class="header-actions">
+    <button class="btn btn-white" onclick="exportCSV()">⬇ Export CSV</button>
+    <a href="index.html" class="btn btn-back">← Admin</a>
+  </div>
+</div>
+
+<!-- Stats -->
+<div class="stats">
+  <div class="stat-card">
+    <div class="stat-val" id="stat-total">169</div>
+    <div class="stat-lbl">Total Doctors</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-val" id="stat-influencer" style="color:#7c3aed">50</div>
+    <div class="stat-lbl">On Social Media</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-val" id="stat-notfound" style="color:#ef4444">114</div>
+    <div class="stat-lbl">Not Found Online</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-val" id="stat-highfoll" style="color:#f97316">8</div>
+    <div class="stat-lbl">10K+ Followers</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-val" id="stat-onboarded" style="color:#16a34a">0</div>
+    <div class="stat-lbl">Onboarded</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-val" id="stat-showing">169</div>
+    <div class="stat-lbl">Showing</div>
+  </div>
+</div>
+
+<!-- Onboarding pipeline -->
+<div class="onboarding-panel">
+  <h3>📊 Digital Marketing Onboarding Pipeline</h3>
+  <div class="ob-grid">
+    <div class="ob-card ob-new">
+      <div class="ob-val" id="ob-new">—</div>
+      <div class="ob-lbl">Not Started</div>
+    </div>
+    <div class="ob-card ob-contacted">
+      <div class="ob-val" id="ob-contacted">—</div>
+      <div class="ob-lbl">Contacted</div>
+    </div>
+    <div class="ob-card ob-followup">
+      <div class="ob-val" id="ob-followup">—</div>
+      <div class="ob-lbl">Follow-up</div>
+    </div>
+    <div class="ob-card ob-interested">
+      <div class="ob-val" id="ob-interested">—</div>
+      <div class="ob-lbl">Interested</div>
+    </div>
+    <div class="ob-card ob-onboarded">
+      <div class="ob-val" id="ob-onboarded">—</div>
+      <div class="ob-lbl">Onboarded ✓</div>
+    </div>
+    <div class="ob-card ob-declined">
+      <div class="ob-val" id="ob-declined">—</div>
+      <div class="ob-lbl">Declined</div>
+    </div>
+  </div>
+</div>
+
+<!-- Filter bar -->
+<div class="filter-bar">
+  <input type="text" id="search" placeholder="🔍  Search name, area, hospital..." oninput="applyFilters()">
+  <select id="filterArea" onchange="applyFilters()">
+    <option value="">All Areas</option>
+  </select>
+  <select id="filterInfluencer" onchange="applyFilters()">
+    <option value="">All Social Status</option>
+    <option value="yes">On Social Media</option>
+    <option value="no">Not Found Online</option>
+  </select>
+  <select id="filterStatus" onchange="applyFilters()">
+    <option value="">All Onboarding Status</option>
+    <option value="new">Not Started</option>
+    <option value="contacted">Contacted</option>
+    <option value="followup">Follow-up</option>
+    <option value="interested">Interested</option>
+    <option value="onboarded">Onboarded</option>
+    <option value="declined">Declined</option>
+  </select>
+  <select id="filterFollowers" onchange="applyFilters()">
+    <option value="">All Follower Counts</option>
+    <option value="mega">10K+</option>
+    <option value="high">1K–10K</option>
+    <option value="mid">100–1K</option>
+    <option value="low">1–100</option>
+  </select>
+  <button class="btn btn-coral" style="padding:7px 12px;font-size:12px" onclick="resetFilters()">Reset</button>
+  <span class="result-count" id="resultCount"></span>
+</div>
+
+<!-- Table -->
+<div class="table-wrap">
+  <table id="doctorTable">
+    <thead>
+      <tr>
+        <th onclick="sortBy('sno')" title="S.No">#<span class="sort-arrow">↕</span></th>
+        <th onclick="sortBy('name')">Name<span class="sort-arrow">↕</span></th>
+        <th onclick="sortBy('area')">Area<span class="sort-arrow">↕</span></th>
+        <th onclick="sortBy('influencer')">Social<span class="sort-arrow">↕</span></th>
+        <th onclick="sortBy('followers_num')">Followers<span class="sort-arrow">↕</span></th>
+        <th>Hospital / Notes</th>
+        <th>Onboarding Status</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+  <div class="no-results" id="noResults" style="display:none">No doctors match your filters.</div>
+</div>
+
+<script>
+// ── Data ────────────────────────────────────────────────────────────
+const DOCTORS = [
+  {sno:1,name:"ROOPA KUCHANA",area:"KPHB",influencer:false,followers:"39",followers_num:39,remarks:""},
+  {sno:2,name:"DR. KOMALA RAVALI",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:3,name:"MANJUSHA",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:4,name:"VIJAYALAXMI SARADA",area:"KPHB",influencer:false,followers:"1",followers_num:1,remarks:""},
+  {sno:5,name:"BHAVANI G",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:6,name:"D. SUSMITHA REDDY",area:"KPHB",influencer:true,followers:"67",followers_num:67,remarks:""},
+  {sno:7,name:"AAISHWARI DURGEBALE",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:8,name:"SHYAM KALAVALAPALLI",area:"KPHB",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:9,name:"VIDYA TICKOO",area:"KPHB",influencer:true,followers:"556",followers_num:556,remarks:""},
+  {sno:10,name:"SWATHI MITARE",area:"ESI",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:11,name:"M. ARCHANA",area:"ESI",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:12,name:"GSK JYOTHI REDDY",area:"KUKATPALLY",influencer:true,followers:"85",followers_num:85,remarks:""},
+  {sno:13,name:"E. ANUSHA",area:"KUKATPALLY",influencer:true,followers:"810",followers_num:810,remarks:""},
+  {sno:14,name:"G. DEEPA",area:"KPHB",influencer:true,followers:"26.4K",followers_num:26400,remarks:""},
+  {sno:15,name:"MANJULATHA P",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:16,name:"APARANJITHA SOPHIA",area:"ESI",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:17,name:"GOTTIPATI. LAKSHMI",area:"ESI",influencer:true,followers:"24.7K",followers_num:24700,remarks:""},
+  {sno:18,name:"M VIJAYALAKSHMI",area:"KPHB",influencer:true,followers:"1185",followers_num:1185,remarks:""},
+  {sno:19,name:"DR.ANUSHAPATEL",area:"KUKATPALLY",influencer:true,followers:"7879",followers_num:7879,remarks:""},
+  {sno:20,name:"P. NIRMALA DEVI",area:"KUKATPALLY",influencer:false,followers:"10",followers_num:10,remarks:""},
+  {sno:21,name:"DR KRISHNAVENI NAYANI",area:"KUKATPALLY",influencer:true,followers:"633",followers_num:633,remarks:""},
+  {sno:22,name:"ANITHA KUNNAIAH",area:"KUKATPALLY",influencer:true,followers:"2566",followers_num:2566,remarks:"FOUND HITECH CITY IN INSTA"},
+  {sno:23,name:"RAVI K MUPPIDI",area:"KPHB",influencer:true,followers:"180",followers_num:180,remarks:""},
+  {sno:24,name:"MADHAVI B",area:"KPHB",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:"AT PRATHIMA HOSPITALS"},
+  {sno:25,name:"M.ARUNA KUMARI",area:"ESI",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:26,name:"ANUPAMA ANUPAMA",area:"KPHB",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:27,name:"KRISHNAVENI1",area:"SANTAN CLINIC (KPHB)",influencer:true,followers:"397",followers_num:397,remarks:""},
+  {sno:28,name:"NAGAMANI D",area:"KPHB",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:29,name:"APARNA M",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:30,name:"M.NEETHA",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:31,name:"DR.ALURI VIJAYALAKSHMI",area:"AMEERPETH",influencer:true,followers:"480",followers_num:480,remarks:""},
+  {sno:32,name:"DR. PALLAVI REDDY",area:"SHAIKPET",influencer:true,followers:"126",followers_num:126,remarks:""},
+  {sno:33,name:"CHAYADEVI",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:34,name:"DR.K UMA JYOTHI",area:"HYDERNAGAR (KPHB)",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:35,name:"USHA USHAKIRAN",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:36,name:"DR.V SRIDEVI",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:37,name:"MRS MANJULA",area:"KPHB",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:38,name:"PRAMODINI P",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:39,name:"NIRAJ YANAMANDRA",area:"KUKATPALLY",influencer:true,followers:"139",followers_num:139,remarks:""},
+  {sno:40,name:"P MADHAVI",area:"KPHB",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:41,name:"MJ MOUNIKA",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:42,name:"B.K.N SUDHA",area:"KPHB",influencer:true,followers:"15.6K",followers_num:15600,remarks:"SUDHA HOSPITAL"},
+  {sno:43,name:"ASWINI KAMINENI",area:"KUKATPALLY",influencer:true,followers:"60.8K",followers_num:60800,remarks:"ANKURA HOSPITALS"},
+  {sno:44,name:"M VIDYA",area:"KPHB",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:45,name:"P.PREMALATHA",area:"KPHB",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:46,name:"SRUHYA MADIREDDI",area:"KPHB",influencer:false,followers:"40",followers_num:40,remarks:""},
+  {sno:47,name:"D.SASHIREKHA",area:"KPHB",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:48,name:"VENKATA SHOBA",area:"KPHB",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:49,name:"DR. SHILPA GATTA",area:"KPHB",influencer:true,followers:"2629",followers_num:2629,remarks:""},
+  {sno:50,name:"DR. BV LATHA",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:51,name:"DR.SHILPA M",area:"KPHB",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:52,name:"DR.TULASI USHA P",area:"KUKATPALLY",influencer:true,followers:"1719",followers_num:1719,remarks:""},
+  {sno:53,name:"DR.RAJINI NAGGARI",area:"KPHB",influencer:true,followers:"221",followers_num:221,remarks:""},
+  {sno:54,name:"DR. SOUJANYA B",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:55,name:"K. RAJA RAJESHWARI",area:"KPHB",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:56,name:"SREE DURGA P",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:57,name:"PALLAVI CHALSANI",area:"KPHB",influencer:false,followers:"285",followers_num:285,remarks:""},
+  {sno:58,name:"SUJATHA GYNEE",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:59,name:"BHARGAVI KAMMILI",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:60,name:"CH. NAGAJYOTHI",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:61,name:"M N SOWJANYA",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:62,name:"SWATHI ARYA",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:63,name:"SRIDEVI GUTTA",area:"KUKATPALLY",influencer:true,followers:"537",followers_num:537,remarks:""},
+  {sno:64,name:"DR. VINEELA",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:65,name:"PAVANI PINJALA",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:66,name:"NAGA LALITHA",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:"AT PRATHIMA HOSPITALS"},
+  {sno:67,name:"DR.AMULYA KEERTHI B",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:68,name:"DR.J SUSHMA VANI",area:"KUKATPALLY",influencer:true,followers:"285",followers_num:285,remarks:""},
+  {sno:69,name:"DR. LAXMI PRASANNA",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:"AT LOTUS HOSPITALS"},
+  {sno:70,name:"RAMAVATH MOUNIKA",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:71,name:"D. RAJYALAKSHMI",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:72,name:"C SARADA",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:73,name:"VEERAMALLI DIVYA",area:"KUKATPALLY",influencer:true,followers:"1055",followers_num:1055,remarks:"AT LANDMARK HOSPITALS"},
+  {sno:74,name:"DR.ANUSHA KOLLI",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:"BIRTHRIGHT BY RAINBOW HOSPITALS"},
+  {sno:75,name:"DR.ASHWINI",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:"AT LOTUS HOSPITALS"},
+  {sno:76,name:"SUCHITRA MITTAL",area:"KUKATPALLY",influencer:true,followers:"160",followers_num:160,remarks:""},
+  {sno:77,name:"DR. SUVARNA RAI",area:"NIZAMPET ROAD",influencer:true,followers:"125",followers_num:125,remarks:"AT SLG HOSPITALS"},
+  {sno:78,name:"ARPITHA REDDY",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:79,name:"RADHIKA Y",area:"KPHB",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:80,name:"RADHIKA DR.",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:81,name:"DR.GANGA BHAVANI",area:"MIYAPUR",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:"AT SWAPNA HEALTHCARE"},
+  {sno:82,name:"DR.A DIVYA",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:83,name:"DR.PRAVEENA KANNE",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:84,name:"DR. SAROJA",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:85,name:"CHAITANYA CHAITANYA",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:86,name:"SUPRIYA RATHOD",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:87,name:"SPURTHI REDDY",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:"VEDAYA GYNEC & FERTILITY HOSPITAL"},
+  {sno:88,name:"MUDE SWETHA",area:"KUKATPALLY",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:89,name:"B.ANURADHA REDDY",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:90,name:"SARITHA REDDY",area:"RAMANTHAPUR",influencer:true,followers:"5421",followers_num:5421,remarks:""},
+  {sno:91,name:"ANITHA VINOD",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:92,name:"B. VENKATA LAXMI",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:93,name:"SANDHYA A",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:94,name:"BHAVANI MOTUKURI",area:"",influencer:true,followers:"57",followers_num:57,remarks:""},
+  {sno:95,name:"CHINTAWAR CHINTAWAR",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:96,name:"J.VALLI AKHILA",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:97,name:"SHAMBHAVI M.A",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:98,name:"DR.PADMAVATHI RAVIPATI",area:"JUBILEE HILLS",influencer:true,followers:"3850",followers_num:3850,remarks:""},
+  {sno:99,name:"DR.D VIJAYA",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:100,name:"SANDYA BOORLE",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:101,name:"DR.ANTHI",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:102,name:"SHALINI REDDY",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:103,name:"M.ARCHANA",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:104,name:"KUSUMA LATHA.P",area:"KURNOOL",influencer:true,followers:"8555",followers_num:8555,remarks:""},
+  {sno:105,name:"N J SUNITHA",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:106,name:"KODATI VIJAYA LAKSHMI",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:107,name:"D.ASHA ASHOK",area:"",influencer:true,followers:"151",followers_num:151,remarks:""},
+  {sno:108,name:"B.KAVITHA",area:"",influencer:true,followers:"3946",followers_num:3946,remarks:"FERTILITY SPECIALIST"},
+  {sno:109,name:"D.JHANSI LAKSHMI",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:110,name:"VAISHALI BASWARAJ",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:111,name:"NIVEDITA ASHRIT",area:"TARNAKA",influencer:true,followers:"155",followers_num:155,remarks:""},
+  {sno:112,name:"SOUMYA KATAKAM",area:"PEERZADIGUDA",influencer:true,followers:"467",followers_num:467,remarks:""},
+  {sno:113,name:"M.SRAVANTHI",area:"BENGALURU",influencer:true,followers:"14.8K",followers_num:14800,remarks:""},
+  {sno:114,name:"P.SRILEKHA",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:115,name:"DR.SK NOORJAHAN",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:116,name:"B.JANAKI",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:117,name:"DR.SRAVANI K",area:"NAGOLE",influencer:true,followers:"1037",followers_num:1037,remarks:"AT SUPRAJA HOSPITALS"},
+  {sno:118,name:"SREE DAYA",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:119,name:"P.SRIVIDYA",area:"HYDERABAD",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:"AT ESHA IVF"},
+  {sno:120,name:"VIJAYA SREE J",area:"BODUPPAL",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:"AT KKSWARA HOSPITALS"},
+  {sno:121,name:"M.SUDHA",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:122,name:"ERRA LAVANYA",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:123,name:"SARWADE APARNA",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:124,name:"RAMADEVI.P",area:"",influencer:true,followers:"765",followers_num:765,remarks:""},
+  {sno:125,name:"DR.PERUGU DEVI ANUSHA",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:126,name:"SWETHA DEEPTHI VAJRALA",area:"MIYAPUR",influencer:true,followers:"157",followers_num:157,remarks:"AT SRIKARA HOSPITALS"},
+  {sno:127,name:"BHAGYA LAKSHMI",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:128,name:"G.NIKHILA REDDY",area:"HYDERABAD",influencer:true,followers:"5664",followers_num:5664,remarks:"AT JJ HOSPITALS"},
+  {sno:129,name:"MADHAVI MADHAVI REDDY R",area:"HYDERABAD",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:"BIRTHRIGHT BY RAINBOW HOSPITALS"},
+  {sno:130,name:"S.USHARANI",area:"HYDERABAD",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:"AT H&F CLINIC"},
+  {sno:131,name:"ANURADHA EMANI",area:"SECUNDERABAD",influencer:true,followers:"55",followers_num:55,remarks:""},
+  {sno:132,name:"SINDHU KODURI",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:133,name:"M.SRAVANI REDDY",area:"HABSIGUDA",influencer:true,followers:"1915",followers_num:1915,remarks:"VEDIKA CLINIC"},
+  {sno:134,name:"P.SUNITHA YERRAM",area:"AS RAO NAGAR",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:"AT ANKURA HOSPITALS"},
+  {sno:135,name:"SAI SUDHA",area:"HITECH CITY",influencer:true,followers:"791",followers_num:791,remarks:"AT YASHODA HOSPITALS"},
+  {sno:136,name:"ALAKANANDA J",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:137,name:"DR.KL POORNIMA",area:"BODUPPAL",influencer:true,followers:"172",followers_num:172,remarks:"AT ANKURA HOSPITALS"},
+  {sno:138,name:"K.VARIJA",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:139,name:"SHREEJA G",area:"MADHAPUR",influencer:true,followers:"1627",followers_num:1627,remarks:""},
+  {sno:140,name:"DR.P MANASA",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:141,name:"DR.REMALA LAKSHMI",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:142,name:"DR.SOMA MOUNIKA",area:"",influencer:true,followers:"16",followers_num:16,remarks:""},
+  {sno:143,name:"NAGASREE M",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:144,name:"SWATHI CHAKRAVARTHY",area:"RAMANTHAPUR",influencer:true,followers:"919",followers_num:919,remarks:"AT MATRIX HOSPITALS"},
+  {sno:145,name:"TEJASHWANI G",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:146,name:"P.HARITHA",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:147,name:"T.SHAILAJA",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:148,name:"V.KALYANI",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:149,name:"VIJAYA IYER",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:150,name:"DR.M MADHAVI",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:151,name:"G.SHAILAJA",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:152,name:"DR.SHILPA",area:"PEERZADIGUDA",influencer:true,followers:"4683",followers_num:4683,remarks:""},
+  {sno:153,name:"MADHURAKAVI SAHITHI",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:154,name:"GEETHANJALI DR.",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:155,name:"SOWMYA REDDY",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:156,name:"RAJINI SANJAY",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:157,name:"JANNATH AMREEN",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:158,name:"UZMA AFREEN",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:159,name:"KARTHIKA REDDY",area:"SECUNDERABAD",influencer:true,followers:"10.9K",followers_num:10900,remarks:"AT YASHODA HOSPITALS"},
+  {sno:160,name:"PRATHYUSHA CHILAKA",area:"PEERZADIGUDA",influencer:true,followers:"395",followers_num:395,remarks:"AT MIRACLE HOSPITALS"},
+  {sno:161,name:"KATUKOJWALA SHRAVYA",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:162,name:"ANURADHA SARAPALLE",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:163,name:"SWETHA REDDY G",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:164,name:"DR.SABBU LIKHITHA",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:165,name:"ROOPA SREE ALAGAM",area:"PEERZADIGUDA",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:"AT SHRESHTA HOSPITALS"},
+  {sno:166,name:"SUNITHA P",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:167,name:"BABITA BABURI",area:"",influencer:false,followers:"NOT FOUND",followers_num:0,remarks:""},
+  {sno:168,name:"ANUSHA PATEL",area:"MADHAPUR & UPPAL",influencer:true,followers:"8458",followers_num:8458,remarks:""},
+  {sno:169,name:"S MEHTAJ",area:"",influencer:true,followers:"8",followers_num:8,remarks:""}
+];
+
+// ── State ────────────────────────────────────────────────────────────
+const STORAGE_KEY = 'aayi_doctors_crm_status';
+let statuses = {};
+let sortKey = 'sno';
+let sortAsc = true;
+let filtered = [...DOCTORS];
+
+function loadStatuses() {
+  try { statuses = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { statuses = {}; }
+}
+function saveStatus(sno, val) {
+  statuses[sno] = val;
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(statuses));
+  updatePipelineCounts();
+  updateOnboardedStat();
+}
+function getStatus(sno) { return statuses[sno] || 'new'; }
+
+// ── Followers badge ──────────────────────────────────────────────────
+function followersBadge(d) {
+  if (d.followers === 'NOT FOUND') return `<span class="badge foll-none">Not Found</span>`;
+  const n = d.followers_num;
+  if (n >= 10000) return `<span class="badge foll-mega">${d.followers} 🔥</span>`;
+  if (n >= 1000)  return `<span class="badge foll-high">${d.followers}</span>`;
+  if (n >= 100)   return `<span class="badge foll-mid">${d.followers}</span>`;
+  return `<span class="badge foll-low">${d.followers}</span>`;
+}
+
+// ── Render ───────────────────────────────────────────────────────────
+function render() {
+  const tbody = document.getElementById('tableBody');
+  const noRes = document.getElementById('noResults');
+
+  if (!filtered.length) {
+    tbody.innerHTML = '';
+    noRes.style.display = '';
+    document.getElementById('stat-showing').textContent = '0';
+    document.getElementById('resultCount').textContent = '0 results';
+    return;
+  }
+  noRes.style.display = 'none';
+
+  tbody.innerHTML = filtered.map(d => {
+    const st = getStatus(d.sno);
+    return `<tr>
+      <td class="sno-cell">${d.sno}</td>
+      <td class="name-cell">${d.name}</td>
+      <td class="area-cell">${d.area || '<span style="color:#cbd5e1">—</span>'}</td>
+      <td>${d.influencer
+        ? '<span class="badge badge-yes">✓ Active</span>'
+        : '<span class="badge badge-no">Not Found</span>'
+      }</td>
+      <td>${followersBadge(d)}</td>
+      <td style="font-size:12px;color:#64748b">${d.remarks || ''}</td>
+      <td>
+        <select class="status-sel s-${st}" onchange="onStatusChange(${d.sno},this)">
+          <option value="new"        ${st==='new'       ?'selected':''}>📋 Not Started</option>
+          <option value="contacted"  ${st==='contacted' ?'selected':''}>📞 Contacted</option>
+          <option value="followup"   ${st==='followup'  ?'selected':''}>🔄 Follow-up</option>
+          <option value="interested" ${st==='interested'?'selected':''}>⭐ Interested</option>
+          <option value="onboarded"  ${st==='onboarded' ?'selected':''}>✅ Onboarded</option>
+          <option value="declined"   ${st==='declined'  ?'selected':''}>❌ Declined</option>
+        </select>
+      </td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('stat-showing').textContent = filtered.length;
+  document.getElementById('resultCount').textContent = `${filtered.length} of ${DOCTORS.length} doctors`;
+}
+
+function onStatusChange(sno, sel) {
+  const val = sel.value;
+  sel.className = `status-sel s-${val}`;
+  saveStatus(sno, val);
+}
+
+// ── Filter ───────────────────────────────────────────────────────────
+function applyFilters() {
+  const q     = document.getElementById('search').value.toLowerCase();
+  const area  = document.getElementById('filterArea').value;
+  const infl  = document.getElementById('filterInfluencer').value;
+  const st    = document.getElementById('filterStatus').value;
+  const foll  = document.getElementById('filterFollowers').value;
+
+  filtered = DOCTORS.filter(d => {
+    if (q && !d.name.toLowerCase().includes(q) && !d.area.toLowerCase().includes(q) && !d.remarks.toLowerCase().includes(q)) return false;
+    if (area && d.area !== area) return false;
+    if (infl === 'yes' && !d.influencer) return false;
+    if (infl === 'no'  && d.influencer) return false;
+    if (st && getStatus(d.sno) !== st) return false;
+    if (foll) {
+      const n = d.followers_num;
+      if (foll === 'mega' && n < 10000) return false;
+      if (foll === 'high' && (n < 1000 || n >= 10000)) return false;
+      if (foll === 'mid'  && (n < 100  || n >= 1000))  return false;
+      if (foll === 'low'  && (n <= 0   || n >= 100))   return false;
+    }
+    return true;
+  });
+
+  doSort();
+  render();
+}
+
+function resetFilters() {
+  document.getElementById('search').value = '';
+  document.getElementById('filterArea').value = '';
+  document.getElementById('filterInfluencer').value = '';
+  document.getElementById('filterStatus').value = '';
+  document.getElementById('filterFollowers').value = '';
+  filtered = [...DOCTORS];
+  doSort();
+  render();
+}
+
+// ── Sort ─────────────────────────────────────────────────────────────
+function sortBy(key) {
+  if (sortKey === key) sortAsc = !sortAsc;
+  else { sortKey = key; sortAsc = true; }
+  document.querySelectorAll('th').forEach(th => th.classList.remove('sorted'));
+  doSort();
+  render();
+}
+
+function doSort() {
+  filtered.sort((a, b) => {
+    let av = a[sortKey], bv = b[sortKey];
+    if (typeof av === 'string') av = av.toLowerCase();
+    if (typeof bv === 'string') bv = bv.toLowerCase();
+    if (sortKey === 'influencer') { av = a.influencer ? 1 : 0; bv = b.influencer ? 1 : 0; }
+    return sortAsc ? (av < bv ? -1 : av > bv ? 1 : 0) : (av > bv ? -1 : av < bv ? 1 : 0);
+  });
+}
+
+// ── Pipeline counts ──────────────────────────────────────────────────
+function updatePipelineCounts() {
+  const counts = { new:0, contacted:0, followup:0, interested:0, onboarded:0, declined:0 };
+  DOCTORS.forEach(d => { const s = getStatus(d.sno); counts[s] = (counts[s]||0)+1; });
+  Object.entries(counts).forEach(([k,v]) => {
+    const el = document.getElementById(`ob-${k}`);
+    if (el) el.textContent = v;
+  });
+}
+
+function updateOnboardedStat() {
+  let n = 0;
+  DOCTORS.forEach(d => { if (getStatus(d.sno) === 'onboarded') n++; });
+  document.getElementById('stat-onboarded').textContent = n;
+}
+
+// ── Area dropdown ────────────────────────────────────────────────────
+function populateAreaDropdown() {
+  const areas = [...new Set(DOCTORS.map(d => d.area).filter(a => a))].sort();
+  const sel = document.getElementById('filterArea');
+  areas.forEach(a => {
+    const o = document.createElement('option');
+    o.value = a; o.textContent = a;
+    sel.appendChild(o);
+  });
+}
+
+// ── CSV Export ───────────────────────────────────────────────────────
+function exportCSV() {
+  const rows = [['S.No','Name','Area','Social Media','Followers','Hospital/Notes','Onboarding Status']];
+  filtered.forEach(d => {
+    rows.push([
+      d.sno, d.name, d.area,
+      d.influencer ? 'Yes' : 'No',
+      d.followers, d.remarks,
+      getStatus(d.sno)
+    ]);
+  });
+  const csv = rows.map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+  a.download = 'aayi_doctors_crm.csv';
+  a.click();
+}
+
+// ── Init ─────────────────────────────────────────────────────────────
+loadStatuses();
+populateAreaDropdown();
+filtered = [...DOCTORS];
+render();
+updatePipelineCounts();
+updateOnboardedStat();
+</script>
+</body>
+</html>
